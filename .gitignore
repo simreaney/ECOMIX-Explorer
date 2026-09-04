@@ -12,3 +12,7 @@ data/measured/comix_monitoring_data_Dashboard.csv
 data/*_hive_backup/
 data-chem/1_DAILY_BY_SITE_conc_ng_L/1_DAILY_BY_SITE_conc_ng_L.parquet
 .DS_Store
+/data-chem/6_D3D_chemicals/rosm.cache
+scripts/build_parquet.py.zip
+.DS_Store
+*.parquet

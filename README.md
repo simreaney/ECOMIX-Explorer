@@ -5,14 +5,15 @@ This is the web dashboard code for the [ECOMIX](https://water.leeds.ac.uk/fwq-pr
 
 ## Dashboard
 
-The dashboard ([app.R](app.R)) is an R Shiny app that lets users explore hydrological and chemical exposure data for the study catchments, both as they were observed/simulated historically and as they are projected to change under future climate scenarios. It is organised into six tabs:
+The dashboard ([app.R](app.R)) is an R Shiny app that lets users explore hydrological and chemical exposure data for the study catchments, both as they were observed/simulated historically and as they are projected to change under future climate scenarios. It is organised into the following tabs:
 
 * **Map** — search for or browse subbasins on an interactive map, with toggleable layers for subbasin/operational catchment boundaries, waterbodies (modelled), measured sites, observed hydrology sites and chemical data coverage.
 * **Site Details** — for a selected measured site or modelled water body (switchable via a toggle in the sidebar), view a chemical occurrence/concentration grid and configurable time-series panels for up to four determinands.
-* **Data Explorer** — for a selected subbasin (or, in Water body mode, a selected modelled water body), compare climate variables, simulated vs. observed hydrology, and projections (yearly, monthly, distribution/cumulative-frequency, and daily for chemicals) across scenarios and future periods.
+* **Hydro Explorer** — for a selected subbasin (or, in Water body mode, a selected modelled water body), compare climate variables, simulated vs. observed hydrology, and projections (yearly, monthly, distribution/cumulative-frequency, and daily for chemicals) across scenarios and future periods.
+* **Chemical Explorer** — D3D-modelled daily percentile chemical concentration time series for a selected chemical and water body, with acute/chronic level-of-concern threshold lines.
+* **Ecological Risk** — detail view for a site/chemical reached by clicking a point on the Map's Ecological risk layer.
 * **Spatial Datasets** — view any modelled hydrological, subbasin chemical, or water body chemical variable as a coloured map layer, for a chosen period/percentile or chemical statistic.
-* **Data Downloader** — build and preview a custom data extract (variable, data type, spatial layer, format) and download it as a file.
-* **Food Web Dynamics** — an embedded external Julia Dash app for exploring food-web dynamics.
+* **Download** — build and preview a custom data extract (variable, data type, spatial layer, format) and download it as a file.
 
 Underlying data (HYPE hydrological model output, chemical concentration predictions for both measured sites and modelled water bodies, and supporting GIS layers) lives in [data/](data/), [data-chem/](data-chem/) and [gis-data/](gis-data/), with data preparation scripts in [scripts/](scripts/).
 

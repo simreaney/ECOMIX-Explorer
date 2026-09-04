@@ -445,7 +445,7 @@ df_map_input <- read_parquet(here("data/Subbasin_Extremes.gz.parquet")) %>%
   mutate(hype_variable = ifelse(hype_variable == "susp. Sediments", "Susp. Sediments", hype_variable))
 
 # Scenario x period combinations actually present in the extremes data,
-# labelled the same way the Data Explorer labels them ("SSP585 (2070-2080)"),
+# labelled the same way the Hydro Explorer labels them ("SSP585 (2070-2080)"),
 # used to drive the Spatial Datasets "Period" dropdown.
 spatial_period_choices <- df_map_input %>%
   dplyr::distinct(ssp, period) %>%
@@ -514,7 +514,7 @@ chem_subbasin_ids <- chem_dataset %>%
 chem_coverage_shp <- subbasin_shp %>% filter(Id %in% chem_subbasin_ids)
 
 # Per-subbasin daily series (date, value) for one chemical/statistic -
-# powering the Data Explorer projection plots and the "download this
+# powering the Hydro Explorer projection plots and the "download this
 # selection" / per-subbasin tabular download. Cheap enough (~0.05s) to read
 # on demand and cache per subbasin actually visited, rather than eagerly
 # loading all 78 x 537 series at startup.
@@ -535,7 +535,7 @@ get_chem_subbasin_series <- function(chem_key, stat_val, subbasin_id) {
 }
 
 # Full (all-subbasin) daily series for one chemical/statistic, long format -
-# powers the Spatial Datasets time-averaged map and the Data Downloader's
+# powers the Spatial Datasets time-averaged map and the Download page's
 # "all subbasins" / catchment-level summaries. Cached per chemical/statistic
 # actually requested.
 chem_full_cache <- new.env(parent = emptyenv())
@@ -572,6 +572,91 @@ get_chem_spatial_summary <- function(chem_key, stat_val) {
       as.data.frame()
   }
   chem_spatial_cache[[key]]
+}
+
+# ---- D3D-modelled chemical percentile time series (daily, by site) ----
+#
+# A newer, coarser-grained sibling of the chem_* daily series above: each
+# site here has 25 D3D model realizations already collapsed (by
+# scripts/build_fipronil_parquet.py) to daily p10/p50/p90 concentrations,
+# instead of one reconstructed record. Currently just fipronil; more
+# chemicals are expected to land under data-chem/6_D3D_chemicals/ following
+# the same "<chem>_daily_by_site_percentiles.parquet" naming, so
+# chem_d3d_datasets is a lookup table (one entry per chemical) rather than a
+# single hardcoded path/label pair - adding a chemical is one new list entry
+# and (if a threshold file exists for it) an eco_risk_data entry, no other
+# code changes. Declared here, before the Ecological risk section below,
+# purely so build_eco_risk_popup() can reference chem_d3d_datasets when
+# deciding whether to show a "View chemical time series" link -
+# get_chem_d3d_thresholds() at the end of this block references eco_risk_data
+# and is_na_string() from that (later) section, which is fine since a
+# function body isn't evaluated until it's actually called.
+#
+# The `day` column is an integer index (0-11138), not a calendar date - no
+# epoch is documented anywhere in the source data, so the Chemical Explorer page
+# below labels its x-axis "Day index" rather than inventing a start date.
+chem_d3d_dir <- here("data-chem/6_D3D_chemicals")
+chem_d3d_datasets <- list(
+  fipronil = list(
+    label = "Fipronil",
+    dataset = arrow::open_dataset(file.path(chem_d3d_dir, "6_fipronil_daily_by_site_percentiles.parquet")),
+    unit = "µg/L"
+  )
+)
+chem_d3d_choices <- setNames(names(chem_d3d_datasets), sapply(chem_d3d_datasets, `[[`, "label"))
+
+# Site ids available per D3D dataset (all 537 for fipronil today), for the
+# Chemical Explorer page's site selector - queried once at startup rather than
+# re-scanning the parquet every time the chemical selector changes.
+chem_d3d_site_ids <- lapply(chem_d3d_datasets, function(ds) {
+  ds$dataset %>% dplyr::distinct(site_id) %>% dplyr::collect() %>% dplyr::pull(site_id) %>% sort()
+})
+
+# Per-(chemical, site) daily percentile series - cheap enough to read on
+# demand and cache per selection actually visited, mirroring
+# get_chem_subbasin_series() above.
+#
+# The raw `omp` columns in the D3D parquet are ng/L (same convention as the
+# older chem_dataset's conc_ng_L), not µg/L - divide by 1000 here so the
+# cached series is already in the µg/L that chem_d3d_datasets$unit claims
+# and that get_chem_d3d_thresholds()'s HC5 values are expressed in, letting
+# both be plotted together on one axis with no further conversion downstream.
+chem_d3d_series_cache <- new.env(parent = emptyenv())
+get_chem_d3d_series <- function(chem_key, site_id_val) {
+  key <- paste(chem_key, site_id_val, sep = "||")
+  if (!exists(key, envir = chem_d3d_series_cache, inherits = FALSE)) {
+    chem_d3d_series_cache[[key]] <- chem_d3d_datasets[[chem_key]]$dataset %>%
+      dplyr::filter(site_id == site_id_val) %>%
+      dplyr::select(day, omp_p10, omp_p50, omp_p90) %>%
+      dplyr::collect() %>%
+      dplyr::arrange(day) %>%
+      dplyr::mutate(
+        omp_p10 = omp_p10 / 1000,
+        omp_p50 = omp_p50 / 1000,
+        omp_p90 = omp_p90 / 1000
+      )
+  }
+  chem_d3d_series_cache[[key]]
+}
+
+# Acute/chronic "levels of concern" for one chemical/site, preferring the
+# site-specific HC5 / HC5-over-10 over the generic value - exactly the same
+# has_ss preference logic as compute_eco_risk_level() below. Reuses
+# eco_risk_data rather than re-reading fipronil_assemblage_specific_SSD_stats.xlsx:
+# data-chem/5_EcologicalRisk/<chem>_risk.csv already carries these same
+# threshold columns (verified derived from that xlsx's HC50/SD via the
+# standard log-normal HC5 formula), keyed by the same site_id used here.
+get_chem_d3d_thresholds <- function(chem_key, site_id_val) {
+  df <- eco_risk_data[[chem_key]]
+  if (is.null(df)) return(NULL)
+  row <- df[df$site_id == site_id_val, ]
+  if (nrow(row) == 0) return(NULL)
+  has_ss <- !is_na_string(row[["site_specific hc5"]])
+  list(
+    acute   = if (has_ss) as.numeric(row[["site_specific hc5"]]) else as.numeric(row$generic_hc5),
+    chronic = if (has_ss) as.numeric(row[["site_specific hc5/10"]]) else as.numeric(row[["generic_hc5_divided by 10"]]),
+    source  = if (has_ss) "site-specific" else "generic"
+  )
 }
 
 # ---- Ecological risk thresholds (by subbasin) ----
@@ -646,6 +731,11 @@ eco_risk_pal <- colorFactor(
 
 build_eco_risk_popup <- function(df, chemical_key, chemical_label) {
   flag_cols <- intersect(names(eco_risk_flag_labels), names(df))
+  # The D3D time series (Chemical Explorer tab) only exists for chemicals also
+  # present in chem_d3d_datasets - currently just fipronil, same as
+  # eco_risk_data today, but the two lists aren't guaranteed to stay in
+  # lockstep as more chemicals are added to either one independently.
+  has_d3d <- chemical_key %in% names(chem_d3d_datasets)
   vapply(seq_len(nrow(df)), function(i) {
     lines <- vapply(flag_cols, function(col) {
       ss_col <- paste0("ss_", col)
@@ -655,13 +745,21 @@ build_eco_risk_popup <- function(df, chemical_key, chemical_label) {
       } else ""
       paste0(eco_risk_flag_labels[[col]], ": ", df[[col]][i], ss_txt)
     }, character(1))
+    chem_data_link <- if (has_d3d) {
+      paste0(
+        "<br><a href='#' onclick=\"Shiny.setInputValue('open_chem_d3d_detail', '",
+        chemical_key, "||", df$site_id[i],
+        "', {priority: 'event'}); return false;\">View chemical time series →</a>"
+      )
+    } else ""
     paste0(
       "<strong>", chemical_label, " · ecological risk</strong>",
       "<br>Site ", df$site_id[i], " · Subbasin ", df$subbasin[i],
       "<br>", paste(lines, collapse = "<br>"),
       "<br><a href='#' onclick=\"Shiny.setInputValue('open_eco_risk_detail', '",
       chemical_key, "||", df$site_id[i],
-      "', {priority: 'event'}); return false;\">View ecological risk detail →</a>"
+      "', {priority: 'event'}); return false;\">View ecological risk detail →</a>",
+      chem_data_link
     )
   }, character(1))
 }
@@ -672,7 +770,7 @@ eco_risk_data <- lapply(names(eco_risk_files), function(nm) {
 
   # EASTING/NORTHING are British National Grid (EPSG:27700, confirmed via
   # gis-data/subbasins_bng.prj) - transform to WGS84 for the leaflet map,
-  # the same CRS used the other direction for the Data Downloader's export
+  # the same CRS used the other direction for the Download page's export
   # (see the st_transform(df_spatial, 27700) call further down this file).
   pts <- sf::st_as_sf(df, coords = c("EASTING", "NORTHING"), crs = 27700) %>%
     sf::st_transform(4326)
@@ -738,7 +836,7 @@ waterbody_opcat_shp <- waterbody_opcat_shp %>%
   dplyr::mutate(has_model_data = water_body %in% wb_chem_waterbody_ids)
 
 # Per-waterbody, per-chemical monthly series - Site Details time series panel
-# and Data Explorer's water-body mode.
+# and Hydro Explorer's water-body mode.
 wb_chem_series_cache <- new.env(parent = emptyenv())
 get_wb_chem_series <- function(chem_key, stat_val, wb_id) {
   key <- paste(chem_key, stat_val, wb_id, sep = "||")
@@ -771,7 +869,7 @@ get_wb_chem_grid <- function(wb_id, stat_val) {
   wb_chem_grid_cache[[key]]
 }
 
-# All-waterbody long series for one chemical/statistic - Data Downloader and
+# All-waterbody long series for one chemical/statistic - Download and
 # the Spatial Datasets choropleth basis.
 wb_chem_full_cache <- new.env(parent = emptyenv())
 get_wb_chem_all_waterbodies_monthly <- function(chem_key, stat_val) {
@@ -905,7 +1003,7 @@ widget_observed_variable <- selectizeInput(
 
 # HYPE output variable.
 #
-# The Data Explorer now has ONE control rail rather than a sidebar per plot
+# The Hydro Explorer now has ONE control rail rather than a sidebar per plot
 # card, so its three projection tabs share a single input - the four
 # duplicated ids the old nested-sidebar layout needed are gone. Spatial
 # Datasets is a separate nav_panel rendered into the DOM at the same time, so
@@ -932,8 +1030,8 @@ prediction_variable_labels <- setNames(
   c(unname(hype_variable_choices), unname(chem_variable_choices), unname(wbchem_variable_choices))
 )
 
-# Spatial Datasets and Data Downloader also offer the modelled-by-waterbody
-# chemicals as a variable choice; Data Explorer does not (it switches basis
+# Spatial Datasets and Download also offer the modelled-by-waterbody
+# chemicals as a variable choice; Hydro Explorer does not (it switches basis
 # via its own Subbasin/Water body mode toggle instead, reusing the plain
 # chem_variable_choices ids either way - see NAVBAR 2 in the server).
 prediction_variable_choices_ext <- list(
@@ -1019,7 +1117,7 @@ widget_download_variable <- selectInput(
 
 # Chemicals have three summary statistics (mean/median/90th) rather than the
 # monthly p50 the HYPE downloads use - only shown once a chemical variable
-# is picked (see the conditionalPanel around this in the Data Downloader UI).
+# is picked (see the conditionalPanel around this in the Download UI).
 widget_download_chem_stat <- selectInput(
   inputId = "dl_chem_stat",
   label = "Statistic",
@@ -1084,7 +1182,7 @@ ctx_strip <- function(suffix, stats, action = NULL, mini_map = TRUE,
   )
 }
 
-# The four subbasin stats shared by Map / Data Explorer.
+# The four subbasin stats shared by Map / Hydro Explorer.
 ctx_subbasin_stats <- function(suffix) {
   tagList(
     ctx_stat("Upstream area", textOutput(paste0("ctx_area_", suffix), inline = TRUE)),
@@ -1096,7 +1194,7 @@ ctx_subbasin_stats <- function(suffix) {
 
 # Segmented-control toggle between a "measured" (real samples) option and a
 # "modelled" (model output) option, reused by the Site Details sidebar (which
-# entity type is being browsed) and the Data Explorer sidebar (which spatial
+# entity type is being browsed) and the Hydro Explorer sidebar (which spatial
 # unit is being queried) - the two pages use different value/label pairs, so
 # both are parameterized rather than hardcoded.
 entity_type_toggle <- function(id, measured_panel, modelled_panel,
@@ -1193,7 +1291,7 @@ ui <- page_navbar(
     )
   ),
 
-  ## Panel 1c: Site detail view - measured sites and modelled water bodies
+  ## Panel 2: Site detail view - measured sites and modelled water bodies
   nav_panel(
     title = "Site Details",
     ctx_strip(
@@ -1264,22 +1362,9 @@ ui <- page_navbar(
     )
   ),
 
-  ## Panel 1d: Ecological risk detail - reached by clicking a point on the
-  ## Map's Ecological risk layer. Deliberately a single minimal card for
-  ## now (no ctx_strip, no sidebar) - the design here is expected to change
-  ## once the underlying risk assessment content is finalised.
+  ## Panel 3: Hydro explorer
   nav_panel(
-    title = "Ecological Risk",
-    card(
-      full_screen = TRUE,
-      card_header("Ecological risk · site detail"),
-      uiOutput("eco_risk_detail_card")
-    )
-  ),
-
-  ## Panel 2: Data explorer
-  nav_panel(
-    title = "Data Explorer",
+    title = "Hydro Explorer",
     ctx_strip(
       "de",
       ctx_subbasin_stats("de"),
@@ -1382,7 +1467,77 @@ ui <- page_navbar(
     )
   ),
 
-  # Panel 3: Spatial mapping
+  ## Panel 4: Chemical explorer - D3D-modelled daily percentile time series
+  ## (see chem_d3d_datasets above), with acute/chronic "level of concern"
+  ## threshold lines. No ctx_strip/subbasin selection here - the D3D data is
+  ## keyed by its own site_id, a different id space to the map's EA
+  ## water-body codes, so this page carries its own site selector instead.
+  nav_panel(
+    title = "Chemical Explorer",
+    layout_sidebar(
+      fillable = TRUE,
+      sidebar = sidebar(
+        width = 260,
+        title = "Controls",
+        selectInput(
+          "chem_d3d_key",
+          "Chemical",
+          choices = chem_d3d_choices,
+          selected = chem_d3d_choices[1]
+        ),
+        selectizeInput(
+          "chem_d3d_site",
+          "Water body (site id)",
+          choices = NULL,
+          # maxOptions must cover every site actually offered (537 today) -
+          # selectize.js silently truncates the dropdown/search results to
+          # this many entries, which otherwise makes most water bodies look
+          # missing even though they're all present in `choices`.
+          options = list(placeholder = "Search site id", maxOptions = 600)
+        ),
+        tags$hr(class = "hr"),
+        div(class = "rail-toggle",
+            navset_pill(
+              id = "chem_d3d_grouping",
+              nav_panel(title = "Daily", value = "daily", NULL),
+              nav_panel(title = "Weekly", value = "weekly", NULL),
+              nav_panel(title = "Monthly", value = "monthly", NULL)
+            )),
+        conditionalPanel(
+          condition = "input.chem_d3d_grouping != 'daily'",
+          radioButtons(
+            "chem_d3d_group_stat",
+            "Aggregate using",
+            choices = c("Median" = "median", "90th percentile" = "p90"),
+            selected = "median"
+          )
+        )
+      ),
+      card(
+        full_screen = TRUE,
+        card_header(
+          "Concentration · 10th–90th percentile range",
+          span(class = "panel-note", textOutput("chem_d3d_threshold_note", inline = TRUE))
+        ),
+        plotOutput("chem_d3d_plot", height = "100%")
+      )
+    )
+  ),
+
+  ## Panel 5: Ecological risk detail - reached by clicking a point on the
+  ## Map's Ecological risk layer. Deliberately a single minimal card for
+  ## now (no ctx_strip, no sidebar) - the design here is expected to change
+  ## once the underlying risk assessment content is finalised.
+  nav_panel(
+    title = "Ecological Risk",
+    card(
+      full_screen = TRUE,
+      card_header("Ecological risk · site detail"),
+      uiOutput("eco_risk_detail_card")
+    )
+  ),
+
+  # Panel 6: Spatial mapping
   nav_panel(
     title = "Spatial Datasets",
     ctx_strip(
@@ -1434,9 +1589,9 @@ ui <- page_navbar(
     )
   ),
 
-  # Panel 4: Download of data (or tables)
+  # Panel 7: Download of data (or tables)
   nav_panel(
-    title = "Data Downloader",
+    title = "Download",
     ctx_strip(
       "dl",
       tagList(
@@ -1473,19 +1628,7 @@ ui <- page_navbar(
     )
   ),
 
-  ## PANEL 5: Food Web Dynamic Model (Embedded Julia Dash)
-  nav_panel(
-    title = "Food Web Dynamics",
-    tags$iframe(
-      src = "http://127.0.0.1:8050",
-      height = "100%",
-      width = "100%",
-      frameborder = "0",
-      style = "margin: 0; border: 0;"
-    )
-  ),
-
-  ## PANEL 6: Help
+  ## PANEL 8: Help
   nav_panel(
     title = "Help",
     div(style = "padding: 24px; max-width: 760px;", includeHTML(here("help.htm")))
@@ -1586,6 +1729,146 @@ server <- function(input, output, session) {
     }
   })
 
+  # ---- Chemical Explorer page (D3D percentile time series) ----
+
+  # Site id to land on once the site-choice list for the target chemical has
+  # been (re)populated - normally NULL (defaults to the first site); set
+  # briefly by the Map's "View chemical time series" popup link below so the
+  # jump lands on the right site even though the site list is
+  # chemical-specific and gets rebuilt by the observer just below whenever
+  # input$chem_d3d_key changes (mirrors rv_eco_risk_chemical/rv_eco_risk_site
+  # further down, the same pattern for the Ecological Risk jump-link).
+  chem_d3d_pending_site <- reactiveVal(NULL)
+
+  # Site choices depend on which chemical is selected - updated via
+  # server-side selectize (500+ sites) rather than sending the whole list to
+  # the browser, mirroring the "de_waterbody_search" pattern above. Runs on
+  # session start too (default input$chem_d3d_key from the UI), so the site
+  # selector is already populated the first time this tab is opened.
+  observeEvent(input$chem_d3d_key, {
+    req(input$chem_d3d_key)
+    ids <- chem_d3d_site_ids[[input$chem_d3d_key]]
+    pending <- chem_d3d_pending_site()
+    target <- if (!is.null(pending) && pending %in% ids) pending else ids[1]
+    chem_d3d_pending_site(NULL)
+    updateSelectizeInput(session, "chem_d3d_site",
+                         choices = ids, selected = target, server = TRUE)
+  })
+
+  # Open the Chemical Explorer tab from the Map's ecological-risk popup link,
+  # which passes "<chemical key>||<site_id>" - same "||" delimiter and
+  # Shiny.setInputValue mechanism as open_eco_risk_detail below. Sets
+  # chem_d3d_site directly (covers today's single-chemical case, where
+  # updateSelectInput below is a same-value no-op that won't re-trigger the
+  # observer above) and stages chem_d3d_pending_site too (covers a future
+  # multi-chemical case, where input$chem_d3d_key genuinely changes and the
+  # observer above would otherwise reset the site choice back to ids[1] on
+  # the next reactive flush).
+  observeEvent(input$open_chem_d3d_detail, {
+    parts <- strsplit(input$open_chem_d3d_detail, "\\|\\|")[[1]]
+    chem_key <- parts[1]
+    site <- suppressWarnings(as.integer(parts[2]))
+    req(chem_key %in% names(chem_d3d_datasets), !is.na(site))
+    ids <- chem_d3d_site_ids[[chem_key]]
+    chem_d3d_pending_site(site)
+    updateSelectInput(session, "chem_d3d_key", selected = chem_key)
+    updateSelectizeInput(session, "chem_d3d_site",
+                         choices = ids, selected = site, server = TRUE)
+    bslib::nav_select("main_nav", selected = "Chemical Explorer", session = session)
+  })
+
+  chem_d3d_series_raw <- reactive({
+    req(input$chem_d3d_key, input$chem_d3d_site)
+    get_chem_d3d_series(input$chem_d3d_key, as.integer(input$chem_d3d_site))
+  })
+
+  # Weekly/monthly grouping bins by day-index (7/30 days per bin - there's no
+  # calendar date to group by, see chem_d3d_datasets above) and applies the
+  # chosen statistic to all three percentile series independently, so the
+  # ribbon stays a real (smoothed) p10-p90 band rather than collapsing to a
+  # min/max envelope.
+  chem_d3d_series_grouped <- reactive({
+    df <- chem_d3d_series_raw()
+    grouping <- input$chem_d3d_grouping %||% "daily"
+    if (nrow(df) == 0 || grouping == "daily") {
+      return(df %>% dplyr::transmute(x = day, omp_p10, omp_p50, omp_p90))
+    }
+    bin_size <- if (grouping == "weekly") 7 else 30
+    stat_fun <- if (identical(input$chem_d3d_group_stat, "p90")) {
+      function(v) quantile(v, 0.9, na.rm = TRUE, names = FALSE)
+    } else {
+      function(v) median(v, na.rm = TRUE)
+    }
+    df %>%
+      dplyr::mutate(bin = (day %/% bin_size) * bin_size) %>%
+      dplyr::group_by(bin) %>%
+      dplyr::summarise(
+        omp_p10 = stat_fun(omp_p10),
+        omp_p50 = stat_fun(omp_p50),
+        omp_p90 = stat_fun(omp_p90),
+        .groups = "drop"
+      ) %>%
+      dplyr::transmute(x = bin, omp_p10, omp_p50, omp_p90)
+  })
+
+  chem_d3d_thresholds <- reactive({
+    req(input$chem_d3d_key, input$chem_d3d_site)
+    get_chem_d3d_thresholds(input$chem_d3d_key, as.integer(input$chem_d3d_site))
+  })
+
+  output$chem_d3d_threshold_note <- renderText({
+    thr <- chem_d3d_thresholds()
+    if (is.null(thr)) "no threshold data for this site" else paste0(thr$source, " HC5 thresholds")
+  })
+
+  output$chem_d3d_plot <- renderPlot({
+    df <- chem_d3d_series_grouped()
+    if (nrow(df) == 0) return(no_data_plot("No data for this site"))
+
+    ds <- chem_d3d_datasets[[input$chem_d3d_key]]
+    thr <- chem_d3d_thresholds()
+
+    # Modelled concentrations run several orders of magnitude below the
+    # "level of concern" thresholds (e.g. a site's daily p90 rarely exceeds
+    # 1e-6 µg/L against a 0.002-0.02 µg/L threshold) - on a linear axis that
+    # makes the ribbon/line indistinguishable from a flat zero once the
+    # threshold lines force the axis to span both. log10 is the standard way
+    # to show concentration data across that range alongside a fixed
+    # threshold. Exact zeros are undefined on a log scale, so they're turned
+    # into gaps (same convention as site_time_series's "Gaps indicate no
+    # sample taken") rather than silently dropped with a ggplot warning.
+    df_plot <- df %>%
+      dplyr::mutate(
+        omp_p10 = ifelse(omp_p10 > 0, omp_p10, NA_real_),
+        omp_p50 = ifelse(omp_p50 > 0, omp_p50, NA_real_),
+        omp_p90 = ifelse(omp_p90 > 0, omp_p90, NA_real_)
+      )
+
+    p <- ggplot(df_plot, aes(x = x, y = omp_p50)) +
+      geom_ribbon(aes(ymin = omp_p10, ymax = omp_p90), alpha = 0.18, colour = NA, fill = ec$accent) +
+      geom_line(colour = ec$accent, linewidth = 0.8)
+
+    if (!is.null(thr)) {
+      df_thr <- data.frame(
+        label = factor(c("Acute HC5", "Chronic HC5/10"), levels = c("Acute HC5", "Chronic HC5/10")),
+        value = c(thr$acute, thr$chronic)
+      )
+      p <- p +
+        geom_hline(data = df_thr, aes(yintercept = value, linetype = label), colour = ec$ink, linewidth = 0.5) +
+        scale_linetype_manual(values = c("Acute HC5" = "dashed", "Chronic HC5/10" = "dotted"))
+    }
+
+    p +
+      scale_x_continuous(expand = expansion(mult = c(0.01, 0.03))) +
+      scale_y_log10() +
+      labs(
+        x = "Day index",
+        y = paste0(ds$label, " concentration [", ds$unit, ", log scale]"),
+        caption = "X-axis is a day index (0-11,138 days); calendar-date mapping isn't available for this dataset yet. Gaps mark exact-zero days (undefined on a log scale)."
+      ) +
+      theme_ecomix()
+  })
+
   selected_opcat <- reactive({
     if (is.null(rv())) return(NA_character_)
     df_tmp <- df_subbasin_opcat %>% filter(subbasin == rv())
@@ -1607,15 +1890,15 @@ server <- function(input, output, session) {
     rv(as.numeric(input$subbasin_search))
   }, ignoreInit = TRUE)
 
-  # Open Data Explorer from map popup link and keep selected subbasin in sync.
+  # Open Hydro Explorer from map popup link and keep selected subbasin in sync.
   observeEvent(input$open_data_explorer, {
     rv(as.numeric(input$open_data_explorer))
-    bslib::nav_select("main_nav", selected = "Data Explorer", session = session)
+    bslib::nav_select("main_nav", selected = "Hydro Explorer", session = session)
   })
 
   # Context strip actions
   observeEvent(input$ctx_map_go, {
-    bslib::nav_select("main_nav", selected = "Data Explorer", session = session)
+    bslib::nav_select("main_nav", selected = "Hydro Explorer", session = session)
   })
   observeEvent(input$ctx_de_go, {
     bslib::nav_select("main_nav", selected = "Map", session = session)
@@ -1668,7 +1951,7 @@ server <- function(input, output, session) {
                     "<br><strong>Operational catchment: </strong>", ifelse(is.na(opcat_name), "None", opcat_name),
                     "<br><a href='#' onclick=\"Shiny.setInputValue('open_data_explorer', '",
                     Id,
-                    "', {priority: 'event'}); return false;\">Open in Data Explorer</a>"
+                    "', {priority: 'event'}); return false;\">Open in Hydro Explorer</a>"
                   ),
                   layerId = ~Id,
                   group = "Subbasins")
@@ -1778,7 +2061,7 @@ server <- function(input, output, session) {
           "<br><strong>Observed variables: </strong>", variables,
           "<br><a href='#' onclick=\"Shiny.setInputValue('open_data_explorer', '",
           Id,
-          "', {priority: 'event'}); return false;\">Open in Data Explorer \u2192</a>"
+          "', {priority: 'event'}); return false;\">Open in Hydro Explorer \u2192</a>"
         ),
         group = "observed_hydro"
       )
@@ -1807,7 +2090,7 @@ server <- function(input, output, session) {
 
   # Open Site Details from a measured site marker's popup link, same
   # "click marker -> pick from its popup" pattern as the subbasin/observed-
-  # hydrology "Open in Data Explorer" links.
+  # hydrology "Open in Hydro Explorer" links.
   observeEvent(input$open_site_details, {
     rv_measured_site(input$open_site_details)
     bslib::nav_select("site_entity_type", selected = "measured", session = session)
@@ -2410,7 +2693,7 @@ server <- function(input, output, session) {
 
   ### NAVBAR 2 - DATA EXPLORER ###
 
-  # Selected water body for Data Explorer's "Water body" mode - section-local
+  # Selected water body for Hydro Explorer's "Water body" mode - section-local
   # (unlike rv_waterbody on Site Details) since nothing outside this section
   # needs it.
   rv_de_waterbody <- reactiveVal()
@@ -2640,6 +2923,13 @@ server <- function(input, output, session) {
              ssp %in% c("Baseline", sub_scenarios),
              prediction_percentile %in% sub_percentiles) %>%
       collect()
+
+    # Inorganic Nitrogen: drop the first year of each decade (2000, 2010,
+    # ..., 2080) from the yearly series - e.g. 2040 is excluded but 2039 and
+    # 2041 are kept.
+    if (identical(sub_variable, "Inorganic Nitrogen")) {
+      df_projections_year <- df_projections_year %>% filter(year %% 10 != 0)
+    }
 
     # This subbasin may simply be outside the ~1446 subbasins the HYPE model
     # covers (most subbasins on the map, and nearly all of the chemical
@@ -2894,8 +3184,8 @@ server <- function(input, output, session) {
       theme_ecomix()
   })
 
-  # "Download this selection" in the Data Explorer rail - the current
-  # subbasin/variable extract, same shape as the Data Downloader output.
+  # "Download this selection" in the Hydro Explorer rail - the current
+  # subbasin/variable extract, same shape as the Download page's output.
   output$download_selection <- downloadHandler(
     filename = function() {
       var <- input$prediction_variable
