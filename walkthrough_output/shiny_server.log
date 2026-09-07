@@ -1,0 +1,53 @@
+Loading required package: shiny
+Warning: package ‘shiny’ was built under R version 4.5.2
+
+Attaching package: ‘bslib’
+
+The following object is masked from ‘package:utils’:
+
+    page
+
+Linking to GEOS 3.13.0, GDAL 3.8.5, PROJ 9.5.1; sf_use_s2() is TRUE
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘DT’
+
+The following objects are masked from ‘package:shiny’:
+
+    dataTableOutput, renderDataTable
+
+here() starts at /Users/simreaney/Documents/GitHub/ECOMIX-Explorer
+Warning: package ‘arrow’ was built under R version 4.5.2
+
+Attaching package: ‘arrow’
+
+The following object is masked from ‘package:utils’:
+
+    timestamp
+
+Warning: package ‘tidyr’ was built under R version 4.5.2
+Warning in readLines(path, encoding = "UTF-8") :
+  incomplete final line found on '/Users/simreaney/Documents/GitHub/ECOMIX-Explorer/data/modelled/waterbodyInfo.txt'
+Warning: st_centroid assumes attributes are constant over geometries
+Warning in gzfile(file, "rb") :
+  cannot open compressed file '/Users/simreaney/Documents/GitHub/ECOMIX-Explorer/data/dataset_choices.rds', probable reason 'No such file or directory'
+
+Listening on http://127.0.0.1:61326
+Warning: Removed 3874 rows containing missing values or values outside the scale range
+(`geom_ribbon()`).
+Warning: Removed 3561 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_ribbon()`).
+Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_line()`).
