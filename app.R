@@ -104,7 +104,7 @@ theme_ecomix <- function(base_size = 12) {
 
 # Placeholder shown instead of a blank/empty chart whenever the selected
 # subbasin has no rows for the current dataset - e.g. a subbasin that's in
-# the chemical predictions but outside the ~1446 subbasins the HYPE model
+# the chemical predictions but outside the 3126 subbasins the HYPE model
 # itself covers (or vice versa). Without this, an empty result set renders
 # as an unlabelled blank plot, which reads as a bug ("it flashed and
 # vanished") rather than the data-coverage gap it actually is.
@@ -131,11 +131,34 @@ add_basemap_tiles <- function(map, choice = "osm") {
 
 ## Load required datasets
 
-# Study area
-catchment_shp <- read_sf(dsn = here("gis-data"), layer = "catchments_wgs")
+# Map layers are the lightweight display copies built by
+# scripts/build_map_layers.R (pre-projected to WGS84, coordinates rounded to
+# ~1 m, the water bodies and operational catchments simplified), which keeps
+# app start and every Leaflet payload small. Spatial downloads use the
+# full-resolution source layers instead, loaded on first use - see
+# full_res_layer() below.
 
 # HYPE Subbasins (modelling units)
-subbasin_shp <- read_sf(dsn = here("gis-data"), layer = "subbasins_wgs")
+subbasin_shp <- read_sf(here("gis-data", "app", "subbasins.gpkg"))
+
+# Full-resolution source layers for spatial downloads, read once on demand
+# (the water body GeoJSON alone takes ~1 s to parse) and cached. Each carries
+# the same attributes as its display copy.
+full_res_cache <- new.env(parent = emptyenv())
+full_res_layer <- function(name) {
+  if (is.null(full_res_cache[[name]])) {
+    full_res_cache[[name]] <- switch(
+      name,
+      subbasins = read_sf(dsn = here("gis-data"), layer = "subbasins_wgs"),
+      catchments = read_sf(dsn = here("gis-data"), layer = "catchments_wgs"),
+      waterbodies = read_sf(here("gis-data", "EA_Waterbodies_AOI.geojson")) %>%
+        st_transform(4326) %>%
+        dplyr::select(water_body) %>%
+        left_join(sf::st_drop_geometry(waterbody_opcat_shp), by = "water_body")
+    )
+  }
+  full_res_cache[[name]]
+}
 
 # WFD surface water operational catchments (Environment Agency WFS),
 # pre-filtered to the ones overlapping the study catchments, and each
@@ -143,7 +166,7 @@ subbasin_shp <- read_sf(dsn = here("gis-data"), layer = "subbasins_wgs")
 # both produced by scripts/fetch_operational_catchments.R rather than
 # fetched live, so the map doesn't depend on the WFS being reachable at app
 # start.
-opcat_shp <- read_sf(dsn = here("gis-data"), layer = "operational_catchments_wgs")
+opcat_shp <- read_sf(here("gis-data", "app", "operational_catchments.gpkg"))
 
 df_subbasin_opcat <- read.csv(here("data/subbasin_operational_catchment.csv"))
 
@@ -151,6 +174,18 @@ df_subbasin_opcat <- read.csv(here("data/subbasin_operational_catchment.csv"))
 # colour the Map page.
 subbasin_opcat_shp <- subbasin_shp %>%
   left_join(df_subbasin_opcat, by = c("Id" = "subbasin"))
+
+# Subbasins with HYPE hydrology output - the outlet subbasin (ds_sbbs in
+# gis-data/riversegments_wgs) of each modelled river segment, 3126 of the
+# 16,515 - which is what the Map page's Subbasins layer draws. Every HYPE
+# subbasin appears under each variable/scenario, so one partition suffices.
+hype_subbasin_ids <- safe_open_dataset(here("data/DB_Proj_Month")) %>%
+  filter(variable == "discharge", ssp == "Baseline") %>%
+  distinct(subbasin) %>%
+  collect() %>%
+  pull(subbasin)
+
+hype_subbasin_shp <- subbasin_opcat_shp %>% filter(Id %in% hype_subbasin_ids)
 
 opcat_levels <- sort(unique(na.omit(subbasin_opcat_shp$opcat_name)))
 
@@ -206,11 +241,14 @@ pal_opcat <- function(names) {
   unname(opcat_color_lookup[names])
 }
 
-# Operational catchment index for the Map page rail: name, subbasin count and
-# the bounding box used to zoom the map when a row is clicked.
+# Operational catchment index for the Map page rail: name, count of the
+# hydrology subbasins the map draws (zero for a few catchments, which stay
+# listed so they can still be zoomed to), and the bounding box used to zoom
+# the map when a row is clicked.
 opcat_counts <- df_subbasin_opcat %>%
   filter(!is.na(opcat_name)) %>%
-  count(opcat_name, name = "n_subbasins") %>%
+  group_by(opcat_name) %>%
+  summarise(n_subbasins = sum(subbasin %in% hype_subbasin_ids), .groups = "drop") %>%
   arrange(desc(n_subbasins))
 
 opcat_bounds <- lapply(seq_len(nrow(opcat_shp)), function(i) {
@@ -223,8 +261,7 @@ names(opcat_bounds) <- opcat_shp$opcat_name
 # overlaps most - see scripts/join_waterbody_opcat.R. Coloured with the same
 # pal_opcat() lookup as subbasins so a waterbody and the catchment it sits in
 # always read as the same hue.
-waterbody_shp <- read_sf(here("gis-data", "EA_Waterbodies_AOI.geojson")) %>%
-  st_transform(4326)
+waterbody_shp <- read_sf(here("gis-data", "app", "waterbodies.gpkg"))
 df_waterbody_opcat <- read.csv(here("data/waterbody_operational_catchment.csv"))
 waterbody_opcat_shp <- waterbody_shp %>%
   left_join(df_waterbody_opcat, by = "water_body")
@@ -236,10 +273,6 @@ df_stats_climate$subbasin <- as.numeric(gsub("X", "", df_stats_climate$subbasin)
 # Table with subbasin statistics
 df_stats_lc <- read.csv(here("data/subbasin_lc.csv"))
 df_stats_lc$subbasin <- as.numeric(gsub("X", "", df_stats_lc$subbasin))
-
-# Table with daily Water temperature (used for dummy testing plot)
-df_temp <- read.csv(here("data/Dummy_Data_TT2.csv"))
-df_temp$date <- as.Date(df_temp$date)
 
 # ---- Chemical / physicochemical measured dataset ----
 #
@@ -379,13 +412,14 @@ modelled_site_info <- tryCatch(
   }
 )
 
-# Historical simulations at observation sites
-db_name <- here("data/DB_Historical_Sim_Obs")
-df_historical_observations <- safe_open_dataset(db_name) %>%
-  collect()
-df_observed_subbasins <- df_historical_observations %>% group_by(subbasin, variable) %>% slice(1) %>%
-  dplyr::select(subbasin, variable)
-df_historical_observations$date <- as.Date(df_historical_observations$date)
+# Historical simulations at observation sites - ~3.9M daily rows, so read per
+# subbasin on demand (selected_historical() in the server; one sorted file
+# per variable, so that's a row-group lookup) rather than held in memory.
+ds_historical_observations <- safe_open_dataset(here("data/DB_Historical_Sim_Obs"))
+df_observed_subbasins <- ds_historical_observations %>%
+  dplyr::distinct(subbasin, variable) %>%
+  collect() %>%
+  dplyr::arrange(subbasin, variable)
 
 # One point per subbasin that has observed hydrology data, for the Map page's
 # "Observed hydrology sites" layer - placed at the subbasin centroid since the
@@ -404,48 +438,62 @@ observed_hydro_points <- observed_hydro_centroids %>%
   left_join(observed_hydro_vars, by = c("Id" = "subbasin"))
 
 # Keep Arrow dataset handles open once to avoid repeated metadata scans in renderers.
+# All built by scripts/import_database_update.py from the HYPE/climate
+# database delivery (see data/DB_readme.xlsx): one sorted parquet file per
+# HYPE variable, so Arrow prunes per-subbasin reads on row-group statistics.
+#   DB_Proj_Year/Month - HYPE projections, p01..p99 of daily values pooled
+#                        over the 25 x 12 member ensemble (and, for Month,
+#                        the years of the period)
+#   DB_Proj_Forcing    - UKCP18 RCP8.5 climate, p10/p50/p90 across the 12
+#                        regional members (annual and monthly)
 ds_proj_forcing <- safe_open_dataset(here("data/DB_Proj_Forcing"))
 ds_proj_year <- safe_open_dataset(here("data/DB_Proj_Year"))
 ds_proj_month <- safe_open_dataset(here("data/DB_Proj_Month"))
-ds_proj_percentiles <- safe_open_dataset(here("data/DB_Proj_Percentiles"))
 
-# Dynamic widget choices (ssp / period), precomputed once by
-# scripts/consolidate_proj_data.R and saved alongside the flattened
-# datasets above - cheaper than deriving them from Hive partition folder
-# names (as a previous version of this file did), since those folders no
-# longer exist once DB_Proj_* is a single flat parquet file per dataset.
-dataset_choices <- tryCatch(
-  readRDS(here("data/dataset_choices.rds")),
-  error = function(e) list()
+# The climate projections are a single emissions scenario, so they carry no
+# ssp column - this labels them wherever a scenario is shown.
+forcing_scenario_label <- "UKCP18 RCP8.5"
+
+# Percentile columns of the HYPE projection datasets, and their probabilities.
+hype_pct_cols <- c("p01", "p05", "p10", "p25", "p50", "p75", "p90", "p95", "p99")
+hype_pct_probs <- c(0.01, 0.05, 0.10, 0.25, 0.50, 0.75, 0.90, 0.95, 0.99)
+hype_pct_choices <- c(
+  "Extreme low (1st percentile)" = "p01",
+  "Very low (5th percentile)" = "p05",
+  "Low (10th percentile)" = "p10",
+  "Lower quartile (25th percentile)" = "p25",
+  "Average (50th percentile)" = "p50",
+  "Upper quartile (75th percentile)" = "p75",
+  "High (90th percentile)" = "p90",
+  "Very high (95th percentile)" = "p95",
+  "Extreme high (99th percentile)" = "p99"
 )
+hype_pct_default <- c("p10", "p50", "p90")
 
-available_scenarios <- dataset_choices$ssp
-if (length(available_scenarios) == 0) {
-  available_scenarios <- c("Baseline", "SSP126", "SSP585")
+# Display form of the unit strings used in the data (from DB_readme.xlsx).
+pretty_unit <- function(u) {
+  dplyr::recode(u, "m3/s" = "m³/s", "ug/l" = "µg/l", "degC" = "°C")
 }
 
-prediction_period_choices <- dataset_choices$prediction_period
-if (length(prediction_period_choices) == 0) {
-  prediction_period_choices <- c("2020-2029", "2030-2039", "2040-2049", "2050-2059", "2060-2069", "2070-2080")
-}
+# Scenario / period widget choices, read off the monthly projections (two
+# dictionary columns, so this is cheap). Each future scenario shares one set
+# of decade periods ("2070-2079"); Baseline has its own single period.
+proj_periods <- ds_proj_month %>% dplyr::distinct(ssp, period) %>% collect()
+available_scenarios <- c("Baseline", sort(setdiff(unique(proj_periods$ssp), "Baseline")))
+prediction_period_choices <- sort(unique(proj_periods$period[proj_periods$ssp != "Baseline"]))
+baseline_period <- unique(proj_periods$period[proj_periods$ssp == "Baseline"])[1]
 
-# Read map input for the Spatial Datasets choropleth. Kept as the full
-# extremes table (rather than pre-filtered to one scenario/period/percentile
-# as before) so the page's own dropdowns can select among them. "Susp.
-# Sediments" is normalised here to match the casing used everywhere else
-# (prediction_variable_choices, the monthly/yearly HYPE datasets) - the
-# source file spells it "susp. Sediments", which silently produced zero rows
-# whenever that variable was selected. The file also round-trips a stray
-# dplyr grouping (by hype_variable/ssp/subbasin/unit/period, effectively one
-# group per row) baked in when it was written from a grouped tibble -
-# ungroup() it immediately, or distinct()/summarise() below would run
-# per-group instead of over the whole table.
+# Read map input for the Spatial Datasets choropleth: P1/P50/P99 of daily
+# values per subbasin x variable x scenario x period, precomputed by
+# scripts/import_database_update.py from the monthly projections (the same
+# pooled distribution the Hydro Explorer's cumulative frequency plot draws).
+# Renamed to the column names the map's chemical branches share.
 df_map_input <- read_parquet(here("data/Subbasin_Extremes.gz.parquet")) %>%
-  dplyr::ungroup() %>%
-  mutate(hype_variable = ifelse(hype_variable == "susp. Sediments", "Susp. Sediments", hype_variable))
+  dplyr::transmute(hype_variable = variable, ssp, period, subbasin, unit,
+                   prediction_percentile = percentile, value)
 
 # Scenario x period combinations actually present in the extremes data,
-# labelled the same way the Hydro Explorer labels them ("SSP585 (2070-2080)"),
+# labelled the same way the Hydro Explorer labels them ("SSP585 (2070-2079)"),
 # used to drive the Spatial Datasets "Period" dropdown.
 spatial_period_choices <- df_map_input %>%
   dplyr::distinct(ssp, period) %>%
@@ -454,7 +502,37 @@ spatial_period_choices <- df_map_input %>%
                 value = paste(ssp, period, sep = "|")) %>%
   { setNames(.$value, .$label) }
 
-spatial_percentile_choices <- c("Low extreme (P0.1)" = "0.1", "High extreme (P99.9)" = "99.9")
+spatial_percentile_choices <- c("Low extreme (P1)" = "1", "Median (P50)" = "50", "High extreme (P99)" = "99")
+
+# Distribution of daily values pooled over all months of a period, from the
+# monthly percentile rows of one subbasin x variable x scenario x period:
+# each month is taken as linear between its percentile knots (with its mass
+# below p01 / above p99 placed at those knots), weighted by days in month.
+# Returns the pooled quantiles at probs_out - the same calculation
+# scripts/import_database_update.py uses for the Spatial Datasets extremes.
+pooled_percentiles <- function(df_month, probs_out) {
+  q <- t(apply(as.matrix(df_month[, hype_pct_cols]), 1, sort))
+  w <- c(31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)[df_month$month]
+  w <- w / sum(w)
+  n_k <- length(hype_pct_probs)
+  # Pooled CDF at each knot, from the left (before any step) and the right.
+  cdf_at <- function(x, left) {
+    f <- vapply(seq_len(nrow(q)), function(m) {
+      k <- if (left) sum(q[m, ] < x) else sum(q[m, ] <= x)
+      if (k == 0) return(0)
+      if (k == n_k) return(1)
+      hype_pct_probs[k] + (x - q[m, k]) / (q[m, k + 1] - q[m, k]) *
+        (hype_pct_probs[k + 1] - hype_pct_probs[k])
+    }, numeric(1))
+    sum(w * f)
+  }
+  knots <- sort(unique(as.vector(q)))
+  v <- c(knots, knots)
+  f <- c(vapply(knots, cdf_at, numeric(1), left = TRUE),
+         vapply(knots, cdf_at, numeric(1), left = FALSE))
+  o <- order(f, v)
+  stats::approx(f[o], v[o], xout = probs_out, ties = min, rule = 2)$y
+}
 
 # ---- Chemical concentration predictions (daily, by subbasin) ----
 #
@@ -574,67 +652,204 @@ get_chem_spatial_summary <- function(chem_key, stat_val) {
   chem_spatial_cache[[key]]
 }
 
-# ---- D3D-modelled chemical percentile time series (daily, by site) ----
+# ---- Modelled chemical percentile time series (daily, by site) ----
 #
-# A newer, coarser-grained sibling of the chem_* daily series above: each
-# site here has 25 D3D model realizations already collapsed (by
-# scripts/build_fipronil_parquet.py) to daily p10/p50/p90 concentrations,
-# instead of one reconstructed record. Currently just fipronil; more
-# chemicals are expected to land under data-chem/6_D3D_chemicals/ following
-# the same "<chem>_daily_by_site_percentiles.parquet" naming, so
-# chem_d3d_datasets is a lookup table (one entry per chemical) rather than a
-# single hardcoded path/label pair - adding a chemical is one new list entry
-# and (if a threshold file exists for it) an eco_risk_data entry, no other
-# code changes. Declared here, before the Ecological risk section below,
-# purely so build_eco_risk_popup() can reference chem_d3d_datasets when
-# deciding whether to show a "View chemical time series" link -
-# get_chem_d3d_thresholds() at the end of this block references eco_risk_data
-# and is_na_string() from that (later) section, which is fine since a
-# function body isn't evaluated until it's actually called.
+# Each chemical under data-chem/7_chemicals/ is a pair of parquet files named
+# "<chemical>_conc_by_SITE_ID_p10_p50_p90.parquet" (concentration, ug/L) and
+# "<chemical>_ssPAF_by_SITE_ID_p10_p50_p90.parquet" (ssPAF, the potentially
+# affected fraction of species), both with columns Date, SITE_ID and
+# <measure>_p10/_p50/_p90 (25 model realizations collapsed to percentiles).
+# The first word of the file name is the chemical and the second the measure,
+# so adding a chemical is just dropping in a new pair of files - this table
+# is discovered from the folder at startup, no code changes. A chemical
+# missing either half of its pair is skipped.
 #
-# The `day` column is an integer index (0-11138), not a calendar date - no
-# epoch is documented anywhere in the source data, so the Chemical Explorer page
-# below labels its x-axis "Day index" rather than inventing a start date.
-chem_d3d_dir <- here("data-chem/6_D3D_chemicals")
-chem_d3d_datasets <- list(
-  fipronil = list(
-    label = "Fipronil",
-    dataset = arrow::open_dataset(file.path(chem_d3d_dir, "6_fipronil_daily_by_site_percentiles.parquet")),
-    unit = "µg/L"
-  )
-)
+# Declared here, before the Ecological risk section below, so
+# build_eco_risk_popup() can reference chem_d3d_datasets when deciding
+# whether to show a "View chemical time series" link.
+chem_d3d_dir <- here("data-chem/7_chemicals")
+chem_d3d_datasets <- local({
+  files <- list.files(chem_d3d_dir, pattern = "\\.parquet$", full.names = TRUE)
+  parts <- strsplit(basename(files), "_")
+  chem_orig <- vapply(parts, `[`, character(1), 1)
+  chem  <- tolower(chem_orig)
+  kind  <- tolower(vapply(parts, `[`, character(1), 2))
+  out <- list()
+  for (ch in sort(unique(chem))) {
+    conc_f  <- files[chem == ch & kind == "conc"]
+    sspaf_f <- files[chem == ch & kind == "sspaf"]
+    if (length(conc_f) != 1 || length(sspaf_f) != 1) next
+    out[[ch]] <- list(
+      # Keep the file name's own capitalisation (e.g. "6PPDQ"), only
+      # capitalising a fully lower-case name ("imidacloprid" -> "Imidacloprid").
+      label = {
+        nm <- chem_orig[chem == ch][1]
+        if (nm == tolower(nm)) tools::toTitleCase(nm) else nm
+      },
+      conc = arrow::open_dataset(conc_f),
+      sspaf = arrow::open_dataset(sspaf_f),
+      unit = "\u00b5g/L"
+    )
+  }
+  out
+})
 chem_d3d_choices <- setNames(names(chem_d3d_datasets), sapply(chem_d3d_datasets, `[[`, "label"))
 
-# Site ids available per D3D dataset (all 537 for fipronil today), for the
-# Chemical Explorer page's site selector - queried once at startup rather than
-# re-scanning the parquet every time the chemical selector changes.
+# Site ids available per chemical, for the Chemical Explorer page's site
+# selector - queried once at startup rather than re-scanning the parquet
+# every time the chemical selector changes.
 chem_d3d_site_ids <- lapply(chem_d3d_datasets, function(ds) {
-  ds$dataset %>% dplyr::distinct(site_id) %>% dplyr::collect() %>% dplyr::pull(site_id) %>% sort()
+  ids <- ds$conc %>% dplyr::distinct(SITE_ID) %>% dplyr::collect() %>% dplyr::pull(SITE_ID)
+  ids[order(suppressWarnings(as.numeric(ids)))]
 })
 
-# Per-(chemical, site) daily percentile series - cheap enough to read on
-# demand and cache per selection actually visited, mirroring
-# get_chem_subbasin_series() above.
+# SITE_ID -> subbasin (Subbasin_Siteids_Key.csv) -> EA water body (the
+# water body polygon containing the subbasin's representative point), so the
+# site selector can show water body names and a Map/Site Details selection
+# can be carried over. A few subbasins hold several SITE_IDs, and a few
+# sites fall outside every water body polygon (no name, labelled "Site <id>").
+chem_site_wb <- local({
+  key <- read.csv(file.path(chem_dir, "Subbasin_Siteids_Key.csv"), fileEncoding = "UTF-8-BOM")
+  key$SITE_ID <- as.character(key$SITE_ID)
+  pts <- subbasin_shp %>% dplyr::filter(Id %in% key$subbasin)
+  s2_was <- sf::sf_use_s2(FALSE)
+  on.exit(sf::sf_use_s2(s2_was), add = TRUE)
+  pts <- sf::st_point_on_surface(sf::st_make_valid(sf::st_geometry(pts))) %>%
+    sf::st_as_sf() %>% dplyr::mutate(subbasin = pts$Id)
+  wb <- sf::st_make_valid(waterbody_shp[, c("water_body", "water_bod0")])
+  hit <- sf::st_join(pts, sf::st_transform(wb, sf::st_crs(pts)), join = sf::st_intersects) %>%
+    sf::st_drop_geometry() %>%
+    dplyr::distinct(subbasin, .keep_all = TRUE) %>%
+    dplyr::transmute(subbasin, wb_code = water_body, wb_name = water_bod0)
+  dplyr::left_join(key, hit, by = "subbasin")
+})
+
+# Named choices (label = water body name, value = SITE_ID) for the selector.
+# Names shared by several sites get the site id appended to stay distinct.
+chem_d3d_site_choices <- lapply(chem_d3d_site_ids, function(ids) {
+  d <- chem_site_wb[match(ids, chem_site_wb$SITE_ID), ]
+  nm <- ifelse(is.na(d$wb_name), paste("Site", ids), d$wb_name)
+  dup <- duplicated(nm) | duplicated(nm, fromLast = TRUE)
+  nm[dup] <- paste0(nm[dup], " (site ", ids[dup], ")")
+  setNames(ids, nm)
+})
+
+# ---- Source apportionment (share of each source in a site's concentration) ----
 #
-# The raw `omp` columns in the D3D parquet are ng/L (same convention as the
-# older chem_dataset's conc_ng_L), not µg/L - divide by 1000 here so the
-# cached series is already in the µg/L that chem_d3d_datasets$unit claims
-# and that get_chem_d3d_thresholds()'s HC5 values are expressed in, letting
-# both be plotted together on one axis with no further conversion downstream.
+# data-chem/6_Source_apportionment/ holds, per chemical, one wide CSV per
+# source named "<Chemical>_<source>_source_apportion_waterbodies.csv", with
+# source one of dog_swim / pet_CSO / pet_WWTP. Rows are consecutive days (no
+# date column - the last row is 2022-12-31, the end of the concentration
+# record) and columns are water body ids (id_waterbody, see
+# marthaWBid2EAWBid.csv); each cell is that source's fraction of the total,
+# so the three sources sum to 1. A chemical only gets the Chemical Explorer
+# treemaps if it has all three files. Sites take the split of the water body
+# they sit in (chem_site_wb). Only 2018-01-01 onwards (the plotted period) is
+# kept, and files are read on first use then cached per chemical.
+chem_src_dir <- here("data-chem/6_Source_apportionment")
+chem_src_last_date <- as.Date("2022-12-31")
+chem_src_first_date <- as.Date("2018-01-01")
+chem_src_labels <- c(dog_swim = "Dog swimming", pet_CSO = "Pet CSOs", pet_WWTP = "Pet WWTP")
+chem_src_fill <- c(dog_swim = ec$accent, pet_CSO = ec$ink, pet_WWTP = "#9b9797")
+chem_src_text <- c(dog_swim = "#ffffff", pet_CSO = "#ffffff", pet_WWTP = ec$ink)
+
+chem_src_files <- local({
+  files <- list.files(chem_src_dir, pattern = "_source_apportion_waterbodies\\.csv$", full.names = TRUE)
+  chem <- tolower(sub("_.*$", "", basename(files)))
+  src <- sub("^[^_]+_(.*)_source_apportion_waterbodies\\.csv$", "\\1", basename(files))
+  out <- list()
+  for (ch in intersect(unique(chem), names(chem_d3d_datasets))) {
+    f <- setNames(files[chem == ch][match(names(chem_src_labels), src[chem == ch])], names(chem_src_labels))
+    if (!anyNA(f)) out[[ch]] <- as.list(f)
+  }
+  out
+})
+
+chem_wb_id_key <- read.csv(here("data-chem/2_Modelling_results_by_waterbody_monthly_conc_ng_per_L/marthaWBid2EAWBid.csv"),
+                           fileEncoding = "UTF-8-BOM")
+chem_site_wb$wb_id <- as.character(chem_wb_id_key$id_waterbody[match(chem_site_wb$wb_code, chem_wb_id_key$water_body)])
+
+chem_src_cache <- new.env(parent = emptyenv())
+get_chem_src <- function(chem_key) {
+  if (!exists(chem_key, envir = chem_src_cache, inherits = FALSE)) {
+    mats <- lapply(chem_src_files[[chem_key]], function(f) {
+      m <- as.matrix(arrow::read_csv_arrow(f))
+      dates <- chem_src_last_date - rev(seq_len(nrow(m)) - 1L)
+      keep <- dates >= chem_src_first_date
+      structure(m[keep, , drop = FALSE], dates = dates[keep])
+    })
+    chem_src_cache[[chem_key]] <- list(mats = mats, dates = attr(mats[[1]], "dates"))
+  }
+  chem_src_cache[[chem_key]]
+}
+
+# Source shares (named dog_swim/pet_CSO/pet_WWTP, summing to 1) for one site:
+# the mean over the whole period when `date` is NULL, otherwise that day.
+# NULL if the site has no water body column or no data for that day.
+get_chem_src_split <- function(chem_key, site_id_val, date = NULL) {
+  wb <- chem_site_wb$wb_id[match(site_id_val, chem_site_wb$SITE_ID)]
+  src <- get_chem_src(chem_key)
+  if (is.na(wb) || !wb %in% colnames(src$mats[[1]])) return(NULL)
+  rows <- if (is.null(date)) seq_along(src$dates) else which(src$dates == date)
+  if (length(rows) == 0) return(NULL)
+  v <- vapply(src$mats, function(m) mean(m[rows, wb], na.rm = TRUE), numeric(1))
+  if (anyNA(v) || sum(v) <= 0) return(NULL)
+  v / sum(v)
+}
+
+# Squarified treemap layout (Bruls et al.) of positive `vals` in the unit
+# square; returns x0/x1/y0/y1 per value in the input order.
+treemap_layout <- function(vals) {
+  ord <- order(vals, decreasing = TRUE)
+  v <- vals[ord] / sum(vals)
+  out <- data.frame(x0 = 0, x1 = 0, y0 = 0, y1 = 0)[rep(1, length(v)), ]
+  x0 <- 0; y0 <- 0; w <- 1; h <- 1
+  i <- 1
+  worst <- function(row, side) {
+    s <- sum(row)
+    max(side^2 * max(row) / s^2, s^2 / (side^2 * min(row)))
+  }
+  while (i <= length(v)) {
+    side <- min(w, h)
+    n <- i
+    while (n < length(v) && worst(v[i:(n + 1)], side) <= worst(v[i:n], side)) n <- n + 1
+    row <- v[i:n]
+    t <- sum(row) / (w * h)  # fraction of the remaining area this row takes
+    if (w >= h) {  # lay the row out as a column on the left
+      cw <- w * t
+      ys <- y0 + h * c(0, cumsum(row / sum(row)))
+      for (k in seq_along(row)) out[i + k - 1, ] <- c(x0, x0 + cw, ys[k], ys[k + 1])
+      x0 <- x0 + cw; w <- w - cw
+    } else {  # lay the row out as a strip along the bottom
+      rh <- h * t
+      xs <- x0 + w * c(0, cumsum(row / sum(row)))
+      for (k in seq_along(row)) out[i + k - 1, ] <- c(xs[k], xs[k + 1], y0, y0 + rh)
+      y0 <- y0 + rh; h <- h - rh
+    }
+    i <- n + 1
+  }
+  out[order(ord), ]
+}
+
+# Per-(chemical, site) daily series (Date, conc_p10/p50/p90, sspaf_p10/p50/p90),
+# cached per selection actually visited. Concentrations are already in ug/L,
+# the same unit as the HC5 thresholds in eco_risk_data.
 chem_d3d_series_cache <- new.env(parent = emptyenv())
 get_chem_d3d_series <- function(chem_key, site_id_val) {
   key <- paste(chem_key, site_id_val, sep = "||")
   if (!exists(key, envir = chem_d3d_series_cache, inherits = FALSE)) {
-    chem_d3d_series_cache[[key]] <- chem_d3d_datasets[[chem_key]]$dataset %>%
-      dplyr::filter(site_id == site_id_val) %>%
-      dplyr::select(day, omp_p10, omp_p50, omp_p90) %>%
+    ds <- chem_d3d_datasets[[chem_key]]
+    conc <- ds$conc %>%
+      dplyr::filter(SITE_ID == site_id_val) %>%
       dplyr::collect() %>%
-      dplyr::arrange(day) %>%
-      dplyr::mutate(
-        omp_p10 = omp_p10 / 1000,
-        omp_p50 = omp_p50 / 1000,
-        omp_p90 = omp_p90 / 1000
-      )
+      dplyr::transmute(Date = as.Date(Date),
+                       conc_p10 = conc_ug_L_p10, conc_p50 = conc_ug_L_p50, conc_p90 = conc_ug_L_p90)
+    sspaf <- ds$sspaf %>%
+      dplyr::filter(SITE_ID == site_id_val) %>%
+      dplyr::collect() %>%
+      dplyr::transmute(Date = as.Date(Date),
+                       sspaf_p10 = ssPAF_p10, sspaf_p50 = ssPAF_p50, sspaf_p90 = ssPAF_p90)
+    chem_d3d_series_cache[[key]] <- dplyr::full_join(conc, sspaf, by = "Date") %>% dplyr::arrange(Date)
   }
   chem_d3d_series_cache[[key]]
 }
@@ -649,7 +864,7 @@ get_chem_d3d_series <- function(chem_key, site_id_val) {
 get_chem_d3d_thresholds <- function(chem_key, site_id_val) {
   df <- eco_risk_data[[chem_key]]
   if (is.null(df)) return(NULL)
-  row <- df[df$site_id == site_id_val, ]
+  row <- df[as.character(df$site_id) == as.character(site_id_val), ]
   if (nrow(row) == 0) return(NULL)
   has_ss <- !is_na_string(row[["site_specific hc5"]])
   list(
@@ -732,8 +947,7 @@ eco_risk_pal <- colorFactor(
 build_eco_risk_popup <- function(df, chemical_key, chemical_label) {
   flag_cols <- intersect(names(eco_risk_flag_labels), names(df))
   # The D3D time series (Chemical Explorer tab) only exists for chemicals also
-  # present in chem_d3d_datasets - currently just fipronil, same as
-  # eco_risk_data today, but the two lists aren't guaranteed to stay in
+  # present in chem_d3d_datasets (data-chem/7_chemicals), but the two lists aren't guaranteed to stay in
   # lockstep as more chemicals are added to either one independently.
   has_d3d <- chemical_key %in% names(chem_d3d_datasets)
   vapply(seq_len(nrow(df)), function(i) {
@@ -924,27 +1138,17 @@ build_tabular_download <- function(dl_variable) {
 
     df_download <- ds_proj_forcing %>%
       filter(variable == dl_variable_label, time_aggregation == "monthly") %>%
-      select(subbasin, ssp, period, month, variable, p50, unit) %>%
+      select(subbasin, period, month, variable, p50, unit) %>%
       collect_quiet() %>%
-      rename("scenario" = ssp, "value" = p50)
+      mutate("scenario" = forcing_scenario_label) %>%
+      rename("value" = p50)
   } else {
-    hype_lookup <- c(
-      "runoff" = "discharge",
-      "soil_moisture" = "Soil moisture",
-      "water_temperature" = "water temperature",
-      "susp_sediments" = "Susp. Sediments",
-      "inorganic_nitrogen" = "Inorganic Nitrogen"
-    )
-    hype_variable_label <- unname(hype_lookup[dl_variable])
-
+    # dl_variable is the HYPE variable code itself (see widget_download_variable).
     df_download <- ds_proj_month %>%
-      filter(
-        hype_variable == hype_variable_label,
-        prediction_percentile == "p50"
-      ) %>%
-      select(subbasin, ssp, period, month, hype_variable, prediction_percentile, p50_ensemble, unit) %>%
+      filter(variable == dl_variable) %>%
+      select(subbasin, ssp, period, month, p50, unit) %>%
       collect() %>%
-      rename("scenario" = ssp, "value" = p50_ensemble)
+      rename("scenario" = ssp, "value" = p50)
   }
 
   df_download %>%
@@ -1010,11 +1214,18 @@ widget_observed_variable <- selectizeInput(
 # it still needs its own id.
 hype_variable_choices <- c(
   "Discharge" = "discharge",
-  "Soil Moisture" = "Soil moisture",
-  "Water Temperature" = "water temperature",
-  "Susp. Sediments" =  "Susp. Sediments",
-  "Inorganic Nitrogen" = "Inorganic Nitrogen"
+  "Water Temperature" = "water_temperature",
+  "Susp. Sediments" = "SS",
+  "Inorganic Nitrogen" = "IN",
+  "Soluble Phosphorus" = "SP",
+  "Particulate Phosphorus" = "PP",
+  "Dissolved Organic Carbon" = "DOC"
 )
+
+# Water quality variables whose projection time slices start a year into
+# each decade (2071_2079 vs discharge's 2070_2079) - the first simulated year
+# of each slice is spin-up, which the yearly series drops to match.
+hype_wq_variables <- c("SS", "IN", "SP", "PP", "DOC")
 
 # Grouped so the Model variable dropdown lists the hydrology/climate
 # variables first, with the chemical concentration variables in their own
@@ -1056,13 +1267,13 @@ widget_spatial_period <- selectInput(
   inputId = "prediction_period_spatial",
   label = "Period",
   choices = spatial_period_choices,
-  selected = if ("SSP585|2070-2080" %in% spatial_period_choices) "SSP585|2070-2080" else spatial_period_choices[1])
+  selected = if ("SSP585|2070-2079" %in% spatial_period_choices) "SSP585|2070-2079" else spatial_period_choices[1])
 
 widget_spatial_percentile <- selectInput(
   inputId = "prediction_percentile_spatial",
   label = "Conditions",
   choices = spatial_percentile_choices,
-  selected = "99.9")
+  selected = "99")
 
 # Chemicals have no scenario/period dimension - the Spatial Datasets map
 # shows a single time-averaged (whole 2018-2022 record) value per subbasin,
@@ -1077,10 +1288,8 @@ widget_spatial_chem_stat <- selectInput(
 widget_prediction_percentile <- selectInput(
   inputId = "prediction_percentile",
   label = "Conditions",
-  choices = c("Low (10th percentile)" = "p10",
-              "Average (50th percentile)" = "p50",
-              "High (90th percentile)" = "p90"),
-  selected = "p50",
+  choices = hype_pct_choices,
+  selected = hype_pct_default,
   multiple = TRUE)
 
 # Prediction period
@@ -1088,7 +1297,7 @@ widget_prediction_period <- selectInput(
   inputId = "prediction_period",
   label = "Projection periods",
   choices = prediction_period_choices,
-  selected = if ("2070-2080" %in% prediction_period_choices) "2070-2080" else prediction_period_choices[1],
+  selected = utils::tail(prediction_period_choices, 1),
   multiple = TRUE)
 
 # Plot type (Absolute or relative change)
@@ -1105,11 +1314,7 @@ widget_download_variable <- selectInput(
   choices = list(
     "Hydrology & climate" = c("Precipitation" = "precip",
                               "Temperature" = "temp",
-                              "Discharge" = "runoff",
-                              "Soil Moisture" = "soil_moisture",
-                              "Water Temperature" = "water_temperature",
-                              "Susp. Sediments" = "susp_sediments",
-                              "Inorganic Nitrogen" = "inorganic_nitrogen"),
+                              hype_variable_choices),
     "Chemical concentrations · subbasin (daily, ng/L)" = chem_variable_choices,
     "Chemical concentrations · water body (monthly, ng/L)" = wbchem_variable_choices
   ),
@@ -1250,7 +1455,7 @@ ui <- page_navbar(
         checkboxGroupInput(
           "map_layers",
           label = "Layers",
-          choices = c("Subbasins" = "subbasins",
+          choices = c("Subbasins with hydrology" = "subbasins",
                       "Operational catchment boundaries" = "opcat",
                       "Waterbodies (modelled)" = "waterbodies",
                       "Measured sites" = "measured_sites",
@@ -1468,7 +1673,7 @@ ui <- page_navbar(
   ),
 
   ## Panel 4: Chemical explorer - D3D-modelled daily percentile time series
-  ## (see chem_d3d_datasets above), with acute/chronic "level of concern"
+  ## (see chem_d3d_datasets above): concentration and ssPAF, with acute/chronic "level of concern"
   ## threshold lines. No ctx_strip/subbasin selection here - the D3D data is
   ## keyed by its own site_id, a different id space to the map's EA
   ## water-body codes, so this page carries its own site selector instead.
@@ -1487,13 +1692,13 @@ ui <- page_navbar(
         ),
         selectizeInput(
           "chem_d3d_site",
-          "Water body (site id)",
+          "Water body",
           choices = NULL,
           # maxOptions must cover every site actually offered (537 today) -
           # selectize.js silently truncates the dropdown/search results to
           # this many entries, which otherwise makes most water bodies look
           # missing even though they're all present in `choices`.
-          options = list(placeholder = "Search site id", maxOptions = 600)
+          options = list(placeholder = "Search water body", maxOptions = 600)
         ),
         tags$hr(class = "hr"),
         div(class = "rail-toggle",
@@ -1513,13 +1718,32 @@ ui <- page_navbar(
           )
         )
       ),
-      card(
-        full_screen = TRUE,
-        card_header(
-          "Concentration · 10th–90th percentile range",
-          span(class = "panel-note", textOutput("chem_d3d_threshold_note", inline = TRUE))
+      div(
+        class = "html-fill-item html-fill-container",
+        style = "flex-direction: row;",
+        div(
+          class = "html-fill-item html-fill-container",
+          style = "flex: 1 1 0; min-width: 0; gap: 1rem; min-height: 0;",
+          card(
+            full_screen = TRUE,
+            card_header(
+              "Concentration · 10th–90th percentile range",
+              span(class = "panel-note", textOutput("chem_d3d_threshold_note", inline = TRUE))
+            ),
+            plotOutput("chem_d3d_conc_plot", height = "100%",
+                       hover = hoverOpts("chem_d3d_hover_conc", delay = 80, delayType = "debounce", nullOutside = FALSE))
+          ),
+          card(
+            full_screen = TRUE,
+            card_header("ssPAF (potentially affected fraction of species) · 10th–90th percentile range"),
+            plotOutput("chem_d3d_sspaf_plot", height = "100%",
+                       hover = hoverOpts("chem_d3d_hover_sspaf", delay = 80, delayType = "debounce", nullOutside = FALSE))
+          )
         ),
-        plotOutput("chem_d3d_plot", height = "100%")
+        # Source apportionment treemaps - only rendered for chemicals that
+        # have source apportionment files (see chem_src_files).
+        uiOutput("chem_d3d_src_col", class = "html-fill-item",
+                 style = "flex: 0 0 auto; overflow-y: auto; min-height: 0;")
       )
     )
   ),
@@ -1674,8 +1898,7 @@ server <- function(input, output, session) {
     list(
       forcing = ds_proj_forcing,
       year = ds_proj_year,
-      month = ds_proj_month,
-      percentiles = ds_proj_percentiles
+      month = ds_proj_month
     )
   })
 
@@ -1691,7 +1914,8 @@ server <- function(input, output, session) {
 
   selected_historical <- reactive({
     req(rv())
-    df_historical_observations %>% filter(subbasin == rv())
+    sb <- as.integer(rv())
+    ds_historical_observations %>% filter(subbasin == sb) %>% collect()
   })
 
   chem_stat_labels <- setNames(names(chem_stat_choices), unname(chem_stat_choices))
@@ -1747,9 +1971,14 @@ server <- function(input, output, session) {
   # selector is already populated the first time this tab is opened.
   observeEvent(input$chem_d3d_key, {
     req(input$chem_d3d_key)
-    ids <- chem_d3d_site_ids[[input$chem_d3d_key]]
+    ids <- chem_d3d_site_choices[[input$chem_d3d_key]]
     pending <- chem_d3d_pending_site()
-    target <- if (!is.null(pending) && pending %in% ids) pending else ids[1]
+    current <- isolate(input$chem_d3d_site)
+    # Keep the current water body when switching chemical (if the new chemical
+    # has it); a pending jump-link site wins, otherwise fall back to the first.
+    target <- if (!is.null(pending) && pending %in% ids) pending
+              else if (!is.null(current) && nzchar(current) && current %in% ids) current
+              else ids[1]
     chem_d3d_pending_site(NULL)
     updateSelectizeInput(session, "chem_d3d_site",
                          choices = ids, selected = target, server = TRUE)
@@ -1767,87 +1996,99 @@ server <- function(input, output, session) {
   observeEvent(input$open_chem_d3d_detail, {
     parts <- strsplit(input$open_chem_d3d_detail, "\\|\\|")[[1]]
     chem_key <- parts[1]
-    site <- suppressWarnings(as.integer(parts[2]))
-    req(chem_key %in% names(chem_d3d_datasets), !is.na(site))
-    ids <- chem_d3d_site_ids[[chem_key]]
+    site <- parts[2]
+    req(chem_key %in% names(chem_d3d_datasets), !is.na(site), site %in% chem_d3d_site_ids[[chem_key]])
+    ids <- chem_d3d_site_choices[[chem_key]]
     chem_d3d_pending_site(site)
+    chem_d3d_skip_carry(TRUE)
     updateSelectInput(session, "chem_d3d_key", selected = chem_key)
     updateSelectizeInput(session, "chem_d3d_site",
                          choices = ids, selected = site, server = TRUE)
     bslib::nav_select("main_nav", selected = "Chemical Explorer", session = session)
   })
 
-  chem_d3d_series_raw <- reactive({
-    req(input$chem_d3d_key, input$chem_d3d_site)
-    get_chem_d3d_series(input$chem_d3d_key, as.integer(input$chem_d3d_site))
+  # Carry the Map / Site Details selection over when the Chemical Explorer
+  # tab is opened. last_wb_sel records whichever of the Map's subbasin (rv)
+  # or Site Details' modelled water body (rv_waterbody) changed most
+  # recently; both resolve to SITE_IDs through chem_site_wb. The popup jump
+  # link above sets chem_d3d_skip_carry so its explicit site wins.
+  chem_d3d_skip_carry <- reactiveVal(FALSE)
+  last_wb_sel <- reactiveVal(NULL)
+  observeEvent(rv(), { last_wb_sel(list(type = "subbasin", value = rv())) }, ignoreNULL = TRUE)
+  observeEvent(rv_waterbody(), { last_wb_sel(list(type = "waterbody", value = rv_waterbody())) }, ignoreNULL = TRUE)
+
+  observeEvent(input$main_nav, {
+    req(input$main_nav == "Chemical Explorer")
+    if (isTRUE(chem_d3d_skip_carry())) { chem_d3d_skip_carry(FALSE); return() }
+    sel <- last_wb_sel()
+    req(!is.null(sel), input$chem_d3d_key)
+    hits <- if (sel$type == "subbasin") {
+      chem_site_wb$SITE_ID[chem_site_wb$subbasin == as.numeric(sel$value)]
+    } else {
+      chem_site_wb$SITE_ID[which(chem_site_wb$wb_code == sel$value)]
+    }
+    ids <- chem_d3d_site_choices[[input$chem_d3d_key]]
+    hits <- hits[hits %in% ids]
+    req(length(hits) > 0)
+    updateSelectizeInput(session, "chem_d3d_site", choices = ids, selected = hits[1], server = TRUE)
   })
 
-  # Weekly/monthly grouping bins by day-index (7/30 days per bin - there's no
-  # calendar date to group by, see chem_d3d_datasets above) and applies the
-  # chosen statistic to all three percentile series independently, so the
-  # ribbon stays a real (smoothed) p10-p90 band rather than collapsing to a
-  # min/max envelope.
+  chem_d3d_series_raw <- reactive({
+    req(input$chem_d3d_key, input$chem_d3d_site)
+    get_chem_d3d_series(input$chem_d3d_key, input$chem_d3d_site)
+  })
+
+  # Weekly/monthly grouping bins by calendar week/month and applies the
+  # chosen statistic to each percentile series independently, so the ribbon
+  # stays a real (smoothed) p10-p90 band rather than a min/max envelope.
   chem_d3d_series_grouped <- reactive({
     df <- chem_d3d_series_raw()
     grouping <- input$chem_d3d_grouping %||% "daily"
-    if (nrow(df) == 0 || grouping == "daily") {
-      return(df %>% dplyr::transmute(x = day, omp_p10, omp_p50, omp_p90))
-    }
-    bin_size <- if (grouping == "weekly") 7 else 30
+    if (nrow(df) == 0 || grouping == "daily") return(df)
+    unit <- if (grouping == "weekly") "week" else "month"
     stat_fun <- if (identical(input$chem_d3d_group_stat, "p90")) {
       function(v) quantile(v, 0.9, na.rm = TRUE, names = FALSE)
     } else {
       function(v) median(v, na.rm = TRUE)
     }
     df %>%
-      dplyr::mutate(bin = (day %/% bin_size) * bin_size) %>%
-      dplyr::group_by(bin) %>%
-      dplyr::summarise(
-        omp_p10 = stat_fun(omp_p10),
-        omp_p50 = stat_fun(omp_p50),
-        omp_p90 = stat_fun(omp_p90),
-        .groups = "drop"
-      ) %>%
-      dplyr::transmute(x = bin, omp_p10, omp_p50, omp_p90)
+      dplyr::mutate(Date = as.Date(cut(Date, unit))) %>%
+      dplyr::group_by(Date) %>%
+      dplyr::summarise(dplyr::across(dplyr::everything(), stat_fun), .groups = "drop")
   })
 
   chem_d3d_thresholds <- reactive({
     req(input$chem_d3d_key, input$chem_d3d_site)
-    get_chem_d3d_thresholds(input$chem_d3d_key, as.integer(input$chem_d3d_site))
+    get_chem_d3d_thresholds(input$chem_d3d_key, input$chem_d3d_site)
   })
 
   output$chem_d3d_threshold_note <- renderText({
     thr <- chem_d3d_thresholds()
-    if (is.null(thr)) "no threshold data for this site" else paste0(thr$source, " HC5 thresholds")
+    if (is.null(thr)) "no threshold data for this chemical/site" else paste0(thr$source, " HC5 thresholds")
   })
 
-  output$chem_d3d_plot <- renderPlot({
+  # Shared ribbon + median line for one measure ("conc" or "sspaf").
+  chem_d3d_band_plot <- function(df, measure, log_y = FALSE) {
+    d <- data.frame(x = df$Date,
+                    lo = df[[paste0(measure, "_p10")]],
+                    mid = df[[paste0(measure, "_p50")]],
+                    hi = df[[paste0(measure, "_p90")]])
+    # Exact zeros are undefined on a log scale, so they become gaps.
+    if (log_y) d[c("lo", "mid", "hi")] <- lapply(d[c("lo", "mid", "hi")], function(v) ifelse(v > 0, v, NA_real_))
+    ggplot(d, aes(x = x, y = mid)) +
+      geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.18, colour = NA, fill = ec$accent) +
+      geom_line(colour = ec$accent, linewidth = 0.8)
+  }
+
+  output$chem_d3d_conc_plot <- renderPlot({
     df <- chem_d3d_series_grouped()
     if (nrow(df) == 0) return(no_data_plot("No data for this site"))
-
     ds <- chem_d3d_datasets[[input$chem_d3d_key]]
     thr <- chem_d3d_thresholds()
 
-    # Modelled concentrations run several orders of magnitude below the
-    # "level of concern" thresholds (e.g. a site's daily p90 rarely exceeds
-    # 1e-6 µg/L against a 0.002-0.02 µg/L threshold) - on a linear axis that
-    # makes the ribbon/line indistinguishable from a flat zero once the
-    # threshold lines force the axis to span both. log10 is the standard way
-    # to show concentration data across that range alongside a fixed
-    # threshold. Exact zeros are undefined on a log scale, so they're turned
-    # into gaps (same convention as site_time_series's "Gaps indicate no
-    # sample taken") rather than silently dropped with a ggplot warning.
-    df_plot <- df %>%
-      dplyr::mutate(
-        omp_p10 = ifelse(omp_p10 > 0, omp_p10, NA_real_),
-        omp_p50 = ifelse(omp_p50 > 0, omp_p50, NA_real_),
-        omp_p90 = ifelse(omp_p90 > 0, omp_p90, NA_real_)
-      )
-
-    p <- ggplot(df_plot, aes(x = x, y = omp_p50)) +
-      geom_ribbon(aes(ymin = omp_p10, ymax = omp_p90), alpha = 0.18, colour = NA, fill = ec$accent) +
-      geom_line(colour = ec$accent, linewidth = 0.8)
-
+    # Concentrations sit orders of magnitude below any threshold line, so a
+    # log10 axis is used (zero days show as gaps).
+    p <- chem_d3d_band_plot(df, "conc", log_y = TRUE)
     if (!is.null(thr)) {
       df_thr <- data.frame(
         label = factor(c("Acute HC5", "Chronic HC5/10"), levels = c("Acute HC5", "Chronic HC5/10")),
@@ -1857,17 +2098,105 @@ server <- function(input, output, session) {
         geom_hline(data = df_thr, aes(yintercept = value, linetype = label), colour = ec$ink, linewidth = 0.5) +
         scale_linetype_manual(values = c("Acute HC5" = "dashed", "Chronic HC5/10" = "dotted"))
     }
-
     p +
-      scale_x_continuous(expand = expansion(mult = c(0.01, 0.03))) +
+      scale_x_date(expand = expansion(mult = c(0.01, 0.03))) +
       scale_y_log10() +
-      labs(
-        x = "Day index",
-        y = paste0(ds$label, " concentration [", ds$unit, ", log scale]"),
-        caption = "X-axis is a day index (0-11,138 days); calendar-date mapping isn't available for this dataset yet. Gaps mark exact-zero days (undefined on a log scale)."
-      ) +
-      theme_ecomix()
+      labs(x = NULL, y = paste0(ds$label, " concentration [", ds$unit, ", log scale]"),
+           caption = "Gaps mark exact-zero days (undefined on a log scale).") +
+      theme_ecomix() -> p
+    chem_d3d_day_marker(p)
   })
+
+  output$chem_d3d_sspaf_plot <- renderPlot({
+    df <- chem_d3d_series_grouped()
+    if (nrow(df) == 0) return(no_data_plot("No data for this site"))
+    ds <- chem_d3d_datasets[[input$chem_d3d_key]]
+    chem_d3d_band_plot(df, "sspaf") +
+      scale_x_date(expand = expansion(mult = c(0.01, 0.03))) +
+      scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
+      labs(x = NULL, y = paste0(ds$label, " ssPAF")) +
+      theme_ecomix() -> p
+    chem_d3d_day_marker(p)
+  })
+
+  # ---- Source apportionment treemaps ----
+  # Hovering either time series picks a day (the last hovered day sticks once
+  # the cursor leaves); until then, and whenever the chemical changes, both
+  # treemaps show the period average.
+  chem_d3d_has_src <- reactive(isTRUE(input$chem_d3d_key %in% names(chem_src_files)))
+  chem_d3d_hover_date <- reactiveVal(NULL)
+  set_hover_date <- function(h) {
+    if (is.null(h$x) || !chem_d3d_has_src()) return()
+    d <- as.Date(round(h$x), origin = "1970-01-01")
+    d <- min(max(d, chem_src_first_date), chem_src_last_date)
+    if (!identical(d, chem_d3d_hover_date())) chem_d3d_hover_date(d)
+  }
+  observeEvent(input$chem_d3d_hover_conc, set_hover_date(input$chem_d3d_hover_conc))
+  observeEvent(input$chem_d3d_hover_sspaf, set_hover_date(input$chem_d3d_hover_sspaf))
+  observeEvent(input$chem_d3d_key, chem_d3d_hover_date(NULL), ignoreInit = TRUE)
+
+  output$chem_d3d_src_col <- renderUI({
+    req(chem_d3d_has_src())
+    sq <- function(id) div(style = "width: 100%; aspect-ratio: 1 / 1;", plotOutput(id, width = "100%", height = "100%"))
+    div(
+      style = "width: 320px; margin-left: 1rem; display: flex; flex-direction: column; gap: 1rem;",
+      card(fill = FALSE, card_header("Average source apportionment"), sq("chem_d3d_treemap_avg")),
+      card(fill = FALSE, card_header(textOutput("chem_d3d_treemap_day_title", inline = TRUE)), sq("chem_d3d_treemap_day"))
+    )
+  })
+
+  chem_d3d_treemap <- function(split, empty_msg) {
+    if (is.null(split)) return(no_data_plot(empty_msg))
+    d <- data.frame(src = names(split), share = as.numeric(split))
+    d <- d[d$share > 0, ]
+    lay <- treemap_layout(d$share)
+    d <- cbind(d, lay)
+    d$label <- paste0(chem_src_labels[d$src], "\n", sprintf("%.1f%%", 100 * d$share))
+    d$cx <- (d$x0 + d$x1) / 2
+    d$cy <- (d$y0 + d$y1) / 2
+    # Skip labels on tiles too small to hold them; the legend-free design
+    # still lists them in the caption.
+    d$show <- (d$x1 - d$x0) > 0.2 & (d$y1 - d$y0) > 0.12
+    small <- d[!d$show, ]
+    ggplot(d) +
+      geom_rect(aes(xmin = x0, xmax = x1, ymin = y0, ymax = y1, fill = src),
+                colour = ec$ground, linewidth = 1.5) +
+      geom_text(data = d[d$show, ], aes(cx, cy, label = label, colour = src),
+                family = "Archivo", size = 3.6, lineheight = 0.95) +
+      scale_fill_manual(values = chem_src_fill) +
+      scale_colour_manual(values = chem_src_text) +
+      coord_fixed(xlim = c(0, 1), ylim = c(0, 1), expand = FALSE) +
+      labs(caption = if (nrow(small) > 0) paste(
+        paste0(chem_src_labels[small$src], " ", sprintf("%.1f%%", 100 * small$share)), collapse = " · ")) +
+      theme_void(base_family = "Archivo") +
+      theme(legend.position = "none",
+            plot.background = element_rect(fill = ec$ground, colour = NA),
+            plot.caption = element_text(colour = ec$ink_dim, size = 8, hjust = 0))
+  }
+
+  output$chem_d3d_treemap_avg <- renderPlot({
+    req(chem_d3d_has_src(), input$chem_d3d_site)
+    chem_d3d_treemap(get_chem_src_split(input$chem_d3d_key, input$chem_d3d_site),
+                     "No source apportionment for this site")
+  })
+
+  output$chem_d3d_treemap_day_title <- renderText({
+    d <- chem_d3d_hover_date()
+    if (is.null(d)) "Selected day · hover a graph to choose" else paste("Source apportionment ·", format(d, "%d %b %Y"))
+  })
+
+  output$chem_d3d_treemap_day <- renderPlot({
+    req(chem_d3d_has_src(), input$chem_d3d_site)
+    d <- chem_d3d_hover_date()
+    chem_d3d_treemap(get_chem_src_split(input$chem_d3d_key, input$chem_d3d_site, d),
+                     "No source apportionment for this day")
+  })
+
+  # Vertical marker at the selected day on a time series plot.
+  chem_d3d_day_marker <- function(p) {
+    d <- chem_d3d_hover_date()
+    if (is.null(d)) p else p + geom_vline(xintercept = as.numeric(d), colour = ec$accent_text, linewidth = 0.4)
+  }
 
   selected_opcat <- reactive({
     if (is.null(rv())) return(NA_character_)
@@ -1934,12 +2263,14 @@ server <- function(input, output, session) {
   })
 
   # Base map. Subbasins are drawn in the neutral ramp so the accent can mark
-  # the current selection unambiguously.
+  # the current selection unambiguously. Only the subbasins with hydrology
+  # output are drawn; the others (climate/chemical data only) stay reachable
+  # through the search box and the chemical coverage layer.
   output$basemap <- renderLeaflet({
     leaflet(options = leafletOptions(zoomControl = TRUE)) %>%
       add_basemap_tiles("osm") %>%
       setView(lng = -1.16, lat = 53.75, zoom = 8.5) %>%
-      addPolygons(data = subbasin_opcat_shp,
+      addPolygons(data = hype_subbasin_shp,
                   fill = TRUE,
                   fillColor = ~ifelse(is.na(opcat_name), "#e0dede", pal_opcat(opcat_name)),
                   fillOpacity = 0.55,
@@ -2071,6 +2402,14 @@ server <- function(input, output, session) {
         data = chem_coverage_shp, fill = TRUE, fillColor = "#2f6690", fillOpacity = 0.22,
         color = "#2f6690", weight = 1.5, opacity = 0.85,
         label = ~paste0("Subbasin ", Id, " · chemical data available"),
+        # Most of these aren't hydrology subbasins, so aren't on the base
+        # layer - this link is how they get selected from the map.
+        popup = ~paste0(
+          "<strong>Subbasin id: </strong>", Id,
+          "<br><a href='#' onclick=\"Shiny.setInputValue('open_data_explorer', '",
+          Id,
+          "', {priority: 'event'}); return false;\">Open in Hydro Explorer →</a>"
+        ),
         group = "chem_coverage"
       )
     }
@@ -2756,10 +3095,8 @@ server <- function(input, output, session) {
     } else {
       updateSelectInput(session, "prediction_percentile",
                         label = "Conditions",
-                        choices = c("Low (10th percentile)" = "p10",
-                                    "Average (50th percentile)" = "p50",
-                                    "High (90th percentile)" = "p90"),
-                        selected = "p50")
+                        choices = hype_pct_choices,
+                        selected = hype_pct_default)
       bslib::nav_hide("projection_tabs", target = "Daily", session = session)
     }
   }, ignoreInit = TRUE)
@@ -2776,43 +3113,45 @@ server <- function(input, output, session) {
     sub_subbasin <- rv()
     sub_climate_variable <- if (is.null(input$climate_variable) || !nzchar(input$climate_variable)) "Precipitation" else input$climate_variable
     sub_climate_resolution <- if (is.null(input$climate_resolution) || !nzchar(input$climate_resolution)) "monthly" else input$climate_resolution
+    # The climate projections are one scenario (UKCP18 RCP8.5) rather than
+    # per-SSP, so the Scenarios selector only decides whether the baseline
+    # period is drawn; the projection periods apply as selected.
     sub_scenarios <- unique(input$scenario)
     sub_periods <- unique(input$prediction_period)
     if ("Baseline" %in% sub_scenarios) {
-      sub_periods <- c("2000-2022", sub_periods)
+      sub_periods <- c(baseline_period, sub_periods)
     }
 
     df_plot <- projection_data$forcing %>%
       filter(
         variable == sub_climate_variable,
         subbasin %in% sub_subbasin,
-        ssp %in% sub_scenarios,
         time_aggregation == sub_climate_resolution) %>%
       collect_quiet()
 
-    # Climate/forcing data only covers the subset of subbasins the HYPE
-    # model was run for (~1446 of the ~16,500 subbasins on the map) - most
-    # others, including nearly all of the chemical-prediction subbasins,
-    # have none. Say so explicitly rather than leaving the panel blank.
     if (nrow(df_plot) == 0) {
       return(no_data_plot("No climate model data for this subbasin"))
     }
 
     if (sub_climate_resolution == "monthly") {
       df_plot <- df_plot %>% filter(period %in% sub_periods) %>%
-        mutate("scenario" = paste0(ssp, " (", period, ")"))
+        mutate("scenario" = ifelse(period == baseline_period,
+                                   paste0("Baseline (", period, ")"),
+                                   paste0(forcing_scenario_label, " (", period, ")")))
       df_plot$xaxis <- df_plot$month
       xlab <- "Month"
+      caption <- "Median across the 12 UKCP18 members; ribbon = 10th-90th percentile across years in the period."
     }
     if (sub_climate_resolution == "annual") {
-      df_plot$scenario <- df_plot$ssp
+      df_plot$scenario <- forcing_scenario_label
       df_plot$xaxis <- df_plot$year
       xlab <- "Year"
+      caption <- "Median of the 12 UKCP18 members; ribbon = 10th-90th percentile across members."
     }
     if (nrow(df_plot) == 0) {
-      return(no_data_plot("No climate model data for the selected scenario/period"))
+      return(no_data_plot("No climate model data for the selected period"))
     }
-    ylab <- paste0(sub_climate_variable, " [", unique(df_plot$unit), "]")
+    ylab <- paste0(sub_climate_variable, " [", pretty_unit(unique(df_plot$unit)), "]")
 
     ggplot(df_plot, aes(x = xaxis, y = p50, color = scenario, fill = scenario)) +
       geom_ribbon(aes(ymin = p10, ymax = p90), alpha = 0.18, colour = NA) +
@@ -2821,7 +3160,7 @@ server <- function(input, output, session) {
       scale_fill_ecomix() +
       scale_x_continuous(expand = c(0, 0)) +
       scale_y_continuous(expand = c(0, 0)) +
-      labs(x = xlab, y = ylab) +
+      labs(x = xlab, y = ylab, caption = caption) +
       theme_ecomix()
   })
 
@@ -2914,73 +3253,79 @@ server <- function(input, output, session) {
     }
 
     sub_scenarios <- unique(input$scenario)
-    sub_percentiles <- unique(input$prediction_percentile)
+    sub_percentiles <- intersect(hype_pct_cols, input$prediction_percentile)
+    req(length(sub_percentiles) > 0)
     sub_plot_type <- unique(input$plot_type)
+    lbl <- prediction_variable_labels[[sub_variable]] %||% sub_variable
 
     df_projections_year <- projection_data$year %>%
       filter(subbasin %in% sub_subbasin,
-             hype_variable %in% sub_variable,
-             ssp %in% c("Baseline", sub_scenarios),
-             prediction_percentile %in% sub_percentiles) %>%
+             variable == sub_variable,
+             ssp %in% c("Baseline", sub_scenarios)) %>%
       collect()
 
-    # Inorganic Nitrogen: drop the first year of each decade (2000, 2010,
-    # ..., 2080) from the yearly series - e.g. 2040 is excluded but 2039 and
-    # 2041 are kept.
-    if (identical(sub_variable, "Inorganic Nitrogen")) {
-      df_projections_year <- df_projections_year %>% filter(year %% 10 != 0)
+    # Water quality variables: drop the first year of each projection slice
+    # (2020, 2030, ..., 2070) - it is model spin-up, which is why their
+    # monthly slices start a year in (2071_2079). Baseline is one continuous
+    # run, so it keeps every year.
+    if (sub_variable %in% hype_wq_variables) {
+      df_projections_year <- df_projections_year %>% filter(ssp == "Baseline" | year %% 10 != 0)
     }
 
-    # This subbasin may simply be outside the ~1446 subbasins the HYPE model
+    # This subbasin may simply be outside the 3126 subbasins the HYPE model
     # covers (most subbasins on the map, and nearly all of the chemical
     # ones, are) - show that plainly instead of a blank/vanishing chart.
     if (nrow(df_projections_year) == 0) {
       return(no_data_plot("No hydrology model data for this subbasin"))
     }
 
+    baseline_years <- range(df_projections_year$year[df_projections_year$ssp == "Baseline"])
+
     if (sub_plot_type == "Absolute") {
 
       df_plot <- df_projections_year %>% filter(ssp %in% sub_scenarios)
       df_plot <- df_plot[!(df_plot$ssp == "Baseline" & df_plot$year > 2020), ]
-      df_plot$percentile_label <- factor(df_plot$prediction_percentile, levels = c("p10", "p50", "p90"),
-                                         labels = c("Low (10th percentile)", "Average (50th percentile)", "High (90th percentile)"))
+      if (nrow(df_plot) == 0) return(no_data_plot("No data for the selected scenarios"))
 
-      ylab <- paste0(sub_variable, " [", unique(df_plot$unit), "]")
-      ggplot(df_plot, aes(x = year, y = p50_ensemble, color = ssp, fill = ssp, linetype = percentile_label)) +
-        geom_ribbon(aes(ymin = p10_ensemble, ymax = p90_ensemble), alpha = 0.18, colour = NA) +
-        geom_line(linewidth = 0.8) +
+      # Ribbon spans the lowest to highest selected percentile.
+      df_plot$band_low <- do.call(pmin, df_plot[sub_percentiles])
+      df_plot$band_high <- do.call(pmax, df_plot[sub_percentiles])
+      df_lines <- df_plot %>%
+        tidyr::pivot_longer(dplyr::all_of(sub_percentiles), names_to = "percentile", values_to = "value") %>%
+        mutate(percentile_label = factor(percentile, levels = hype_pct_cols, labels = names(hype_pct_choices)))
+
+      ylab <- paste0(lbl, " [", pretty_unit(unique(df_plot$unit)), "]")
+      ggplot(df_lines, aes(x = year, color = ssp, fill = ssp)) +
+        geom_ribbon(data = df_plot, aes(ymin = band_low, ymax = band_high), alpha = 0.12, colour = NA) +
+        geom_line(aes(y = value, linetype = percentile_label), linewidth = 0.8) +
         scale_x_continuous(expand = c(0, 0)) +
         scale_color_ecomix() +
         scale_fill_ecomix() +
-        labs(x = "Year", y = ylab) +
+        labs(x = "Year", y = ylab, linetype = NULL,
+             caption = "Percentiles of daily values within each year, pooled over the model ensemble.") +
         theme_ecomix()
     } else {
 
       df_proj <- df_projections_year %>% filter(ssp != "Baseline")
-      df_base <- df_projections_year %>% filter(ssp == "Baseline") %>%
-        group_by(subbasin, prediction_percentile) %>%
-        summarise("p10_base" = mean(p10_ensemble), "p50_base" = mean(p50_ensemble), "p90_base" = mean(p90_ensemble))
+      if (nrow(df_proj) == 0) return(no_data_plot("Select a future scenario to compare with the baseline"))
+      base_mean <- df_projections_year %>% filter(ssp == "Baseline") %>%
+        summarise(dplyr::across(dplyr::all_of(sub_percentiles), mean)) %>%
+        unlist()
 
-      df_proj <- left_join(df_proj, df_base, by = c("subbasin", "prediction_percentile"))
-      df_proj$p10_anomaly <- df_proj$p10_ensemble - df_proj$p10_base
-      df_proj$p50_anomaly <- df_proj$p50_ensemble - df_proj$p50_base
-      df_proj$p90_anomaly <- df_proj$p90_ensemble - df_proj$p90_base
+      df_plot <- df_proj %>%
+        tidyr::pivot_longer(dplyr::all_of(sub_percentiles), names_to = "percentile", values_to = "value") %>%
+        mutate(anomaly = value - base_mean[percentile],
+               percentile_label = factor(percentile, levels = hype_pct_cols, labels = names(hype_pct_choices)))
 
-      df_proj$low_uci <- apply(df_proj[, c("p10_anomaly", "p50_anomaly", "p90_anomaly")], 1, min, na.rm = TRUE)
-      df_proj$high_uci <- apply(df_proj[, c("p10_anomaly", "p50_anomaly", "p90_anomaly")], 1, max, na.rm = TRUE)
+      ylab <- paste0("Change to baseline: ", lbl, " [", pretty_unit(unique(df_plot$unit)), "]")
 
-      df_plot <- df_proj
-      ylab <- paste0("Change to baseline: ", sub_variable, " [", unique(df_plot$unit), "]")
-
-      ggplot(df_plot, aes(x = year, color = ssp, fill = ssp, linetype = prediction_percentile)) +
-        geom_ribbon(aes(ymin = low_uci, ymax = high_uci), alpha = 0.18, colour = NA) +
-        geom_line(aes(y = low_uci)) +
-        geom_line(aes(y = high_uci)) +
+      ggplot(df_plot, aes(x = year, y = anomaly, color = ssp, linetype = percentile_label)) +
         geom_hline(yintercept = 0, colour = ec$ink, linewidth = 0.5) +
+        geom_line(linewidth = 0.8) +
         scale_x_continuous(expand = c(0, 0)) +
         scale_color_ecomix() +
-        scale_fill_ecomix() +
-        labs(x = "Year", y = ylab, caption = "Change against the 2000-2020 baseline.") +
+        labs(x = "Year", y = ylab, linetype = NULL,
+             caption = paste0("Change against the ", baseline_years[1], "-", baseline_years[2], " baseline mean.")) +
         theme_ecomix()
     }
   })
@@ -3023,19 +3368,22 @@ server <- function(input, output, session) {
     }
 
     sub_scenarios <- unique(input$scenario)
-    sub_percentiles <- unique(input$prediction_percentile)
+    sub_percentiles <- intersect(hype_pct_cols, input$prediction_percentile)
+    req(length(sub_percentiles) > 0)
     sub_periods <- unique(input$prediction_period)
     if ("Baseline" %in% sub_scenarios) {
-      sub_periods <- c("2000-2022", sub_periods)
+      sub_periods <- c(baseline_period, sub_periods)
     }
     sub_plot_type <- unique(input$plot_type)
+    lbl <- prediction_variable_labels[[sub_variable]] %||% sub_variable
 
+    # Baseline is always fetched (whatever the period selection) as the
+    # reference for the Relative view.
     df_projections_month <- projection_data$month %>%
       filter(subbasin %in% sub_subbasin,
-             hype_variable %in% sub_variable,
+             variable == sub_variable,
              ssp %in% c("Baseline", sub_scenarios),
-             prediction_percentile %in% sub_percentiles,
-             period %in% sub_periods) %>%
+             period %in% c(baseline_period, sub_periods)) %>%
       collect()
 
     if (nrow(df_projections_month) == 0) {
@@ -3044,48 +3392,52 @@ server <- function(input, output, session) {
 
     if (sub_plot_type == "Absolute") {
 
-      df_plot <- df_projections_month %>% filter(ssp %in% sub_scenarios)
-      df_plot <- df_plot %>% mutate("scenario" = paste0(ssp, " (", period, ")"))
-      df_plot$percentile_label <- factor(df_plot$prediction_percentile, levels = c("p10", "p50", "p90"),
-                                         labels = c("Low (10th percentile)", "Average (50th percentile)", "High (90th percentile)"))
+      df_plot <- df_projections_month %>%
+        filter(ssp %in% sub_scenarios, period %in% sub_periods) %>%
+        mutate("scenario" = paste0(ssp, " (", period, ")"))
+      if (nrow(df_plot) == 0) return(no_data_plot("No data for the selected scenarios/periods"))
 
-      ylab <- paste0(sub_variable, " [", unique(df_plot$unit), "]")
-      ggplot(df_plot, aes(x = month, y = p50_ensemble, color = scenario, fill = scenario, linetype = percentile_label)) +
-        geom_ribbon(aes(ymin = p10_ensemble, ymax = p90_ensemble), alpha = 0.18, colour = NA) +
-        geom_line(linewidth = 0.8) +
+      # Ribbon spans the lowest to highest selected percentile.
+      df_plot$band_low <- do.call(pmin, df_plot[sub_percentiles])
+      df_plot$band_high <- do.call(pmax, df_plot[sub_percentiles])
+      df_lines <- df_plot %>%
+        tidyr::pivot_longer(dplyr::all_of(sub_percentiles), names_to = "percentile", values_to = "value") %>%
+        mutate(percentile_label = factor(percentile, levels = hype_pct_cols, labels = names(hype_pct_choices)))
+
+      ylab <- paste0(lbl, " [", pretty_unit(unique(df_plot$unit)), "]")
+      ggplot(df_lines, aes(x = month, color = scenario, fill = scenario)) +
+        geom_ribbon(data = df_plot, aes(ymin = band_low, ymax = band_high), alpha = 0.12, colour = NA) +
+        geom_line(aes(y = value, linetype = percentile_label), linewidth = 0.8) +
         scale_x_continuous(expand = c(0, 0), breaks = 1:12) +
         scale_color_ecomix() +
         scale_fill_ecomix() +
-        labs(x = "Month", y = ylab) +
+        labs(x = "Month", y = ylab, linetype = NULL,
+             caption = "Percentiles of daily values in each calendar month, pooled over the period and model ensemble.") +
         theme_ecomix()
 
     } else {
 
-      df_proj <- df_projections_month %>% filter(ssp != "Baseline")
+      df_proj <- df_projections_month %>% filter(ssp != "Baseline", period %in% sub_periods)
+      if (nrow(df_proj) == 0) return(no_data_plot("Select a future scenario to compare with the baseline"))
       df_base <- df_projections_month %>% filter(ssp == "Baseline") %>%
-        group_by(subbasin, month, prediction_percentile) %>%
-        summarise("p10_base" = mean(p10_ensemble), "p50_base" = mean(p50_ensemble), "p90_base" = mean(p90_ensemble))
+        tidyr::pivot_longer(dplyr::all_of(sub_percentiles), names_to = "percentile", values_to = "base")
 
-      df_proj <- left_join(df_proj, df_base, by = c("subbasin", "month", "prediction_percentile"))
-      df_proj$p10_anomaly <- df_proj$p10_ensemble - df_proj$p10_base
-      df_proj$p50_anomaly <- df_proj$p50_ensemble - df_proj$p50_base
-      df_proj$p90_anomaly <- df_proj$p90_ensemble - df_proj$p90_base
+      df_plot <- df_proj %>%
+        tidyr::pivot_longer(dplyr::all_of(sub_percentiles), names_to = "percentile", values_to = "value") %>%
+        left_join(df_base %>% dplyr::select(month, percentile, base), by = c("month", "percentile")) %>%
+        mutate(anomaly = value - base,
+               scenario = paste0(ssp, " (", period, ")"),
+               percentile_label = factor(percentile, levels = hype_pct_cols, labels = names(hype_pct_choices)))
 
-      df_proj$low_uci <- apply(df_proj[, c("p10_anomaly", "p50_anomaly", "p90_anomaly")], 1, min, na.rm = TRUE)
-      df_proj$high_uci <- apply(df_proj[, c("p10_anomaly", "p50_anomaly", "p90_anomaly")], 1, max, na.rm = TRUE)
+      ylab <- paste0("Change to baseline: ", lbl, " [", pretty_unit(unique(df_plot$unit)), "]")
 
-      df_plot <- df_proj
-      ylab <- paste0("Change to baseline: ", sub_variable, " [", unique(df_plot$unit), "]")
-
-      ggplot(df_plot, aes(x = month, color = ssp, fill = ssp, linetype = prediction_percentile)) +
-        geom_ribbon(aes(ymin = low_uci, ymax = high_uci), alpha = 0.18, colour = NA) +
-        geom_line(aes(y = low_uci)) +
-        geom_line(aes(y = high_uci)) +
+      ggplot(df_plot, aes(x = month, y = anomaly, color = scenario, linetype = percentile_label)) +
         geom_hline(yintercept = 0, colour = ec$ink, linewidth = 0.5) +
+        geom_line(linewidth = 0.8) +
         scale_x_continuous(expand = c(0, 0), breaks = 1:12) +
         scale_color_ecomix() +
-        scale_fill_ecomix() +
-        labs(x = "Month", y = ylab, caption = "Change against the 2000-2020 baseline.") +
+        labs(x = "Month", y = ylab, linetype = NULL,
+             caption = paste0("Change against the ", baseline_period, " baseline.")) +
         theme_ecomix()
     }
   })
@@ -3128,32 +3480,38 @@ server <- function(input, output, session) {
     sub_scenarios <- unique(input$scenario)
     sub_periods <- unique(input$prediction_period)
     if ("Baseline" %in% sub_scenarios) {
-      sub_periods <- c("2000-2022", sub_periods)
+      sub_periods <- c(baseline_period, sub_periods)
     }
 
-    df_plot <- projection_data$percentiles %>%
+    df_month <- projection_data$month %>%
       filter(subbasin %in% sub_subbasin,
-             hype_variable %in% sub_variable,
+             variable == sub_variable,
              ssp %in% sub_scenarios,
              period %in% sub_periods) %>%
       collect()
 
-    if (nrow(df_plot) == 0) {
+    if (nrow(df_month) == 0) {
       return(no_data_plot("No hydrology model data for this subbasin"))
     }
 
-    df_plot <- df_plot %>% mutate("scenario" = paste0(ssp, " (", period, ")"))
-    ylab <- paste0(sub_variable, " [", unique(df_plot$unit), "]")
+    probs <- seq(1, 99, by = 1)
+    df_plot <- df_month %>%
+      dplyr::group_by(ssp, period, unit) %>%
+      dplyr::group_modify(~ tibble::tibble(percentile = probs,
+                                           value = pooled_percentiles(.x, probs / 100))) %>%
+      dplyr::ungroup() %>%
+      mutate("scenario" = paste0(ssp, " (", period, ")"))
+    lbl <- prediction_variable_labels[[sub_variable]] %||% sub_variable
+    ylab <- paste0(lbl, " [", pretty_unit(unique(df_plot$unit)), "]")
 
-    ggplot(df_plot, aes(x = prediction_percentile, y = p50_ensemble, color = scenario, fill = scenario)) +
-      geom_ribbon(aes(ymin = p10_ensemble, ymax = p90_ensemble), alpha = 0.18, colour = NA) +
+    ggplot(df_plot, aes(x = percentile, y = value, color = scenario)) +
       geom_line(linewidth = 0.8) +
       scale_x_continuous(expand = c(0, 0), breaks = c(0, 25, 50, 75, 100),
                          labels = c("0", "25", "50 (Median)", "75", "100")) +
       scale_y_log10() +
       scale_color_ecomix() +
-      scale_fill_ecomix() +
-      labs(x = "Cumulative frequency [%]", y = ylab) +
+      labs(x = "Cumulative frequency [%]", y = ylab,
+           caption = "Daily values pooled over all months of the period and the model ensemble.") +
       theme_ecomix()
   })
 
@@ -3202,11 +3560,7 @@ server <- function(input, output, session) {
           dplyr::select(subbasin, chemical, statistic = stat, date, value, unit)
         write.csv(df, file, row.names = FALSE)
       } else {
-        hype_to_dl <- c("discharge" = "runoff", "Soil moisture" = "soil_moisture",
-                        "water temperature" = "water_temperature",
-                        "Susp. Sediments" = "susp_sediments",
-                        "Inorganic Nitrogen" = "inorganic_nitrogen")
-        df <- get_tabular_download(unname(hype_to_dl[var])) %>%
+        df <- get_tabular_download(var) %>%
           filter(subbasin == rv())
         write.csv(df, file, row.names = FALSE)
       }
@@ -3223,7 +3577,7 @@ server <- function(input, output, session) {
     # (whole 2018-2022 record) value per subbasin (or, for modelled water
     # body chemicals, per water body) for the chosen statistic. The result is
     # shaped to match df_map_input's columns (hype_variable, subbasin,
-    # p50_ensemble, unit, prediction_percentile) so the rendering and
+    # value, unit, prediction_percentile) so the rendering and
     # context-strip code below needs no branching of its own. The water body
     # branch has no "subbasin" concept, so it carries a placeholder NA
     # subbasin column purely so the context-strip's existing
@@ -3233,17 +3587,17 @@ server <- function(input, output, session) {
       chem_key <- wbchem_key_from_variable(sub_variable)
       stat <- input$prediction_stat_spatial_chem %||% "median"
       get_wb_chem_spatial_summary(chem_key, stat) %>%
-        dplyr::mutate(hype_variable = sub_variable, p50_ensemble = value,
+        dplyr::mutate(hype_variable = sub_variable,
                       unit = "ng/L", prediction_percentile = stat, subbasin = NA_integer_)
     } else if (is_chem_variable(sub_variable)) {
       chem_key <- chem_key_from_variable(sub_variable)
       stat <- input$prediction_stat_spatial_chem %||% "median"
       get_chem_spatial_summary(chem_key, stat) %>%
-        dplyr::mutate(hype_variable = sub_variable, p50_ensemble = value,
+        dplyr::mutate(hype_variable = sub_variable,
                       unit = "ng/L", prediction_percentile = stat)
     } else {
-      sub_period <- strsplit(input$prediction_period_spatial %||% "SSP585|2070-2080", "\\|")[[1]]
-      sub_percentile <- as.numeric(input$prediction_percentile_spatial %||% "99.9")
+      sub_period <- strsplit(input$prediction_period_spatial %||% "SSP585|2070-2079", "\\|")[[1]]
+      sub_percentile <- as.numeric(input$prediction_percentile_spatial %||% "99")
 
       df_map_input %>% filter(
         hype_variable == sub_variable,
@@ -3263,13 +3617,13 @@ server <- function(input, output, session) {
       left_join(subbasin_shp, df_sub, by = c("Id" = "subbasin")) %>% filter(!is.na(hype_variable))
     }
 
-    pal <- colorNumeric(palette = "viridis", domain = shp_map$p50_ensemble)
+    pal <- colorNumeric(palette = "viridis", domain = shp_map$value)
     legend_title <- if (nrow(df_sub) == 0) {
       "No data"
     } else if (is_chem_variable(sub_variable) || is_wbchem_variable(sub_variable)) {
       paste0(chem_stat_labels[df_sub$prediction_percentile[1]], " conc. (ng/L)")
     } else {
-      paste0("P", df_sub$prediction_percentile[1])
+      paste0("P", df_sub$prediction_percentile[1], " (", pretty_unit(df_sub$unit[1]), ")")
     }
 
     leaflet() %>%
@@ -3277,12 +3631,12 @@ server <- function(input, output, session) {
       setView(lng = -1.16, lat = 53.75, zoom = 8.5) %>%
       addPolygons(
         data = shp_map,
-        fillColor = ~pal(p50_ensemble),
+        fillColor = ~pal(value),
         fillOpacity = 0.75,
         color = ec$ink,
         weight = 0.6
       ) %>%
-      addLegend("bottomleft", pal = pal, values = shp_map$p50_ensemble,
+      addLegend("bottomleft", pal = pal, values = shp_map$value,
                 title = legend_title, opacity = 1)
   })
 
@@ -3296,11 +3650,11 @@ server <- function(input, output, session) {
     if (is.null(rv())) return("\u2014")
     df <- spatial_layer_data() %>% filter(subbasin == rv())
     if (nrow(df) == 0) return("no value")
-    paste0(round(df$p50_ensemble[1], 1), " ", df$unit[1] %||% "")
+    paste0(round(df$value[1], 1), " ", pretty_unit(df$unit[1] %||% ""))
   })
 
   output$ctx_rank_sp <- renderText({
-    df <- spatial_layer_data() %>% arrange(desc(p50_ensemble))
+    df <- spatial_layer_data() %>% arrange(desc(value))
     if (is.null(rv()) || nrow(df) == 0) return("\u2014")
     i <- which(df$subbasin == rv())
     if (length(i) == 0) return("\u2014")
@@ -3310,8 +3664,8 @@ server <- function(input, output, session) {
   output$ctx_range_sp <- renderText({
     df <- spatial_layer_data()
     if (nrow(df) == 0) return("\u2014")
-    paste0(round(min(df$p50_ensemble, na.rm = TRUE), 1), " \u2013 ",
-           round(max(df$p50_ensemble, na.rm = TRUE), 1))
+    paste0(round(min(df$value, na.rm = TRUE), 1), " \u2013 ",
+           round(max(df$value, na.rm = TRUE), 1))
   })
 
 
@@ -3391,7 +3745,7 @@ server <- function(input, output, session) {
           .groups = "drop"
         )
       return(
-        waterbody_opcat_shp %>%
+        full_res_layer("waterbodies") %>%
           left_join(tab_summary_by_wb, by = c("water_body" = "waterbody_id")) %>%
           mutate(spatial_layer = input$dl_spatial_layer, variable = input$dl_variable)
       )
@@ -3401,7 +3755,7 @@ server <- function(input, output, session) {
 
     if (input$dl_spatial_layer == "catchment") {
       if (nrow(tab_data) == 0) {
-        return(catchment_shp %>%
+        return(full_res_layer("catchments") %>%
                  mutate(spatial_layer = input$dl_spatial_layer,
                         variable = input$dl_variable,
                         n_records = 0,
@@ -3420,7 +3774,7 @@ server <- function(input, output, session) {
           unit = dplyr::first(unit)
         )
 
-      return(catchment_shp %>%
+      return(full_res_layer("catchments") %>%
                mutate(spatial_layer = input$dl_spatial_layer,
                       variable = input$dl_variable,
                       n_records = tab_summary$n_records,
@@ -3442,7 +3796,7 @@ server <- function(input, output, session) {
         .groups = "drop"
       )
 
-    subbasin_shp %>%
+    full_res_layer("subbasins") %>%
       mutate(Id = as.integer(Id)) %>%
       left_join(tab_summary_by_sub, by = c("Id" = "subbasin")) %>%
       mutate(spatial_layer = input$dl_spatial_layer,

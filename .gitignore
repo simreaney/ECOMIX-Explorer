@@ -16,3 +16,6 @@ data-chem/1_DAILY_BY_SITE_conc_ng_L/1_DAILY_BY_SITE_conc_ng_L.parquet
 scripts/build_parquet.py.zip
 .DS_Store
 *.parquet
+
+# Raw source for scripts/import_database_update.py (~41 GB) - never commit.
+/data/database_update/
