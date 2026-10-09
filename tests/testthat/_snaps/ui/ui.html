@@ -1,0 +1,1609 @@
+<body class="bslib-page-fill bslib-gap-spacing bslib-flow-mobile html-fill-container bslib-page-navbar" style="padding:0px;gap:0px;">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" data-bs-theme="auto">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-R1" data-bs-toggle="collapse" data-bs-target="#navbar-collapse-R1">
+          <span class="sr-only visually-hidden">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <span class="navbar-brand">ECOMIX Explorer</span>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-collapse-R1">
+        <ul class="nav navbar-nav nav-underline shiny-tab-input" id="main_nav" data-tabsetid="R2">
+          <li class="active">
+            <a href="#tab-R2-1" data-toggle="tab" data-bs-toggle="tab" data-value="Map">Map</a>
+          </li>
+          <li>
+            <a href="#tab-R2-2" data-toggle="tab" data-bs-toggle="tab" data-value="Site Details">Site Details</a>
+          </li>
+          <li>
+            <a href="#tab-R2-3" data-toggle="tab" data-bs-toggle="tab" data-value="Hydro Explorer">Hydro Explorer</a>
+          </li>
+          <li>
+            <a href="#tab-R2-4" data-toggle="tab" data-bs-toggle="tab" data-value="Chemical Explorer">Chemical Explorer</a>
+          </li>
+          <li>
+            <a href="#tab-R2-5" data-toggle="tab" data-bs-toggle="tab" data-value="Ecological Risk">Ecological Risk</a>
+          </li>
+          <li>
+            <a href="#tab-R2-6" data-toggle="tab" data-bs-toggle="tab" data-value="Spatial Datasets">Spatial Datasets</a>
+          </li>
+          <li>
+            <a href="#tab-R2-7" data-toggle="tab" data-bs-toggle="tab" data-value="Download">Download</a>
+          </li>
+          <li>
+            <a href="#tab-R2-8" data-toggle="tab" data-bs-toggle="tab" data-value="Help">Help</a>
+          </li>
+          <div class="bslib-nav-spacer"></div>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" data-value="Links">
+              Links
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right dropdown-menu-end" data-tabsetid="R3">
+              <li class="bslib-nav-item nav-item form-inline">
+                <a href="https://www.york.ac.uk">York</a>
+              </li>
+              <li class="bslib-nav-item nav-item form-inline">
+                <a href="https://durham.ac.uk">Durham</a>
+              </li>
+              <li class="bslib-nav-item nav-item form-inline">
+                <a href="https://sheffield.ac.uk">Sheffield</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid html-fill-item html-fill-container">
+    <div class="tab-content html-fill-item html-fill-container" data-tabsetid="R2">
+      <div class="tab-pane active html-fill-item html-fill-container bslib-gap-spacing" data-value="Map" id="tab-R2-1" style="--bslib-navbar-margin:0;">
+        <div class="ctx">
+          <div class="ctx-id">
+            <div class="ctx-label">Subbasin</div>
+            <div class="ctx-id-value">
+              <span id="ctx_id_map" class="shiny-text-output"></span>
+            </div>
+            <div class="ctx-id-sub">
+              <span id="ctx_sub_map" class="shiny-text-output"></span>
+            </div>
+          </div>
+          <div class="ctx-stats">
+            <div class="ctx-stat">
+              <div class="ctx-label">Upstream area</div>
+              <div class="ctx-value">
+                <span id="ctx_area_map" class="shiny-text-output"></span>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Annual precip.</div>
+              <div class="ctx-value">
+                <span id="ctx_precip_map" class="shiny-text-output"></span>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Mean annual temp.</div>
+              <div class="ctx-value">
+                <span id="ctx_temp_map" class="shiny-text-output"></span>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Observations</div>
+              <div class="ctx-value">
+                <span id="ctx_obs_map" class="shiny-html-output"></span>
+              </div>
+            </div>
+          </div>
+          <div class="ctx-act">
+            <a id="ctx_map_go" href="#" class="action-button action-link"><span class="action-label">Open in explorer →</span></a>
+          </div>
+        </div>
+        <div class="bslib-sidebar-layout bslib-mb-spacing html-fill-item" data-bslib-sidebar-init="TRUE" data-collapsible-desktop="true" data-collapsible-mobile="true" data-open-desktop="open" data-open-mobile="closed" data-require-bs-caller="layout_sidebar()" data-require-bs-version="5" style="--_sidebar-width:320px;">
+          <div class="main bslib-gap-spacing html-fill-container">
+            <div class="map-wrap">
+              <div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item" id="basemap" style="width:100%;height:100%;"></div>
+              <div class="map-note">Data compiled by York, Durham and Sheffield Universities (2026). Operational catchment boundaries and waterbodies © Environment Agency copyright and/or database right 2026, licensed under the Open Government Licence v3.0</div>
+            </div>
+          </div>
+          <aside id="bslib-sidebar-R4" class="sidebar" hidden>
+            <div class="sidebar-content bslib-gap-spacing">
+              <header class="sidebar-title">Find a location</header>
+              <div class="form-group shiny-input-container">
+                <label class="control-label shiny-label-null" for="subbasin_search" id="subbasin_search-label"></label>
+                <div>
+                  <select class="shiny-input-select form-control" id="subbasin_search"></select>
+                  <script type="application/json" data-for="subbasin_search">{"placeholder":"Search subbasin id","maxOptions":50,"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <div id="map_layers" class="form-group shiny-input-checkboxgroup shiny-input-container" role="group" aria-labelledby="map_layers-label">
+                <label class="control-label" id="map_layers-label" for="map_layers">Layers</label>
+                <div class="shiny-options-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="map_layers" value="subbasins" checked="checked"/>
+                      <span>Subbasins with hydrology</span>
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="map_layers" value="opcat"/>
+                      <span>Operational catchment boundaries</span>
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="map_layers" value="waterbodies"/>
+                      <span>Waterbodies (modelled)</span>
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="map_layers" value="measured_sites"/>
+                      <span>Measured sites</span>
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="map_layers" value="observed_hydro"/>
+                      <span>Observed hydrology sites</span>
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="map_layers" value="chem_coverage"/>
+                      <span>Chemical data coverage</span>
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="map_layers" value="eco_risk"/>
+                      <span>Ecological risk</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-panel-conditional" data-display-if="input.map_layers &amp;&amp; input.map_layers.includes(&#39;eco_risk&#39;)" data-ns-prefix="">
+                <div class="form-group shiny-input-container">
+                  <label class="control-label" id="eco_risk_chemical-label" for="eco_risk_chemical">Ecological risk · chemical</label>
+                  <div>
+                    <select id="eco_risk_chemical" class="shiny-input-select"><option value="fipronil" selected>Fipronil</option></select>
+                    <script type="application/json" data-for="eco_risk_chemical" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="map_basemap-label" for="map_basemap">Basemap</label>
+                <div>
+                  <select id="map_basemap" class="shiny-input-select"><option value="osm" selected>Streets (OSM)</option>
+<option value="esri_satellite">Satellite (Esri)</option>
+<option value="esri_gray">Light gray (Esri)</option></select>
+                  <script type="application/json" data-for="map_basemap" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <div class="rail-head">Operational catchments · 33</div>
+              <div class="rail-list">
+                <div id="opcat_rail" class="shiny-html-output"></div>
+              </div>
+            </div>
+          </aside>
+          <button class="collapse-toggle" type="button" title="Toggle sidebar" aria-expanded="true" aria-controls="bslib-sidebar-R4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="bi bi-chevron-left collapse-icon" style="height:;width:;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img" ><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path></svg></button>
+          <script data-bslib-sidebar-init>bslib.Sidebar.initCollapsibleAll()</script>
+        </div>
+      </div>
+      <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="Site Details" id="tab-R2-2" style="--bslib-navbar-margin:0;">
+        <div class="ctx">
+          <div class="ctx-map">
+            <div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item" id="ctx_map_site" style="width:100%;height:94px;"></div>
+          </div>
+          <div class="ctx-id">
+            <div class="ctx-label">
+              <span id="ctx_idlabel_site" class="shiny-text-output"></span>
+            </div>
+            <div class="ctx-id-value">
+              <span id="ctx_id_site" class="shiny-text-output"></span>
+            </div>
+            <div class="ctx-id-sub">
+              <span id="ctx_sub_site" class="shiny-text-output"></span>
+            </div>
+          </div>
+          <div class="ctx-stats">
+            <div class="ctx-stat">
+              <div class="ctx-label">Summary</div>
+              <div class="ctx-value">
+                <div style="font-size:13px; font-weight:400; line-height:1.45; white-space:normal;">
+                  <span id="ctx_summary_site" class="shiny-text-output"></span>
+                </div>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Land cover</div>
+              <div class="ctx-value">
+                <span id="ctx_landcover_site" class="shiny-html-output"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bslib-sidebar-layout bslib-mb-spacing html-fill-item" data-bslib-sidebar-init="TRUE" data-collapsible-desktop="true" data-collapsible-mobile="true" data-open-desktop="open" data-open-mobile="closed" data-require-bs-caller="layout_sidebar()" data-require-bs-version="5" style="--_sidebar-width:220px;">
+          <div class="main bslib-gap-spacing html-fill-container">
+            <bslib-layout-columns class="bslib-grid grid bslib-mb-spacing html-fill-item" col-widths-sm="7,5" data-require-bs-caller="layout_columns()" data-require-bs-version="5" style="gap:0px;">
+              <div class="bslib-grid-item bslib-gap-spacing html-fill-container">
+                <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init data-full-screen="false" data-require-bs-caller="card()" data-require-bs-version="5" id="bslib-card-R5">
+                  <div class="card-header">
+                    Chemical occurrence
+                    <div class="shiny-panel-conditional" data-display-if="input.site_entity_type == &#39;modelled&#39;" data-ns-prefix="">
+                      <bslib-popover placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="popover()">
+                        <template>
+                          <div style="display:contents;">
+                            <div class="form-group shiny-input-container">
+                              <label class="control-label" id="site_grid_wb_stat-label" for="site_grid_wb_stat">Statistic</label>
+                              <div>
+                                <select id="site_grid_wb_stat" class="shiny-input-select"><option value="mean">Mean</option>
+<option value="median" selected>Median</option>
+<option value="90th">90th percentile</option></select>
+                                <script type="application/json" data-for="site_grid_wb_stat" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                              </div>
+                            </div>
+                          </div>
+                          <div style="display:contents;">Occurrence grid</div>
+                        </template>
+                        <a class="action-button action-link pill" href="#" id="site_grid_opts"><span class="action-label">Statistic ▾</span></a>
+                      </bslib-popover>
+                    </div>
+                    <span class="panel-note">
+                      <span id="site_chem_grid_note" class="shiny-text-output"></span>
+                    </span>
+                  </div>
+                  <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                    <div style="position: relative; height: 100%;">
+                      <div class="shiny-plot-output html-fill-item" data-hover-clip="TRUE" data-hover-delay="60" data-hover-delay-type="debounce" data-hover-id="site_chem_grid_hover" data-hover-null-outside="TRUE" id="site_chem_grid" style="width:100%;height:100%;"></div>
+                      <div id="site_chem_grid_tooltip" class="shiny-html-output"></div>
+                    </div>
+                  </div>
+                  <bslib-tooltip placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+                    <template>Expand</template>
+                    <button aria-expanded="false" aria-label="Expand card" class="bslib-full-screen-enter badge rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height:1em;width:1em;fill:currentColor;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"/></svg></button>
+                  </bslib-tooltip>
+                  <script data-bslib-card-init>bslib.Card.initializeAllCards();</script>
+                </div>
+              </div>
+              <div class="bslib-grid-item bslib-gap-spacing html-fill-container">
+                <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init data-full-screen="false" data-require-bs-caller="card()" data-require-bs-version="5" id="bslib-card-R6">
+                  <div class="card-header">
+                    Time series
+                    <bslib-popover placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="popover()">
+                      <template>
+                        <div style="display:contents;">
+                          <div class="form-group shiny-input-container">
+                            <label class="control-label" id="site_ts_chemical_1-label" for="site_ts_chemical_1">Panel 1</label>
+                            <div>
+                              <select id="site_ts_chemical_1" class="shiny-input-select"><optgroup label="Organic micropollutants">
+<option value="6PPD-Q_ng L⁻¹" selected>6PPD-Q</option>
+<option value="Anthracene">Anthracene</option>
+<option value="Azithromycin">Azithromycin</option>
+<option value="Azoxystrobin">Azoxystrobin</option>
+<option value="Bentazone">Bentazone</option>
+<option value="Benzo[a]pyrene">Benzo[a]pyrene</option>
+<option value="Benzophenone-3">Benzophenone-3</option>
+<option value="Boscalid">Boscalid</option>
+<option value="Caffeine">Caffeine</option>
+<option value="Carbamazepine">Carbamazepine</option>
+<option value="Cetirizine">Cetirizine</option>
+<option value="Chrysene">Chrysene</option>
+<option value="Clarithromycin">Clarithromycin</option>
+<option value="Desvenlafaxine">Desvenlafaxine</option>
+<option value="Diclofenac">Diclofenac</option>
+<option value="Difenoconazole">Difenoconazole</option>
+<option value="Dimethenamid">Dimethenamid</option>
+<option value="Dimoxystrobin">Dimoxystrobin</option>
+<option value="Erythromycin">Erythromycin</option>
+<option value="Fipronil">Fipronil</option>
+<option value="Flubendazole">Flubendazole</option>
+<option value="Fluconazole">Fluconazole</option>
+<option value="Flufenacet">Flufenacet</option>
+<option value="Fluoranthene">Fluoranthene</option>
+<option value="Fluralaner">Fluralaner</option>
+<option value="Homosalate">Homosalate</option>
+<option value="Ibuprofen">Ibuprofen</option>
+<option value="Imidacloprid">Imidacloprid</option>
+<option value="Lamotrigine">Lamotrigine</option>
+<option value="Lincomycin">Lincomycin</option>
+<option value="Metazachlor">Metazachlor</option>
+<option value="Metconazole">Metconazole</option>
+<option value="Metformin">Metformin</option>
+<option value="Methyl Anthracene">Methyl Anthracene</option>
+<option value="Methyl Phenanthrene">Methyl Phenanthrene</option>
+<option value="Methylchloroisothiazolinone">Methylchloroisothiazolinone</option>
+<option value="Methylisothiazolinone">Methylisothiazolinone</option>
+<option value="Miconazole">Miconazole</option>
+<option value="Octenidine Dihydrochloride">Octenidine Dihydrochloride</option>
+<option value="Octocrylene">Octocrylene</option>
+<option value="Permethrin">Permethrin</option>
+<option value="PFOA">PFOA</option>
+<option value="PFOS">PFOS</option>
+<option value="Phenanthrene">Phenanthrene</option>
+<option value="Pyraclostrobin">Pyraclostrobin</option>
+<option value="Pyrene">Pyrene</option>
+<option value="Tebuconazole">Tebuconazole</option>
+<option value="Tefluthrin">Tefluthrin</option>
+<option value="Telmisartan">Telmisartan</option>
+<option value="Triallate">Triallate</option>
+<option value="Trifloxystrobin">Trifloxystrobin</option>
+<option value="Tylosin">Tylosin</option>
+</optgroup>
+<optgroup label="Physicochemical parameters">
+<option value="Zn µg L⁻¹">Zn µg L⁻¹</option>
+<option value="Cu µg L⁻¹">Cu µg L⁻¹</option>
+<option value="pH">pH</option>
+<option value="DOC (mg L⁻¹)">DOC (mg L⁻¹)</option>
+<option value="Nitrate (mg L⁻¹)">Nitrate (mg L⁻¹)</option>
+<option value="Ammonium (mg L⁻¹)">Ammonium (mg L⁻¹)</option>
+<option value="Phosphate (mg L⁻¹)">Phosphate (mg L⁻¹)</option>
+</optgroup></select>
+                              <script type="application/json" data-for="site_ts_chemical_1" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                            </div>
+                          </div>
+                          <div class="form-group shiny-input-container">
+                            <label class="control-label" id="site_ts_chemical_2-label" for="site_ts_chemical_2">Panel 2</label>
+                            <div>
+                              <select id="site_ts_chemical_2" class="shiny-input-select"><optgroup label="Organic micropollutants">
+<option value="6PPD-Q_ng L⁻¹" selected>6PPD-Q</option>
+<option value="Anthracene">Anthracene</option>
+<option value="Azithromycin">Azithromycin</option>
+<option value="Azoxystrobin">Azoxystrobin</option>
+<option value="Bentazone">Bentazone</option>
+<option value="Benzo[a]pyrene">Benzo[a]pyrene</option>
+<option value="Benzophenone-3">Benzophenone-3</option>
+<option value="Boscalid">Boscalid</option>
+<option value="Caffeine">Caffeine</option>
+<option value="Carbamazepine">Carbamazepine</option>
+<option value="Cetirizine">Cetirizine</option>
+<option value="Chrysene">Chrysene</option>
+<option value="Clarithromycin">Clarithromycin</option>
+<option value="Desvenlafaxine">Desvenlafaxine</option>
+<option value="Diclofenac">Diclofenac</option>
+<option value="Difenoconazole">Difenoconazole</option>
+<option value="Dimethenamid">Dimethenamid</option>
+<option value="Dimoxystrobin">Dimoxystrobin</option>
+<option value="Erythromycin">Erythromycin</option>
+<option value="Fipronil">Fipronil</option>
+<option value="Flubendazole">Flubendazole</option>
+<option value="Fluconazole">Fluconazole</option>
+<option value="Flufenacet">Flufenacet</option>
+<option value="Fluoranthene">Fluoranthene</option>
+<option value="Fluralaner">Fluralaner</option>
+<option value="Homosalate">Homosalate</option>
+<option value="Ibuprofen">Ibuprofen</option>
+<option value="Imidacloprid">Imidacloprid</option>
+<option value="Lamotrigine">Lamotrigine</option>
+<option value="Lincomycin">Lincomycin</option>
+<option value="Metazachlor">Metazachlor</option>
+<option value="Metconazole">Metconazole</option>
+<option value="Metformin">Metformin</option>
+<option value="Methyl Anthracene">Methyl Anthracene</option>
+<option value="Methyl Phenanthrene">Methyl Phenanthrene</option>
+<option value="Methylchloroisothiazolinone">Methylchloroisothiazolinone</option>
+<option value="Methylisothiazolinone">Methylisothiazolinone</option>
+<option value="Miconazole">Miconazole</option>
+<option value="Octenidine Dihydrochloride">Octenidine Dihydrochloride</option>
+<option value="Octocrylene">Octocrylene</option>
+<option value="Permethrin">Permethrin</option>
+<option value="PFOA">PFOA</option>
+<option value="PFOS">PFOS</option>
+<option value="Phenanthrene">Phenanthrene</option>
+<option value="Pyraclostrobin">Pyraclostrobin</option>
+<option value="Pyrene">Pyrene</option>
+<option value="Tebuconazole">Tebuconazole</option>
+<option value="Tefluthrin">Tefluthrin</option>
+<option value="Telmisartan">Telmisartan</option>
+<option value="Triallate">Triallate</option>
+<option value="Trifloxystrobin">Trifloxystrobin</option>
+<option value="Tylosin">Tylosin</option>
+</optgroup>
+<optgroup label="Physicochemical parameters">
+<option value="Zn µg L⁻¹">Zn µg L⁻¹</option>
+<option value="Cu µg L⁻¹">Cu µg L⁻¹</option>
+<option value="pH">pH</option>
+<option value="DOC (mg L⁻¹)">DOC (mg L⁻¹)</option>
+<option value="Nitrate (mg L⁻¹)">Nitrate (mg L⁻¹)</option>
+<option value="Ammonium (mg L⁻¹)">Ammonium (mg L⁻¹)</option>
+<option value="Phosphate (mg L⁻¹)">Phosphate (mg L⁻¹)</option>
+</optgroup></select>
+                              <script type="application/json" data-for="site_ts_chemical_2" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                            </div>
+                          </div>
+                          <div class="form-group shiny-input-container">
+                            <label class="control-label" id="site_ts_chemical_3-label" for="site_ts_chemical_3">Panel 3</label>
+                            <div>
+                              <select id="site_ts_chemical_3" class="shiny-input-select"><optgroup label="Organic micropollutants">
+<option value="6PPD-Q_ng L⁻¹" selected>6PPD-Q</option>
+<option value="Anthracene">Anthracene</option>
+<option value="Azithromycin">Azithromycin</option>
+<option value="Azoxystrobin">Azoxystrobin</option>
+<option value="Bentazone">Bentazone</option>
+<option value="Benzo[a]pyrene">Benzo[a]pyrene</option>
+<option value="Benzophenone-3">Benzophenone-3</option>
+<option value="Boscalid">Boscalid</option>
+<option value="Caffeine">Caffeine</option>
+<option value="Carbamazepine">Carbamazepine</option>
+<option value="Cetirizine">Cetirizine</option>
+<option value="Chrysene">Chrysene</option>
+<option value="Clarithromycin">Clarithromycin</option>
+<option value="Desvenlafaxine">Desvenlafaxine</option>
+<option value="Diclofenac">Diclofenac</option>
+<option value="Difenoconazole">Difenoconazole</option>
+<option value="Dimethenamid">Dimethenamid</option>
+<option value="Dimoxystrobin">Dimoxystrobin</option>
+<option value="Erythromycin">Erythromycin</option>
+<option value="Fipronil">Fipronil</option>
+<option value="Flubendazole">Flubendazole</option>
+<option value="Fluconazole">Fluconazole</option>
+<option value="Flufenacet">Flufenacet</option>
+<option value="Fluoranthene">Fluoranthene</option>
+<option value="Fluralaner">Fluralaner</option>
+<option value="Homosalate">Homosalate</option>
+<option value="Ibuprofen">Ibuprofen</option>
+<option value="Imidacloprid">Imidacloprid</option>
+<option value="Lamotrigine">Lamotrigine</option>
+<option value="Lincomycin">Lincomycin</option>
+<option value="Metazachlor">Metazachlor</option>
+<option value="Metconazole">Metconazole</option>
+<option value="Metformin">Metformin</option>
+<option value="Methyl Anthracene">Methyl Anthracene</option>
+<option value="Methyl Phenanthrene">Methyl Phenanthrene</option>
+<option value="Methylchloroisothiazolinone">Methylchloroisothiazolinone</option>
+<option value="Methylisothiazolinone">Methylisothiazolinone</option>
+<option value="Miconazole">Miconazole</option>
+<option value="Octenidine Dihydrochloride">Octenidine Dihydrochloride</option>
+<option value="Octocrylene">Octocrylene</option>
+<option value="Permethrin">Permethrin</option>
+<option value="PFOA">PFOA</option>
+<option value="PFOS">PFOS</option>
+<option value="Phenanthrene">Phenanthrene</option>
+<option value="Pyraclostrobin">Pyraclostrobin</option>
+<option value="Pyrene">Pyrene</option>
+<option value="Tebuconazole">Tebuconazole</option>
+<option value="Tefluthrin">Tefluthrin</option>
+<option value="Telmisartan">Telmisartan</option>
+<option value="Triallate">Triallate</option>
+<option value="Trifloxystrobin">Trifloxystrobin</option>
+<option value="Tylosin">Tylosin</option>
+</optgroup>
+<optgroup label="Physicochemical parameters">
+<option value="Zn µg L⁻¹">Zn µg L⁻¹</option>
+<option value="Cu µg L⁻¹">Cu µg L⁻¹</option>
+<option value="pH">pH</option>
+<option value="DOC (mg L⁻¹)">DOC (mg L⁻¹)</option>
+<option value="Nitrate (mg L⁻¹)">Nitrate (mg L⁻¹)</option>
+<option value="Ammonium (mg L⁻¹)">Ammonium (mg L⁻¹)</option>
+<option value="Phosphate (mg L⁻¹)">Phosphate (mg L⁻¹)</option>
+</optgroup></select>
+                              <script type="application/json" data-for="site_ts_chemical_3" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                            </div>
+                          </div>
+                          <div class="form-group shiny-input-container">
+                            <label class="control-label" id="site_ts_chemical_4-label" for="site_ts_chemical_4">Panel 4</label>
+                            <div>
+                              <select id="site_ts_chemical_4" class="shiny-input-select"><optgroup label="Organic micropollutants">
+<option value="6PPD-Q_ng L⁻¹" selected>6PPD-Q</option>
+<option value="Anthracene">Anthracene</option>
+<option value="Azithromycin">Azithromycin</option>
+<option value="Azoxystrobin">Azoxystrobin</option>
+<option value="Bentazone">Bentazone</option>
+<option value="Benzo[a]pyrene">Benzo[a]pyrene</option>
+<option value="Benzophenone-3">Benzophenone-3</option>
+<option value="Boscalid">Boscalid</option>
+<option value="Caffeine">Caffeine</option>
+<option value="Carbamazepine">Carbamazepine</option>
+<option value="Cetirizine">Cetirizine</option>
+<option value="Chrysene">Chrysene</option>
+<option value="Clarithromycin">Clarithromycin</option>
+<option value="Desvenlafaxine">Desvenlafaxine</option>
+<option value="Diclofenac">Diclofenac</option>
+<option value="Difenoconazole">Difenoconazole</option>
+<option value="Dimethenamid">Dimethenamid</option>
+<option value="Dimoxystrobin">Dimoxystrobin</option>
+<option value="Erythromycin">Erythromycin</option>
+<option value="Fipronil">Fipronil</option>
+<option value="Flubendazole">Flubendazole</option>
+<option value="Fluconazole">Fluconazole</option>
+<option value="Flufenacet">Flufenacet</option>
+<option value="Fluoranthene">Fluoranthene</option>
+<option value="Fluralaner">Fluralaner</option>
+<option value="Homosalate">Homosalate</option>
+<option value="Ibuprofen">Ibuprofen</option>
+<option value="Imidacloprid">Imidacloprid</option>
+<option value="Lamotrigine">Lamotrigine</option>
+<option value="Lincomycin">Lincomycin</option>
+<option value="Metazachlor">Metazachlor</option>
+<option value="Metconazole">Metconazole</option>
+<option value="Metformin">Metformin</option>
+<option value="Methyl Anthracene">Methyl Anthracene</option>
+<option value="Methyl Phenanthrene">Methyl Phenanthrene</option>
+<option value="Methylchloroisothiazolinone">Methylchloroisothiazolinone</option>
+<option value="Methylisothiazolinone">Methylisothiazolinone</option>
+<option value="Miconazole">Miconazole</option>
+<option value="Octenidine Dihydrochloride">Octenidine Dihydrochloride</option>
+<option value="Octocrylene">Octocrylene</option>
+<option value="Permethrin">Permethrin</option>
+<option value="PFOA">PFOA</option>
+<option value="PFOS">PFOS</option>
+<option value="Phenanthrene">Phenanthrene</option>
+<option value="Pyraclostrobin">Pyraclostrobin</option>
+<option value="Pyrene">Pyrene</option>
+<option value="Tebuconazole">Tebuconazole</option>
+<option value="Tefluthrin">Tefluthrin</option>
+<option value="Telmisartan">Telmisartan</option>
+<option value="Triallate">Triallate</option>
+<option value="Trifloxystrobin">Trifloxystrobin</option>
+<option value="Tylosin">Tylosin</option>
+</optgroup>
+<optgroup label="Physicochemical parameters">
+<option value="Zn µg L⁻¹">Zn µg L⁻¹</option>
+<option value="Cu µg L⁻¹">Cu µg L⁻¹</option>
+<option value="pH">pH</option>
+<option value="DOC (mg L⁻¹)">DOC (mg L⁻¹)</option>
+<option value="Nitrate (mg L⁻¹)">Nitrate (mg L⁻¹)</option>
+<option value="Ammonium (mg L⁻¹)">Ammonium (mg L⁻¹)</option>
+<option value="Phosphate (mg L⁻¹)">Phosphate (mg L⁻¹)</option>
+</optgroup></select>
+                              <script type="application/json" data-for="site_ts_chemical_4" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                            </div>
+                          </div>
+                        </div>
+                        <div style="display:contents;">Time series panels</div>
+                      </template>
+                      <a class="action-button action-link pill" href="#" id="site_ts_opts"><span class="action-label">Choose panels ▾</span></a>
+                    </bslib-popover>
+                    <span class="panel-note">widest concentration range at this site</span>
+                  </div>
+                  <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                    <div class="shiny-plot-output html-fill-item" id="site_time_series" style="width:100%;height:100%;"></div>
+                  </div>
+                  <bslib-tooltip placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+                    <template>Expand</template>
+                    <button aria-expanded="false" aria-label="Expand card" class="bslib-full-screen-enter badge rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height:1em;width:1em;fill:currentColor;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"/></svg></button>
+                  </bslib-tooltip>
+                  <script data-bslib-card-init>bslib.Card.initializeAllCards();</script>
+                </div>
+              </div>
+            </bslib-layout-columns>
+          </div>
+          <aside id="bslib-sidebar-R7" class="sidebar" hidden>
+            <div class="sidebar-content bslib-gap-spacing">
+              <header class="sidebar-title">Sites</header>
+              <div class="rail-toggle">
+                <div class="tabbable">
+                  <ul class="nav nav-pills shiny-tab-input" id="site_entity_type" data-tabsetid="R8">
+                    <li class="active">
+                      <a href="#tab-R8-1" data-toggle="tab" data-bs-toggle="tab" data-value="measured">Measured</a>
+                    </li>
+                    <li>
+                      <a href="#tab-R8-2" data-toggle="tab" data-bs-toggle="tab" data-value="modelled">Modelled</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" data-tabsetid="R8">
+                    <div class="tab-pane active html-fill-item html-fill-container bslib-gap-spacing" data-value="measured" id="tab-R8-1" style="--bslib-navbar-margin:0;">
+                      <div class="rail-list">
+                        <div id="measured_rail" class="shiny-html-output"></div>
+                      </div>
+                    </div>
+                    <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="modelled" id="tab-R8-2" style="--bslib-navbar-margin:0;">
+                      <div class="rail-list">
+                        <div id="modelled_rail" class="shiny-html-output"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <button class="collapse-toggle" type="button" title="Toggle sidebar" aria-expanded="true" aria-controls="bslib-sidebar-R7"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="bi bi-chevron-left collapse-icon" style="height:;width:;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img" ><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path></svg></button>
+          <script data-bslib-sidebar-init>bslib.Sidebar.initCollapsibleAll()</script>
+        </div>
+      </div>
+      <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="Hydro Explorer" id="tab-R2-3" style="--bslib-navbar-margin:0;">
+        <div class="ctx">
+          <div class="ctx-map">
+            <div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item" id="ctx_map_de" style="width:100%;height:94px;"></div>
+          </div>
+          <div class="ctx-id">
+            <div class="ctx-label">Subbasin</div>
+            <div class="ctx-id-value">
+              <span id="ctx_id_de" class="shiny-text-output"></span>
+            </div>
+            <div class="ctx-id-sub">
+              <span id="ctx_sub_de" class="shiny-text-output"></span>
+            </div>
+          </div>
+          <div class="ctx-stats">
+            <div class="ctx-stat">
+              <div class="ctx-label">Upstream area</div>
+              <div class="ctx-value">
+                <span id="ctx_area_de" class="shiny-text-output"></span>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Annual precip.</div>
+              <div class="ctx-value">
+                <span id="ctx_precip_de" class="shiny-text-output"></span>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Mean annual temp.</div>
+              <div class="ctx-value">
+                <span id="ctx_temp_de" class="shiny-text-output"></span>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Observations</div>
+              <div class="ctx-value">
+                <span id="ctx_obs_de" class="shiny-html-output"></span>
+              </div>
+            </div>
+          </div>
+          <div class="ctx-act">
+            <a id="ctx_de_go" href="#" class="action-button action-link"><span class="action-label">Change location</span></a>
+          </div>
+        </div>
+        <div class="bslib-sidebar-layout bslib-mb-spacing html-fill-item" data-bslib-sidebar-init="TRUE" data-collapsible-desktop="true" data-collapsible-mobile="true" data-open-desktop="open" data-open-mobile="closed" data-require-bs-caller="layout_sidebar()" data-require-bs-version="5" style="--_sidebar-width:248px;">
+          <div class="main bslib-gap-spacing html-fill-container">
+            <bslib-layout-columns class="bslib-grid grid bslib-mb-spacing html-fill-item" col-widths-sm="6,6,12" data-require-bs-caller="layout_columns()" data-require-bs-version="5" style="gap:0px; --bslib-grid--row-heights:1fr 1fr;">
+              <div class="bslib-grid-item bslib-gap-spacing html-fill-container">
+                <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init data-full-screen="false" data-require-bs-caller="card()" data-require-bs-version="5" id="bslib-card-R9">
+                  <div class="card-header">
+                    Climate
+                    <bslib-popover placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="popover()">
+                      <template>
+                        <div style="display:contents;">
+                          <div class="form-group shiny-input-container">
+                            <label class="control-label" id="climate_variable-label" for="climate_variable">Climate variable</label>
+                            <div>
+                              <select id="climate_variable" class="shiny-input-select"><option value="Precipitation" selected>Precipitation</option>
+<option value="Temperature">Temperature</option></select>
+                              <script type="application/json" data-for="climate_variable" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                            </div>
+                          </div>
+                          <div class="form-group shiny-input-container">
+                            <label class="control-label" id="climate_resolution-label" for="climate_resolution">Resolution</label>
+                            <div>
+                              <select id="climate_resolution" class="shiny-input-select"><option value="monthly">Monthly</option>
+<option value="annual">Yearly</option></select>
+                              <script type="application/json" data-for="climate_resolution" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                            </div>
+                          </div>
+                        </div>
+                        <div style="display:contents;">Climate panel</div>
+                      </template>
+                      <a class="action-button action-link pill" href="#" id="climate_opts"><span class="action-label"><span id="climate_pill" class="shiny-text-output"></span></span></a>
+                    </bslib-popover>
+                  </div>
+                  <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                    <div class="shiny-plot-output html-fill-item" id="climate_plot" style="width:100%;height:100%;"></div>
+                  </div>
+                  <bslib-tooltip placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+                    <template>Expand</template>
+                    <button aria-expanded="false" aria-label="Expand card" class="bslib-full-screen-enter badge rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height:1em;width:1em;fill:currentColor;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"/></svg></button>
+                  </bslib-tooltip>
+                  <script data-bslib-card-init>bslib.Card.initializeAllCards();</script>
+                </div>
+              </div>
+              <div class="bslib-grid-item bslib-gap-spacing html-fill-container">
+                <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init data-full-screen="false" data-require-bs-caller="card()" data-require-bs-version="5" id="bslib-card-R10">
+                  <div class="card-header">
+                    Simulated vs observed
+                    <bslib-popover placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="popover()">
+                      <template>
+                        <div style="display:contents;">
+                          <div class="form-group shiny-input-container">
+                            <label class="control-label" id="observation_variable-label" for="observation_variable">Observed variable</label>
+                            <div>
+                              <select class="shiny-input-select form-control" id="observation_variable"></select>
+                              <script type="application/json" data-for="observation_variable">{"plugins":["selectize-plugin-a11y"]}</script>
+                            </div>
+                          </div>
+                        </div>
+                        <div style="display:contents;">Observation panel</div>
+                      </template>
+                      <a class="action-button action-link pill" href="#" id="observation_opts"><span class="action-label"><span id="observation_pill" class="shiny-text-output"></span></span></a>
+                    </bslib-popover>
+                  </div>
+                  <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                    <div class="shiny-plot-output html-fill-item" id="observation_plot" style="width:100%;height:100%;"></div>
+                  </div>
+                  <bslib-tooltip placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+                    <template>Expand</template>
+                    <button aria-expanded="false" aria-label="Expand card" class="bslib-full-screen-enter badge rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height:1em;width:1em;fill:currentColor;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"/></svg></button>
+                  </bslib-tooltip>
+                  <script data-bslib-card-init>bslib.Card.initializeAllCards();</script>
+                </div>
+              </div>
+              <div class="bslib-grid-item bslib-gap-spacing html-fill-container">
+                <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init data-full-screen="false" data-require-bs-caller="card()" data-require-bs-version="5" id="bslib-card-R11">
+                  <div class="card-header bslib-navs-card-title">
+                    <span>
+                      <span id="projection_title" class="shiny-text-output"></span>
+                    </span>
+                    <ul class="nav nav-pills shiny-tab-input card-header-pills" id="projection_tabs" data-tabsetid="R12">
+                      <li class="active">
+                        <a href="#tab-R12-1" data-toggle="tab" data-bs-toggle="tab" data-value="Yearly">Yearly</a>
+                      </li>
+                      <li>
+                        <a href="#tab-R12-2" data-toggle="tab" data-bs-toggle="tab" data-value="Monthly">Monthly</a>
+                      </li>
+                      <li>
+                        <a href="#tab-R12-3" data-toggle="tab" data-bs-toggle="tab" data-value="Distributions">Distributions</a>
+                      </li>
+                      <li>
+                        <a href="#tab-R12-4" data-toggle="tab" data-bs-toggle="tab" data-value="Daily">Daily</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tab-content html-fill-item html-fill-container" data-tabsetid="R12">
+                    <div class="tab-pane active html-fill-item html-fill-container bslib-gap-spacing html-fill-item html-fill-container bslib-gap-spacing" data-value="Yearly" id="tab-R12-1" style="gap:0;padding:0; --bslib-navbar-margin:0;">
+                      <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                        <div class="shiny-plot-output html-fill-item" id="projections_yearly_plot" style="width:100%;height:100%;"></div>
+                      </div>
+                    </div>
+                    <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing html-fill-item html-fill-container bslib-gap-spacing" data-value="Monthly" id="tab-R12-2" style="gap:0;padding:0; --bslib-navbar-margin:0;">
+                      <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                        <div class="shiny-plot-output html-fill-item" id="projections_monthly_plot" style="width:100%;height:100%;"></div>
+                      </div>
+                    </div>
+                    <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing html-fill-item html-fill-container bslib-gap-spacing" data-value="Distributions" id="tab-R12-3" style="gap:0;padding:0; --bslib-navbar-margin:0;">
+                      <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                        <div class="shiny-plot-output html-fill-item" id="projections_cfc_plot" style="width:100%;height:100%;"></div>
+                      </div>
+                    </div>
+                    <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing html-fill-item html-fill-container bslib-gap-spacing" data-value="Daily" id="tab-R12-4" style="gap:0;padding:0; --bslib-navbar-margin:0;">
+                      <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                        <div class="shiny-plot-output html-fill-item" id="projections_daily_plot" style="width:100%;height:100%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <bslib-tooltip placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+                    <template>Expand</template>
+                    <button aria-expanded="false" aria-label="Expand card" class="bslib-full-screen-enter badge rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height:1em;width:1em;fill:currentColor;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"/></svg></button>
+                  </bslib-tooltip>
+                  <script data-bslib-card-init>bslib.Card.initializeAllCards();</script>
+                </div>
+              </div>
+            </bslib-layout-columns>
+          </div>
+          <aside id="bslib-sidebar-R13" class="sidebar" hidden>
+            <div class="sidebar-content bslib-gap-spacing">
+              <header class="sidebar-title">Controls · all panels</header>
+              <div class="rail-toggle">
+                <div class="tabbable">
+                  <ul class="nav nav-pills shiny-tab-input" id="de_entity_type" data-tabsetid="R14">
+                    <li class="active">
+                      <a href="#tab-R14-1" data-toggle="tab" data-bs-toggle="tab" data-value="subbasin">Subbasin</a>
+                    </li>
+                    <li>
+                      <a href="#tab-R14-2" data-toggle="tab" data-bs-toggle="tab" data-value="waterbody">Water body</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" data-tabsetid="R14">
+                    <div class="tab-pane active html-fill-item html-fill-container bslib-gap-spacing" data-value="subbasin" id="tab-R14-1" style="--bslib-navbar-margin:0;"></div>
+                    <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="waterbody" id="tab-R14-2" style="--bslib-navbar-margin:0;">
+                      <div class="form-group shiny-input-container">
+                        <label class="control-label shiny-label-null" for="de_waterbody_search" id="de_waterbody_search-label"></label>
+                        <div>
+                          <select class="shiny-input-select form-control" id="de_waterbody_search"></select>
+                          <script type="application/json" data-for="de_waterbody_search">{"placeholder":"Search water body","maxOptions":50,"plugins":["selectize-plugin-a11y"]}</script>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-panel-conditional" data-display-if="input.de_entity_type == &#39;subbasin&#39;" data-ns-prefix="">
+                <div class="form-group shiny-input-container">
+                  <label class="control-label" id="scenario-label" for="scenario">Scenarios</label>
+                  <div>
+                    <select class="shiny-input-select form-control" id="scenario" multiple="multiple"><option value="Baseline" selected>Baseline</option>
+<option value="SSP126">SSP126</option>
+<option value="SSP245">SSP245</option>
+<option value="SSP585" selected>SSP585</option></select>
+                    <script type="application/json" data-for="scenario">{"plugins":["selectize-plugin-a11y"]}</script>
+                  </div>
+                </div>
+                <div class="form-group shiny-input-container">
+                  <label class="control-label" id="prediction_period-label" for="prediction_period">Projection periods</label>
+                  <div>
+                    <select id="prediction_period" class="shiny-input-select" multiple="multiple"><option value="2020-2029">2020-2029</option>
+<option value="2030-2039">2030-2039</option>
+<option value="2040-2049">2040-2049</option>
+<option value="2050-2059">2050-2059</option>
+<option value="2060-2069">2060-2069</option>
+<option value="2070-2079" selected>2070-2079</option></select>
+                    <script type="application/json" data-for="prediction_period">{"plugins":["selectize-plugin-a11y"]}</script>
+                  </div>
+                </div>
+                <div class="shiny-panel-conditional" data-display-if="input.prediction_variable &amp;&amp; input.prediction_variable.indexOf(&#39;chem_&#39;) !== 0" data-ns-prefix="">
+                  <div id="plot_type" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline" role="radiogroup" aria-labelledby="plot_type-label">
+                    <label class="control-label" id="plot_type-label" for="plot_type">Values shown as</label>
+                    <div class="shiny-options-group">
+                      <label class="radio-inline">
+                        <input type="radio" name="plot_type" value="Absolute" checked="checked"/>
+                        <span>Absolute</span>
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="plot_type" value="Relative"/>
+                        <span>Relative</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="prediction_percentile-label" for="prediction_percentile">Conditions</label>
+                <div>
+                  <select id="prediction_percentile" class="shiny-input-select" multiple="multiple"><option value="p01">Extreme low (1st percentile)</option>
+<option value="p05">Very low (5th percentile)</option>
+<option value="p10" selected>Low (10th percentile)</option>
+<option value="p25">Lower quartile (25th percentile)</option>
+<option value="p50" selected>Average (50th percentile)</option>
+<option value="p75">Upper quartile (75th percentile)</option>
+<option value="p90" selected>High (90th percentile)</option>
+<option value="p95">Very high (95th percentile)</option>
+<option value="p99">Extreme high (99th percentile)</option></select>
+                  <script type="application/json" data-for="prediction_percentile">{"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <hr class="hr"/>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="prediction_variable-label" for="prediction_variable">Model variable</label>
+                <div>
+                  <select id="prediction_variable" class="shiny-input-select"><optgroup label="Hydrology &amp; climate">
+<option value="discharge" selected>Discharge</option>
+<option value="water_temperature">Water Temperature</option>
+<option value="SS">Susp. Sediments</option>
+<option value="IN">Inorganic Nitrogen</option>
+<option value="SP">Soluble Phosphorus</option>
+<option value="PP">Particulate Phosphorus</option>
+<option value="DOC">Dissolved Organic Carbon</option>
+</optgroup>
+<optgroup label="Chemical concentrations (ng/L)">
+<option value="chem_6PPDQ">6PPD-Q</option>
+<option value="chem_anthracene">Anthracene</option>
+<option value="chem_azithromycin">Azithromycin</option>
+<option value="chem_Azoxystrobin">Azoxystrobin</option>
+<option value="chem_benzoapyrene">Benzo[a]pyrene</option>
+<option value="chem_clarithromycin">Clarithromycin</option>
+<option value="chem_Cu">Cu</option>
+<option value="chem_cypermethrin">Cypermethrin</option>
+<option value="chem_deltamethrin">Deltamethrin</option>
+<option value="chem_diclofenac">Diclofenac</option>
+<option value="chem_doramectin">Doramectin</option>
+<option value="chem_erithromycin">Erythromycin</option>
+<option value="chem_fipronil">Fipronil</option>
+<option value="chem_fluconazole">Fluconazole</option>
+<option value="chem_flufenacet">Flufenacet</option>
+<option value="chem_fluoranthene">Fluoranthene</option>
+<option value="chem_ibuprofen">Ibuprofen</option>
+<option value="chem_imidacloprid">Imidacloprid</option>
+<option value="chem_ivermectin">Ivermectin</option>
+<option value="chem_metazachlor">Metazachlor</option>
+<option value="chem_Metformin">Metformin</option>
+<option value="chem_permethrin">Permethrin</option>
+<option value="chem_tebuconazole">Tebuconazole</option>
+<option value="chem_triallate">Triallate</option>
+<option value="chem_venlafaxine">Venlafaxine</option>
+<option value="chem_Zn">Zn</option>
+</optgroup></select>
+                  <script type="application/json" data-for="prediction_variable" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <a id="download_selection" class="btn btn-default shiny-download-link disabled" href="" target="_blank" download aria-disabled="true" tabindex="-1">
+                <i class="fas fa-download" role="presentation" aria-label="download icon"></i>
+                Download this selection
+              </a>
+            </div>
+          </aside>
+          <button class="collapse-toggle" type="button" title="Toggle sidebar" aria-expanded="true" aria-controls="bslib-sidebar-R13"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="bi bi-chevron-left collapse-icon" style="height:;width:;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img" ><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path></svg></button>
+          <script data-bslib-sidebar-init>bslib.Sidebar.initCollapsibleAll()</script>
+        </div>
+      </div>
+      <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="Chemical Explorer" id="tab-R2-4" style="--bslib-navbar-margin:0;">
+        <div class="bslib-sidebar-layout bslib-mb-spacing html-fill-item" data-bslib-sidebar-init="TRUE" data-collapsible-desktop="true" data-collapsible-mobile="true" data-open-desktop="open" data-open-mobile="closed" data-require-bs-caller="layout_sidebar()" data-require-bs-version="5" style="--_sidebar-width:260px;">
+          <div class="main bslib-gap-spacing html-fill-container">
+            <div class="html-fill-item html-fill-container" style="flex-direction: row;">
+              <div class="html-fill-item html-fill-container" style="flex: 1 1 0; min-width: 0; gap: 1rem; min-height: 0;">
+                <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init data-full-screen="false" data-require-bs-caller="card()" data-require-bs-version="5" id="bslib-card-R15">
+                  <div class="card-header">
+                    Concentration · 10th–90th percentile range
+                    <span class="panel-note">
+                      <span id="chem_d3d_threshold_note" class="shiny-text-output"></span>
+                    </span>
+                  </div>
+                  <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                    <div class="shiny-plot-output html-fill-item" data-hover-clip="TRUE" data-hover-delay="80" data-hover-delay-type="debounce" data-hover-id="chem_d3d_hover_conc" data-hover-null-outside="FALSE" id="chem_d3d_conc_plot" style="width:100%;height:100%;"></div>
+                  </div>
+                  <bslib-tooltip placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+                    <template>Expand</template>
+                    <button aria-expanded="false" aria-label="Expand card" class="bslib-full-screen-enter badge rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height:1em;width:1em;fill:currentColor;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"/></svg></button>
+                  </bslib-tooltip>
+                  <script data-bslib-card-init>bslib.Card.initializeAllCards();</script>
+                </div>
+                <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init data-full-screen="false" data-require-bs-caller="card()" data-require-bs-version="5" id="bslib-card-R16">
+                  <div class="card-header">ssPAF (potentially affected fraction of species) · 10th–90th percentile range</div>
+                  <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                    <div class="shiny-plot-output html-fill-item" data-hover-clip="TRUE" data-hover-delay="80" data-hover-delay-type="debounce" data-hover-id="chem_d3d_hover_sspaf" data-hover-null-outside="FALSE" id="chem_d3d_sspaf_plot" style="width:100%;height:100%;"></div>
+                  </div>
+                  <bslib-tooltip placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+                    <template>Expand</template>
+                    <button aria-expanded="false" aria-label="Expand card" class="bslib-full-screen-enter badge rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height:1em;width:1em;fill:currentColor;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"/></svg></button>
+                  </bslib-tooltip>
+                  <script data-bslib-card-init>bslib.Card.initializeAllCards();</script>
+                </div>
+              </div>
+              <div class="shiny-html-output html-fill-item" id="chem_d3d_src_col" style="flex: 0 0 auto; overflow-y: auto; min-height: 0;"></div>
+            </div>
+          </div>
+          <aside id="bslib-sidebar-R17" class="sidebar" hidden>
+            <div class="sidebar-content bslib-gap-spacing">
+              <header class="sidebar-title">Controls</header>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="chem_d3d_key-label" for="chem_d3d_key">Chemical</label>
+                <div>
+                  <select id="chem_d3d_key" class="shiny-input-select"><option value="6ppdq" selected>6PPDQ</option>
+<option value="anthracene">Anthracene</option>
+<option value="azithromycin">Azithromycin</option>
+<option value="azoxystrobin">Azoxystrobin</option>
+<option value="benzoapyrene">Benzoapyrene</option>
+<option value="clarithromycin">Clarithromycin</option>
+<option value="cypermethrin">Cypermethrin</option>
+<option value="deltamethrin">Deltamethrin</option>
+<option value="diclofenac">Diclofenac</option>
+<option value="erithromycin">Erithromycin</option>
+<option value="fipronil">Fipronil</option>
+<option value="flufenacet">Flufenacet</option>
+<option value="fluoranthene">Fluoranthene</option>
+<option value="imidacloprid">Imidacloprid</option>
+<option value="ivermectin">Ivermectin</option>
+<option value="metazachlor">Metazachlor</option>
+<option value="tebuconazole">Tebuconazole</option>
+<option value="triallate">Triallate</option></select>
+                  <script type="application/json" data-for="chem_d3d_key" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="chem_d3d_site-label" for="chem_d3d_site">Water body</label>
+                <div>
+                  <select class="shiny-input-select form-control" id="chem_d3d_site"></select>
+                  <script type="application/json" data-for="chem_d3d_site">{"placeholder":"Search water body","maxOptions":600,"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <hr class="hr"/>
+              <div class="rail-toggle">
+                <div class="tabbable">
+                  <ul class="nav nav-pills shiny-tab-input" id="chem_d3d_grouping" data-tabsetid="R18">
+                    <li class="active">
+                      <a href="#tab-R18-1" data-toggle="tab" data-bs-toggle="tab" data-value="daily">Daily</a>
+                    </li>
+                    <li>
+                      <a href="#tab-R18-2" data-toggle="tab" data-bs-toggle="tab" data-value="weekly">Weekly</a>
+                    </li>
+                    <li>
+                      <a href="#tab-R18-3" data-toggle="tab" data-bs-toggle="tab" data-value="monthly">Monthly</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" data-tabsetid="R18">
+                    <div class="tab-pane active html-fill-item html-fill-container bslib-gap-spacing" data-value="daily" id="tab-R18-1" style="--bslib-navbar-margin:0;"></div>
+                    <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="weekly" id="tab-R18-2" style="--bslib-navbar-margin:0;"></div>
+                    <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="monthly" id="tab-R18-3" style="--bslib-navbar-margin:0;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-panel-conditional" data-display-if="input.chem_d3d_grouping != &#39;daily&#39;" data-ns-prefix="">
+                <div id="chem_d3d_group_stat" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="chem_d3d_group_stat-label">
+                  <label class="control-label" id="chem_d3d_group_stat-label" for="chem_d3d_group_stat">Aggregate using</label>
+                  <div class="shiny-options-group">
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="chem_d3d_group_stat" value="median" checked="checked"/>
+                        <span>Median</span>
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="chem_d3d_group_stat" value="p90"/>
+                        <span>90th percentile</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <button class="collapse-toggle" type="button" title="Toggle sidebar" aria-expanded="true" aria-controls="bslib-sidebar-R17"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="bi bi-chevron-left collapse-icon" style="height:;width:;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img" ><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path></svg></button>
+          <script data-bslib-sidebar-init>bslib.Sidebar.initCollapsibleAll()</script>
+        </div>
+      </div>
+      <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="Ecological Risk" id="tab-R2-5" style="--bslib-navbar-margin:0;">
+        <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init data-full-screen="false" data-require-bs-caller="card()" data-require-bs-version="5" id="bslib-card-R19">
+          <div class="card-header">Ecological risk · site detail</div>
+          <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+            <div id="eco_risk_detail_card" class="shiny-html-output"></div>
+          </div>
+          <bslib-tooltip placement="auto" bsOptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+            <template>Expand</template>
+            <button aria-expanded="false" aria-label="Expand card" class="bslib-full-screen-enter badge rounded-pill"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height:1em;width:1em;fill:currentColor;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"/></svg></button>
+          </bslib-tooltip>
+          <script data-bslib-card-init>bslib.Card.initializeAllCards();</script>
+        </div>
+      </div>
+      <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="Spatial Datasets" id="tab-R2-6" style="--bslib-navbar-margin:0;">
+        <div class="ctx">
+          <div class="ctx-map">
+            <div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item" id="ctx_map_sp" style="width:100%;height:94px;"></div>
+          </div>
+          <div class="ctx-id">
+            <div class="ctx-label">Subbasin</div>
+            <div class="ctx-id-value">
+              <span id="ctx_id_sp" class="shiny-text-output"></span>
+            </div>
+            <div class="ctx-id-sub">
+              <span id="ctx_sub_sp" class="shiny-text-output"></span>
+            </div>
+          </div>
+          <div class="ctx-stats">
+            <div class="ctx-stat">
+              <div class="ctx-label">Value here</div>
+              <div class="ctx-value">
+                <span id="ctx_value_sp" class="shiny-text-output"></span>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Rank</div>
+              <div class="ctx-value">
+                <span id="ctx_rank_sp" class="shiny-text-output"></span>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Study-area range</div>
+              <div class="ctx-value">
+                <span id="ctx_range_sp" class="shiny-text-output"></span>
+              </div>
+            </div>
+          </div>
+          <div class="ctx-act">
+            <a id="ctx_sp_go" href="#" class="action-button action-link"><span class="action-label">Change location</span></a>
+          </div>
+        </div>
+        <div class="bslib-sidebar-layout bslib-mb-spacing html-fill-item" data-bslib-sidebar-init="TRUE" data-collapsible-desktop="true" data-collapsible-mobile="true" data-open-desktop="open" data-open-mobile="closed" data-require-bs-caller="layout_sidebar()" data-require-bs-version="5" style="--_sidebar-width:248px;">
+          <div class="main bslib-gap-spacing html-fill-container">
+            <div class="map-wrap">
+              <div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item" id="prediction_map" style="width:100%;height:100%;"></div>
+            </div>
+          </div>
+          <aside id="bslib-sidebar-R20" class="sidebar" hidden>
+            <div class="sidebar-content bslib-gap-spacing">
+              <header class="sidebar-title">Map layer</header>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="prediction_variable_spatial-label" for="prediction_variable_spatial">Model variable</label>
+                <div>
+                  <select id="prediction_variable_spatial" class="shiny-input-select"><optgroup label="Hydrology &amp; climate">
+<option value="discharge" selected>Discharge</option>
+<option value="water_temperature">Water Temperature</option>
+<option value="SS">Susp. Sediments</option>
+<option value="IN">Inorganic Nitrogen</option>
+<option value="SP">Soluble Phosphorus</option>
+<option value="PP">Particulate Phosphorus</option>
+<option value="DOC">Dissolved Organic Carbon</option>
+</optgroup>
+<optgroup label="Chemical concentrations · subbasin (daily, ng/L)">
+<option value="chem_6PPDQ">6PPD-Q</option>
+<option value="chem_anthracene">Anthracene</option>
+<option value="chem_azithromycin">Azithromycin</option>
+<option value="chem_Azoxystrobin">Azoxystrobin</option>
+<option value="chem_benzoapyrene">Benzo[a]pyrene</option>
+<option value="chem_clarithromycin">Clarithromycin</option>
+<option value="chem_Cu">Cu</option>
+<option value="chem_cypermethrin">Cypermethrin</option>
+<option value="chem_deltamethrin">Deltamethrin</option>
+<option value="chem_diclofenac">Diclofenac</option>
+<option value="chem_doramectin">Doramectin</option>
+<option value="chem_erithromycin">Erythromycin</option>
+<option value="chem_fipronil">Fipronil</option>
+<option value="chem_fluconazole">Fluconazole</option>
+<option value="chem_flufenacet">Flufenacet</option>
+<option value="chem_fluoranthene">Fluoranthene</option>
+<option value="chem_ibuprofen">Ibuprofen</option>
+<option value="chem_imidacloprid">Imidacloprid</option>
+<option value="chem_ivermectin">Ivermectin</option>
+<option value="chem_metazachlor">Metazachlor</option>
+<option value="chem_Metformin">Metformin</option>
+<option value="chem_permethrin">Permethrin</option>
+<option value="chem_tebuconazole">Tebuconazole</option>
+<option value="chem_triallate">Triallate</option>
+<option value="chem_venlafaxine">Venlafaxine</option>
+<option value="chem_Zn">Zn</option>
+</optgroup>
+<optgroup label="Chemical concentrations · water body (monthly, ng/L)">
+<option value="wbchem_6PPDQ">6PPD-Q</option>
+<option value="wbchem_anthracene">Anthracene</option>
+<option value="wbchem_azithromycin">Azithromycin</option>
+<option value="wbchem_Azoxystrobin">Azoxystrobin</option>
+<option value="wbchem_benzoapyrene">Benzo[a]pyrene</option>
+<option value="wbchem_clarithromycin">Clarithromycin</option>
+<option value="wbchem_Cu">Cu</option>
+<option value="wbchem_cypermethrin">Cypermethrin</option>
+<option value="wbchem_deltamethrin">Deltamethrin</option>
+<option value="wbchem_diclofenac">Diclofenac</option>
+<option value="wbchem_doramectin">Doramectin</option>
+<option value="wbchem_erithromycin">Erythromycin</option>
+<option value="wbchem_fipronil">Fipronil</option>
+<option value="wbchem_fluconazole">Fluconazole</option>
+<option value="wbchem_flufenacet">Flufenacet</option>
+<option value="wbchem_fluoranthene">Fluoranthene</option>
+<option value="wbchem_ibuprofen">Ibuprofen</option>
+<option value="wbchem_imidacloprid">Imidacloprid</option>
+<option value="wbchem_ivermectin">Ivermectin</option>
+<option value="wbchem_metazachlor">Metazachlor</option>
+<option value="wbchem_Metformin">Metformin</option>
+<option value="wbchem_permethrin">Permethrin</option>
+<option value="wbchem_tebuconazole">Tebuconazole</option>
+<option value="wbchem_triallate">Triallate</option>
+<option value="wbchem_venlafaxine">Venlafaxine</option>
+<option value="wbchem_Zn">Zn</option>
+</optgroup></select>
+                  <script type="application/json" data-for="prediction_variable_spatial" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <div class="shiny-panel-conditional" data-display-if="input.prediction_variable_spatial &amp;&amp; input.prediction_variable_spatial.indexOf(&#39;chem_&#39;) !== 0 &amp;&amp; input.prediction_variable_spatial.indexOf(&#39;wbchem_&#39;) !== 0" data-ns-prefix="">
+                <div class="form-group shiny-input-container">
+                  <label class="control-label" id="prediction_period_spatial-label" for="prediction_period_spatial">Period</label>
+                  <div>
+                    <select id="prediction_period_spatial" class="shiny-input-select"><option value="Baseline|2000-2019">Baseline (2000-2019)</option>
+<option value="SSP126|2020-2029">SSP126 (2020-2029)</option>
+<option value="SSP245|2020-2029">SSP245 (2020-2029)</option>
+<option value="SSP585|2020-2029">SSP585 (2020-2029)</option>
+<option value="SSP126|2030-2039">SSP126 (2030-2039)</option>
+<option value="SSP245|2030-2039">SSP245 (2030-2039)</option>
+<option value="SSP585|2030-2039">SSP585 (2030-2039)</option>
+<option value="SSP126|2040-2049">SSP126 (2040-2049)</option>
+<option value="SSP245|2040-2049">SSP245 (2040-2049)</option>
+<option value="SSP585|2040-2049">SSP585 (2040-2049)</option>
+<option value="SSP126|2050-2059">SSP126 (2050-2059)</option>
+<option value="SSP245|2050-2059">SSP245 (2050-2059)</option>
+<option value="SSP585|2050-2059">SSP585 (2050-2059)</option>
+<option value="SSP126|2060-2069">SSP126 (2060-2069)</option>
+<option value="SSP245|2060-2069">SSP245 (2060-2069)</option>
+<option value="SSP585|2060-2069">SSP585 (2060-2069)</option>
+<option value="SSP126|2070-2079">SSP126 (2070-2079)</option>
+<option value="SSP245|2070-2079">SSP245 (2070-2079)</option>
+<option value="SSP585|2070-2079" selected>SSP585 (2070-2079)</option></select>
+                    <script type="application/json" data-for="prediction_period_spatial" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                  </div>
+                </div>
+                <div class="form-group shiny-input-container">
+                  <label class="control-label" id="prediction_percentile_spatial-label" for="prediction_percentile_spatial">Conditions</label>
+                  <div>
+                    <select id="prediction_percentile_spatial" class="shiny-input-select"><option value="1">Low extreme (P1)</option>
+<option value="50">Median (P50)</option>
+<option value="99" selected>High extreme (P99)</option></select>
+                    <script type="application/json" data-for="prediction_percentile_spatial" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-panel-conditional" data-display-if="input.prediction_variable_spatial &amp;&amp; (input.prediction_variable_spatial.indexOf(&#39;chem_&#39;) === 0 || input.prediction_variable_spatial.indexOf(&#39;wbchem_&#39;) === 0)" data-ns-prefix="">
+                <div class="form-group shiny-input-container">
+                  <label class="control-label" id="prediction_stat_spatial_chem-label" for="prediction_stat_spatial_chem">Statistic</label>
+                  <div>
+                    <select id="prediction_stat_spatial_chem" class="shiny-input-select"><option value="mean">Mean</option>
+<option value="median" selected>Median</option>
+<option value="90th">90th percentile</option></select>
+                    <script type="application/json" data-for="prediction_stat_spatial_chem" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="sp_basemap-label" for="sp_basemap">Basemap</label>
+                <div>
+                  <select id="sp_basemap" class="shiny-input-select"><option value="osm" selected>Streets (OSM)</option>
+<option value="esri_satellite">Satellite (Esri)</option>
+<option value="esri_gray">Light gray (Esri)</option></select>
+                  <script type="application/json" data-for="sp_basemap" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <button class="collapse-toggle" type="button" title="Toggle sidebar" aria-expanded="true" aria-controls="bslib-sidebar-R20"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="bi bi-chevron-left collapse-icon" style="height:;width:;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img" ><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path></svg></button>
+          <script data-bslib-sidebar-init>bslib.Sidebar.initCollapsibleAll()</script>
+        </div>
+      </div>
+      <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="Download" id="tab-R2-7" style="--bslib-navbar-margin:0;">
+        <div class="ctx">
+          <div class="ctx-map">
+            <div class="leaflet html-widget html-widget-output shiny-report-size html-fill-item" id="ctx_map_dl" style="width:100%;height:94px;"></div>
+          </div>
+          <div class="ctx-id">
+            <div class="ctx-label">Subbasin</div>
+            <div class="ctx-id-value">
+              <span id="ctx_id_dl" class="shiny-text-output"></span>
+            </div>
+            <div class="ctx-id-sub">
+              <span id="ctx_sub_dl" class="shiny-text-output"></span>
+            </div>
+          </div>
+          <div class="ctx-stats">
+            <div class="ctx-stat">
+              <div class="ctx-label">Rows in selection</div>
+              <div class="ctx-value">
+                <span id="ctx_rows_dl" class="shiny-text-output"></span>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Scenarios × periods</div>
+              <div class="ctx-value">
+                <span id="ctx_combos_dl" class="shiny-text-output"></span>
+              </div>
+            </div>
+            <div class="ctx-stat">
+              <div class="ctx-label">Estimated size</div>
+              <div class="ctx-value">
+                <span id="ctx_size_dl" class="shiny-text-output"></span>
+              </div>
+            </div>
+          </div>
+          <div class="ctx-act">
+            <a id="ctx_dl_go" href="#" class="action-button action-link"><span class="action-label">Change location</span></a>
+          </div>
+        </div>
+        <div class="bslib-sidebar-layout bslib-mb-spacing html-fill-item" data-bslib-sidebar-init="TRUE" data-collapsible-desktop="true" data-collapsible-mobile="true" data-open-desktop="open" data-open-mobile="closed" data-require-bs-caller="layout_sidebar()" data-require-bs-version="5" style="--_sidebar-width:280px;">
+          <div class="main bslib-gap-spacing html-fill-container">
+            <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container" data-bslib-card-init data-require-bs-caller="card()" data-require-bs-version="5">
+              <div class="card-header">
+                Preview
+                <span class="panel-note">
+                  <span id="dl_preview_note" class="shiny-text-output"></span>
+                </span>
+              </div>
+              <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+                <div class="datatables html-widget html-widget-output shiny-report-size html-fill-item" id="data_table" style="width:100%;height:auto;"></div>
+              </div>
+              <script data-bslib-card-init>bslib.Card.initializeAllCards();</script>
+            </div>
+          </div>
+          <aside id="bslib-sidebar-R21" class="sidebar" hidden>
+            <div class="sidebar-content bslib-gap-spacing">
+              <header class="sidebar-title">Build a download</header>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="dl_variable-label" for="dl_variable">Variable</label>
+                <div>
+                  <select id="dl_variable" class="shiny-input-select"><optgroup label="Hydrology &amp; climate">
+<option value="precip" selected>Precipitation</option>
+<option value="temp">Temperature</option>
+<option value="discharge">Discharge</option>
+<option value="water_temperature">Water Temperature</option>
+<option value="SS">Susp. Sediments</option>
+<option value="IN">Inorganic Nitrogen</option>
+<option value="SP">Soluble Phosphorus</option>
+<option value="PP">Particulate Phosphorus</option>
+<option value="DOC">Dissolved Organic Carbon</option>
+</optgroup>
+<optgroup label="Chemical concentrations · subbasin (daily, ng/L)">
+<option value="chem_6PPDQ">6PPD-Q</option>
+<option value="chem_anthracene">Anthracene</option>
+<option value="chem_azithromycin">Azithromycin</option>
+<option value="chem_Azoxystrobin">Azoxystrobin</option>
+<option value="chem_benzoapyrene">Benzo[a]pyrene</option>
+<option value="chem_clarithromycin">Clarithromycin</option>
+<option value="chem_Cu">Cu</option>
+<option value="chem_cypermethrin">Cypermethrin</option>
+<option value="chem_deltamethrin">Deltamethrin</option>
+<option value="chem_diclofenac">Diclofenac</option>
+<option value="chem_doramectin">Doramectin</option>
+<option value="chem_erithromycin">Erythromycin</option>
+<option value="chem_fipronil">Fipronil</option>
+<option value="chem_fluconazole">Fluconazole</option>
+<option value="chem_flufenacet">Flufenacet</option>
+<option value="chem_fluoranthene">Fluoranthene</option>
+<option value="chem_ibuprofen">Ibuprofen</option>
+<option value="chem_imidacloprid">Imidacloprid</option>
+<option value="chem_ivermectin">Ivermectin</option>
+<option value="chem_metazachlor">Metazachlor</option>
+<option value="chem_Metformin">Metformin</option>
+<option value="chem_permethrin">Permethrin</option>
+<option value="chem_tebuconazole">Tebuconazole</option>
+<option value="chem_triallate">Triallate</option>
+<option value="chem_venlafaxine">Venlafaxine</option>
+<option value="chem_Zn">Zn</option>
+</optgroup>
+<optgroup label="Chemical concentrations · water body (monthly, ng/L)">
+<option value="wbchem_6PPDQ">6PPD-Q</option>
+<option value="wbchem_anthracene">Anthracene</option>
+<option value="wbchem_azithromycin">Azithromycin</option>
+<option value="wbchem_Azoxystrobin">Azoxystrobin</option>
+<option value="wbchem_benzoapyrene">Benzo[a]pyrene</option>
+<option value="wbchem_clarithromycin">Clarithromycin</option>
+<option value="wbchem_Cu">Cu</option>
+<option value="wbchem_cypermethrin">Cypermethrin</option>
+<option value="wbchem_deltamethrin">Deltamethrin</option>
+<option value="wbchem_diclofenac">Diclofenac</option>
+<option value="wbchem_doramectin">Doramectin</option>
+<option value="wbchem_erithromycin">Erythromycin</option>
+<option value="wbchem_fipronil">Fipronil</option>
+<option value="wbchem_fluconazole">Fluconazole</option>
+<option value="wbchem_flufenacet">Flufenacet</option>
+<option value="wbchem_fluoranthene">Fluoranthene</option>
+<option value="wbchem_ibuprofen">Ibuprofen</option>
+<option value="wbchem_imidacloprid">Imidacloprid</option>
+<option value="wbchem_ivermectin">Ivermectin</option>
+<option value="wbchem_metazachlor">Metazachlor</option>
+<option value="wbchem_Metformin">Metformin</option>
+<option value="wbchem_permethrin">Permethrin</option>
+<option value="wbchem_tebuconazole">Tebuconazole</option>
+<option value="wbchem_triallate">Triallate</option>
+<option value="wbchem_venlafaxine">Venlafaxine</option>
+<option value="wbchem_Zn">Zn</option>
+</optgroup></select>
+                  <script type="application/json" data-for="dl_variable" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <div class="shiny-panel-conditional" data-display-if="input.dl_variable &amp;&amp; (input.dl_variable.indexOf(&#39;chem_&#39;) === 0 || input.dl_variable.indexOf(&#39;wbchem_&#39;) === 0)" data-ns-prefix="">
+                <div class="form-group shiny-input-container">
+                  <label class="control-label" id="dl_chem_stat-label" for="dl_chem_stat">Statistic</label>
+                  <div>
+                    <select id="dl_chem_stat" class="shiny-input-select"><option value="mean">Mean</option>
+<option value="median" selected>Median</option>
+<option value="90th">90th percentile</option></select>
+                    <script type="application/json" data-for="dl_chem_stat" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="dl_data_type-label" for="dl_data_type">Data type</label>
+                <div>
+                  <select id="dl_data_type" class="shiny-input-select"><option value="tabular" selected>Tabular</option>
+<option value="spatial">Spatial</option></select>
+                  <script type="application/json" data-for="dl_data_type" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="dl_spatial_layer-label" for="dl_spatial_layer">Spatial layer</label>
+                <div>
+                  <select id="dl_spatial_layer" class="shiny-input-select"><option value="subbasins" selected>Subbasins</option>
+<option value="catchment">Catchment</option>
+<option value="waterbodies">Water bodies</option></select>
+                  <script type="application/json" data-for="dl_spatial_layer" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <div class="form-group shiny-input-container">
+                <label class="control-label" id="dl_format-label" for="dl_format">Format</label>
+                <div>
+                  <select id="dl_format" class="shiny-input-select"><option value="csv" selected>CSV</option>
+<option value="xlsx">XLSX</option>
+<option value="parquet">Parquet</option></select>
+                  <script type="application/json" data-for="dl_format" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                </div>
+              </div>
+              <span class="help-block">Monthly p50 values for the current selection (full daily values for chemical concentrations; water body variables are always exported for all 336 modelled water bodies, since this page has no water body picker). Units travel with the file.</span>
+              <a id="download_data" class="btn btn-default shiny-download-link disabled" href="" target="_blank" download aria-disabled="true" tabindex="-1">
+                <i class="fas fa-download" role="presentation" aria-label="download icon"></i>
+                Download data
+              </a>
+            </div>
+          </aside>
+          <button class="collapse-toggle" type="button" title="Toggle sidebar" aria-expanded="true" aria-controls="bslib-sidebar-R21"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="bi bi-chevron-left collapse-icon" style="height:;width:;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img" ><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path></svg></button>
+          <script data-bslib-sidebar-init>bslib.Sidebar.initCollapsibleAll()</script>
+        </div>
+      </div>
+      <div class="tab-pane html-fill-item html-fill-container bslib-gap-spacing" data-value="Help" id="tab-R2-8" style="--bslib-navbar-margin:0;">
+        <div style="padding: 24px; max-width: 760px;"><div style="max-width: 900px; margin: 20px auto; padding: 0 20px;">
+
+  <h2>Using the ECOMIX Explorer</h2>
+  <p>
+    This dashboard lets you explore catchment data, real measured records,
+    modelled water body concentrations, and model projections for the
+    ECOMIX study area. Use the tabs at the top of the page to move between
+    the different tools described below.
+  </p>
+
+  <h3>Map</h3>
+  <p>
+    Click a subbasin on the map to select it. Details for the selected
+    subbasin appear in the panel on the right, which can be dragged to a
+    different position on the screen if it is in your way. The Map also has
+    toggleable layers for measured chemical-monitoring sites and modelled
+    water bodies - click a marker or water body polygon's popup link to open
+    its detailed record on the <strong>Site Details</strong> tab.
+  </p>
+
+  <h3>Site Details</h3>
+  <p>
+    Displays a chemical occurrence/concentration grid and a time series plot
+    for a selected measured site or modelled water body. Use the "Measured" /
+    "Modelled" toggle at the top of the sidebar list to switch between the
+    two, and the sidebar dropdown to choose which chemical parameter is
+    shown in the time series.
+  </p>
+
+  <h3>Chemicals in the measured and modelled datasets</h3>
+  <p>
+    The measured sites test for 48 organic micropollutants, 2 metals and
+    5 physicochemical parameters; the modelled water bodies cover the same
+    26 organic micropollutants/metals as monthly modelled concentrations.
+    Brief notes on what each substance is, where it typically comes from,
+    and its likely ecological impact are given below, grouped by chemical
+    type.
+  </p>
+
+  <table style="width: 100%; border-collapse: collapse; font-size: 0.92em; margin-bottom: 24px;">
+    <thead>
+      <tr style="text-align: left; border-bottom: 2px solid #ccc;">
+        <th style="padding: 6px 8px; white-space: nowrap;">Chemical(s)</th>
+        <th style="padding: 6px 8px;">What it is &amp; where it comes from</th>
+        <th style="padding: 6px 8px;">Likely ecological impact</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Human antibiotics</strong><br>Azithromycin, Clarithromycin, Erythromycin</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Macrolide antibiotics prescribed for bacterial infections; excreted largely unmetabolised and discharged via wastewater treatment works (WwTWs).</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Persistent in water; can suppress sensitive algae and bacteria and promote antimicrobial resistance (AMR) in aquatic microbial communities.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Veterinary antibiotics</strong><br>Lincomycin, Tylosin</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Antibiotics used mainly in livestock farming (e.g. pigs, poultry); reach rivers via manure spreading, farm runoff and slurry storage.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Same AMR and microbial-community concerns as human antibiotics; often co-occur with nutrient runoff from the same sources.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Anticonvulsants / antidepressants</strong><br>Carbamazepine, Lamotrigine, Desvenlafaxine</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Prescription drugs for epilepsy (carbamazepine, lamotrigine) and depression (desvenlafaxine, the active metabolite of venlafaxine); poorly removed by conventional sewage treatment. Carbamazepine is so persistent it is widely used as a chemical marker of treated wastewater.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Chronic low-level exposure has been linked to altered fish behaviour, including feeding activity and predator avoidance.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>NSAIDs</strong><br>Diclofenac, Ibuprofen</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Common over-the-counter and prescription painkillers, excreted after use and discharged via WwTWs.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Diclofenac is well known for causing catastrophic vulture population declines in South Asia via livestock carcasses; in fish it is linked to kidney and gill damage at elevated concentrations.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Other human pharmaceuticals</strong><br>Metformin, Telmisartan, Cetirizine, Fluconazole, Miconazole</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Widely used medicines for diabetes (metformin), blood pressure (telmisartan), allergies (cetirizine) and fungal infections (fluconazole, miconazole); enter rivers via treated and untreated sewage.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Generally low acute toxicity individually, but metformin and telmisartan are among the highest-concentration pharmaceuticals found in UK rivers; antifungals can affect non-target fungi and algae and contribute to antifungal resistance.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Caffeine</strong></td>
+        <td style="padding: 6px 8px; vertical-align: top;">Stimulant from tea, coffee and soft drinks; excreted by humans and discharged via WwTWs and combined sewer overflows.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Low ecotoxicity, but is a well-established chemical tracer for detecting sewage contamination in rivers.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>UV filters</strong><br>Benzophenone-3, Homosalate, Octocrylene</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Sunscreen and cosmetic ingredients, washed off skin during bathing/swimming and discharged via WwTWs.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Suspected endocrine disruptors; associated with coral bleaching in marine systems and oestrogenic effects in fish.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Preservatives / biocides</strong><br>Methylchloroisothiazolinone, Methylisothiazolinone, Octenidine Dihydrochloride</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Antimicrobial preservatives (MCI/MIT) used in cosmetics and household cleaning products, and an antiseptic (octenidine) used in medical and personal-care products; discharged via WwTWs.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Toxic to aquatic invertebrates and algae even at low concentrations; MCI/MIT are also common skin sensitisers.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Veterinary parasiticides</strong><br>Flubendazole, Fluralaner</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Flubendazole is a livestock and companion-animal dewormer; fluralaner is a flea/tick treatment for pets. Enter rivers via manure, and via WwTWs from bathing or washing treated pets.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Fluralaner is an insecticide (isoxazoline class) and is highly toxic to aquatic invertebrates such as shrimp and insect larvae.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Herbicides</strong><br>Bentazone, Metazachlor, Dimethenamid, Flufenacet, Triallate</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Weed-control products used mainly on cereal and oilseed rape crops; reach rivers via agricultural field runoff and land drainage.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Toxic to non-target aquatic plants and algae; several are mobile and persistent enough to reach groundwater and drinking-water sources.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Fungicides</strong><br>Azoxystrobin, Boscalid, Difenoconazole, Dimoxystrobin, Metconazole, Pyraclostrobin, Tebuconazole, Trifloxystrobin</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Applied to arable and horticultural crops to control fungal disease; reach rivers via agricultural runoff.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Toxic to aquatic fungi and algae, disrupting leaf-litter breakdown and nutrient cycling; several (e.g. the strobilurins azoxystrobin, pyraclostrobin, trifloxystrobin) are also highly toxic to fish and invertebrates.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Insecticides</strong><br>Fipronil, Imidacloprid, Permethrin, Tefluthrin</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Used in agriculture (seed treatments, crop sprays) and, for fipronil and imidacloprid, in veterinary flea treatments; enter rivers via field runoff and washing of treated pets.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Neonicotinoids (imidacloprid) and phenylpyrazoles (fipronil) are extremely toxic to aquatic insects even at very low (nanogram-per-litre) concentrations, and have been linked to declines in invertebrate abundance in UK rivers.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>6PPD-Q</strong></td>
+        <td style="padding: 6px 8px; vertical-align: top;">A transformation product of 6PPD, an antioxidant added to vehicle tyres; formed when tyre-wear particles react with ozone and washed off roads in surface runoff.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Acutely lethal to salmonid fish (e.g. coho salmon, trout) at very low concentrations - one of the most acutely toxic substances known for this group and a likely contributor to unexplained urban-runoff fish kills.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>PFAS</strong><br>PFOA, PFOS</td>
+        <td style="padding: 6px 8px; vertical-align: top;">"Forever chemicals" historically used in firefighting foams, waterproofing and non-stick coatings; extremely persistent and reach rivers via industrial and urban discharge and legacy contamination.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Do not break down in the environment; bioaccumulate up the food chain and are linked to liver toxicity, immune suppression and reproductive effects in wildlife.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Polycyclic aromatic hydrocarbons (PAHs)</strong><br>Anthracene, Benzo[a]pyrene, Chrysene, Fluoranthene, Methyl Anthracene, Methyl Phenanthrene, Phenanthrene, Pyrene</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Formed by incomplete combustion of fossil fuels and organic matter (vehicle exhaust, tyre and road wear, coal and wood burning); washed into rivers in urban surface runoff.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Several, including benzo[a]pyrene, are carcinogenic and mutagenic; toxic to fish and invertebrates and tend to accumulate in river sediment.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Metals</strong><br>Zinc (Zn), Copper (Cu)</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Sources include tyre and brake wear, roofing and guttering, industrial discharge, and legacy mining in the Pennine headwaters.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Essential micronutrients at trace levels but toxic to fish and invertebrates at elevated concentrations, particularly damaging to gill function.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>pH</strong></td>
+        <td style="padding: 6px 8px; vertical-align: top;">A measure of acidity/alkalinity, influenced by catchment geology, upland peat/moorland drainage and wastewater discharge.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Values outside the normal range stress aquatic life directly and can increase the toxicity of ammonia and dissolved metals.</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Dissolved organic carbon (DOC)</strong></td>
+        <td style="padding: 6px 8px; vertical-align: top;">Naturally derived from peat and soil runoff in upland catchments, supplemented by wastewater inputs.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Affects light penetration and the binding/bioavailability of metals and organic chemicals; high DOC can also increase disinfection by-product formation in drinking-water treatment.</td>
+      </tr>
+
+      <tr>
+        <td style="padding: 6px 8px; vertical-align: top;"><strong>Nutrients</strong><br>Nitrate, Ammonium, Phosphate</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Derived from agricultural fertiliser and livestock manure runoff, and from sewage effluent.</td>
+        <td style="padding: 6px 8px; vertical-align: top;">Drive eutrophication - excessive algal growth, oxygen depletion and loss of biodiversity; ammonium is also directly toxic to fish at elevated concentrations.</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <h3>Data Explorer</h3>
+  <p>
+    Select one or more scenarios in the sidebar to compare climate,
+    observed and projected data for the currently selected subcatchment.
+    The summary boxes at the top show key information about the selection,
+    and the plots below can be expanded to full screen using the icon in
+    the top-right corner of each card. The projections card has separate
+    tabs for yearly, monthly and cumulative-frequency views. Use the
+    "Subbasin" / "Water body" toggle at the top of the sidebar to switch to
+    a modelled water body's chemical concentration series instead - climate
+    and observed hydrology have no water-body equivalent, so those cards are
+    unavailable in that mode.
+  </p>
+
+  <h3>Spatial Datasets</h3>
+  <p>
+    Choose a model output variable from the sidebar to view it mapped
+    across the catchment - including, for chemical variables, either the
+    subbasin-level daily dataset or the water body-level modelled monthly
+    dataset.
+  </p>
+
+  <h3>Data Downloader</h3>
+  <p>
+    Select a variable, data type, spatial layer and file format in the
+    sidebar, then use the <strong>Download Data</strong> button to save the
+    corresponding table. The table is also previewed on this tab before
+    downloading.
+  </p>
+
+  <h3>Food Web Dynamics</h3>
+  <p>
+    Embeds the interactive food-web dynamic model. This requires the
+    associated model server to be running locally.
+  </p>
+
+  <h3>Need more help?</h3>
+  <p>
+    For questions about the data or the app that aren't answered here,
+    please contact the project team.
+  </p>
+
+</div></div>
+      </div>
+    </div>
+  </div>
+</body>
