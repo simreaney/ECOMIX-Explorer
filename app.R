@@ -536,12 +536,17 @@ pooled_percentiles <- function(df_month, probs_out) {
 
 # ---- Chemical concentration predictions (daily, by subbasin) ----
 #
-# All chemical x summary-statistic series live in a single long-format
-# parquet file (date, site_id, subbasin, chemical, stat, conc_ng_L) built by
+# All chemical x summary-statistic series live in one long-format,
+# Hive-partitioned parquet dataset - daily/chemical=<chem>/stat=<stat>/
+# part-0.parquet with columns (date, site_id, subbasin, conc_ng_L), plus
+# chemical/stat from the directory names - built by
 # scripts/build_chem_parquet.py from the original per-chemical wide CSVs
-# under data-chem/ (~76.5M rows total, ~600MB). arrow::open_dataset() reads
-# it lazily, so each lookup below pushes its chemical/stat/subbasin filters
-# down to the parquet file instead of parsing a whole CSV. Unlike the HYPE
+# under data-chem/ (~76.5M rows total, ~700MB). arrow::open_dataset() reads
+# it lazily: a chemical/stat filter only opens that one file, and since each
+# file is sorted by (subbasin, site_id, date) in small row groups that end on
+# subbasin boundaries, a subbasin filter only decodes the one row group
+# holding it. That sort order is a storage detail, not a result order - the
+# helpers below each arrange() their output explicitly. Unlike the HYPE
 # datasets above, there's no SSP scenario or future period here - just a
 # single 2018-2022 reconstructed daily record with three summary statistics
 # (mean/median/90th) taking the place of p10/p50/p90. Variable ids are
@@ -549,7 +554,10 @@ pooled_percentiles <- function(df_month, probs_out) {
 # HYPE variables without colliding with hype_variable strings used elsewhere
 # (e.g. in df_map_input).
 chem_dir <- here("data-chem/1_DAILY_BY_SITE_conc_ng_L")
-chem_dataset <- arrow::open_dataset(file.path(chem_dir, "1_DAILY_BY_SITE_conc_ng_L.parquet"))
+chem_dataset <- arrow::open_dataset(
+  file.path(chem_dir, "daily"),
+  partitioning = arrow::hive_partition(chemical = arrow::utf8(), stat = arrow::utf8())
+)
 
 # Display labels, aligned with the names already used on the measured Site
 # Details page where the same substance appears there (e.g. "6PPD-Q",
@@ -593,18 +601,22 @@ chem_coverage_shp <- subbasin_shp %>% filter(Id %in% chem_subbasin_ids)
 
 # Per-subbasin daily series (date, value) for one chemical/statistic -
 # powering the Hydro Explorer projection plots and the "download this
-# selection" / per-subbasin tabular download. Cheap enough (~0.05s) to read
+# selection" / per-subbasin tabular download. Cheap enough (~0.02s) to read
 # on demand and cache per subbasin actually visited, rather than eagerly
 # loading all 78 x 537 series at startup.
 chem_series_cache <- new.env(parent = emptyenv())
 get_chem_subbasin_series <- function(chem_key, stat_val, subbasin_id) {
   key <- paste(chem_key, stat_val, subbasin_id, sep = "||")
   if (!exists(key, envir = chem_series_cache, inherits = FALSE)) {
+    # A subbasin with several SITE_IDs has one row per site per date - ties
+    # on date are broken by site_id (the order the old single-file layout,
+    # stored by (site_id, date), happened to return them in).
     df <- chem_dataset %>%
       dplyr::filter(chemical == chem_key, stat == stat_val, subbasin == subbasin_id) %>%
-      dplyr::select(date, value = conc_ng_L) %>%
+      dplyr::select(date, site_id, value = conc_ng_L) %>%
       dplyr::collect() %>%
-      dplyr::arrange(date)
+      dplyr::arrange(date, site_id) %>%
+      dplyr::select(-site_id)
     df$year <- as.integer(format(df$date, "%Y"))
     df$month <- as.integer(format(df$date, "%m"))
     chem_series_cache[[key]] <- df
@@ -615,15 +627,18 @@ get_chem_subbasin_series <- function(chem_key, stat_val, subbasin_id) {
 # Full (all-subbasin) daily series for one chemical/statistic, long format -
 # powers the Spatial Datasets time-averaged map and the Download page's
 # "all subbasins" / catchment-level summaries. Cached per chemical/statistic
-# actually requested.
+# actually requested. Rows are ordered by (site_id, date) - one site's whole
+# series after another, the order the old single-file layout stored them in.
 chem_full_cache <- new.env(parent = emptyenv())
 get_chem_all_subbasins_daily <- function(chem_key, stat_val) {
   key <- paste(chem_key, stat_val, sep = "||")
   if (!exists(key, envir = chem_full_cache, inherits = FALSE)) {
     chem_full_cache[[key]] <- chem_dataset %>%
       dplyr::filter(chemical == chem_key, stat == stat_val) %>%
-      dplyr::select(date, subbasin, value = conc_ng_L) %>%
+      dplyr::select(date, site_id, subbasin, value = conc_ng_L) %>%
       dplyr::collect() %>%
+      dplyr::arrange(site_id, date) %>%
+      dplyr::select(-site_id) %>%
       dplyr::mutate(unit = "ng/L")
   }
   chem_full_cache[[key]]
@@ -640,13 +655,18 @@ get_chem_spatial_summary <- function(chem_key, stat_val) {
     # chemical modelling's key share the same real subbasin id, and rather
     # than averaging those together this keeps one row per SITE_ID's own
     # time-mean, matching the row-per-site-column shape the old per-file CSV
-    # reads produced.
+    # reads produced. Rows come back in site_id order (Arrow's grouped
+    # output order is arbitrary). The means are reproducible to the last bit
+    # only because scripts/build_chem_parquet.py never splits a site across
+    # row groups: Arrow sums a group in row order within a scan batch, but
+    # combines a group split over two batches in thread-finishing order.
     chem_spatial_cache[[key]] <- chem_dataset %>%
       dplyr::filter(chemical == chem_key, stat == stat_val) %>%
       dplyr::group_by(site_id, subbasin) %>%
       dplyr::summarise(value = mean(conc_ng_L, na.rm = TRUE), .groups = "drop") %>%
-      dplyr::select(subbasin, value) %>%
       dplyr::collect() %>%
+      dplyr::arrange(site_id) %>%
+      dplyr::select(subbasin, value) %>%
       as.data.frame()
   }
   chem_spatial_cache[[key]]
@@ -1012,6 +1032,10 @@ names(eco_risk_choices) <- tools::toTitleCase(eco_risk_choices)
 # of per-chemical wide CSVs as the daily dataset. Kept as clearly-prefixed
 # siblings (wb_chem_*/wbchem_*) rather than folding into the chem_* names
 # above, since those already unambiguously mean "daily, by subbasin".
+# chemical/stat are plain string columns (not dictionary-encoded) with one
+# row group per chemical x statistic, so a chemical/stat filter skips every
+# other row group on its min/max statistics, and distinct()/collect() across
+# chemicals needs no casting.
 wb_chem_dir <- here("data-chem/2_Modelling_results_by_waterbody_monthly_conc_ng_per_L")
 wb_chem_dataset <- arrow::open_dataset(
   file.path(wb_chem_dir, "2_Modelling_results_by_waterbody_monthly_conc_ng_per_L.parquet")
@@ -1023,13 +1047,6 @@ wb_chem_dataset <- arrow::open_dataset(
 # hand-maintained lookup, with a fail-fast check in case the two vocabularies
 # ever diverge by more than a casing difference.
 wb_chem_raw_labels <- wb_chem_dataset %>%
-  # Casting to string before distinct()/collect() avoids an arrow
-  # "Unifying differing dictionaries" error - the dictionary-encoded
-  # "chemical" column has a different local dictionary per source CSV, and
-  # combining a distinct scan across all of them at their native dictionary
-  # type isn't supported, even though filtering/collecting matching rows
-  # from a single chemical (as every other wb_chem_* lookup below does) is.
-  dplyr::mutate(chemical = as.character(chemical)) %>%
   dplyr::distinct(chemical) %>%
   dplyr::collect() %>%
   dplyr::pull(chemical)
@@ -1074,11 +1091,14 @@ wb_chem_grid_cache <- new.env(parent = emptyenv())
 get_wb_chem_grid <- function(wb_id, stat_val) {
   key <- paste(wb_id, stat_val, sep = "||")
   if (!exists(key, envir = wb_chem_grid_cache, inherits = FALSE)) {
+    # chemical comes back as a factor (levels in sorted order), the type the
+    # parquet's former dictionary-encoded chemical column collected to.
     wb_chem_grid_cache[[key]] <- wb_chem_dataset %>%
       dplyr::filter(waterbody_id == wb_id, stat == stat_val) %>%
       dplyr::select(date, chemical, value = conc_ng_L) %>%
       dplyr::collect() %>%
-      dplyr::mutate(chem_key = unname(wb_chem_key_map[as.character(chemical)]))
+      dplyr::mutate(chemical = factor(chemical, levels = sort(unique(chemical), method = "radix")),
+                    chem_key = unname(wb_chem_key_map[as.character(chemical)]))
   }
   wb_chem_grid_cache[[key]]
 }
