@@ -60,6 +60,19 @@ hype_subbasin_ids <- cached_lookup("hype_subbasin_ids", data_path("data/DB_Proj_
 
 hype_subbasin_shp <- subbasin_opcat_shp %>% filter(Id %in% hype_subbasin_ids)
 
+# Version of the data the Map page's base layer is drawn from - the size and
+# modification time of the files it is read from, and which subbasins it
+# draws - used as its cache key (bindCache() in the server), so the layer is
+# built once and then served to every session from Shiny's app cache.
+basemap_data_version <- rlang::hash(list(
+  lapply(c(data_path("gis-data", "app", "subbasins.gpkg"),
+           data_path("data", "subbasin_operational_catchment.csv")), function(f) {
+    info <- file.info(f, extra_cols = FALSE)
+    c(info$size, as.numeric(info$mtime))
+  }),
+  hype_subbasin_ids
+))
+
 opcat_levels <- sort(unique(na.omit(subbasin_opcat_shp$opcat_name)))
 
 # Operational catchments are coloured by river system, so the map reads as

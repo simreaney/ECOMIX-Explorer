@@ -628,6 +628,11 @@ snap_state <- function(session, step) {
 # * A renderLeaflet() re-render replaces the whole map (leaflet.js discards
 #   stashed proxy calls), so proxy calls are replayed from the start of the
 #   send_lf() during which the widget output last changed.
+# * setShapeStyle(layerIds, style) - the app's own leaflet.js method (page
+#   head in app.R) - restyles the live shapes with those string layerIds;
+#   each style entry is one value for all or one per id. A restyled batch
+#   reports a `restyle` hash, and lf_effective() gives each shape's style as
+#   it is now, however it got there.
 #
 # Each add call is one "batch". Its content is split into short hashes so a
 # diff says what changed: geom (coordinates / tile url), ids (layerId),
@@ -702,7 +707,7 @@ lf_describe_call <- function(method, args) {
   default_pane <- if (spec$cat == "tile") "tilePane" else if (method == "addMarkers") "markerPane" else "overlayPane"
   list(method = method, layer = TRUE, cat = spec$cat, n = n, ids = ids, group = group,
        pane = pane, paint_pane = if (pane == "-") default_pane else pane,
-       comp = comp, key = paste(method, paste(comp, collapse = "/")))
+       comp = comp, key = paste(method, paste(comp, collapse = "/")), opts = opts)
 }
 
 lf_new_state <- function() {
@@ -789,6 +794,24 @@ lf_apply <- function(st, d) {
       ids <- vapply(st$controls, function(cc) cc$id, character(1))
       st$controls <- st$controls[!(ids %in% as.character(unlist(a[[1]])))]
     },
+    setShapeStyle = {
+      ids <- as.character(unlist(a[[1]]))
+      style <- a[[2]]
+      for (j in seq_along(st$batches)) {
+        b <- st$batches[[j]]
+        if (b$cat != "shape" || !any(b$alive)) next
+        hit <- which(b$alive & !is.na(b$ids) & b$ids %in% ids)
+        if (length(hit) == 0) next
+        pos <- match(b$ids[hit], ids)
+        rs <- b$restyle %||% list()
+        for (k in names(style)) {
+          cur <- rs[[k]] %||% rep(NA_character_, b$n)
+          cur[hit] <- if (lf_is_array(style[[k]])) lf_chr(style[[k]])[pos] else lf_chr(style[[k]])
+          rs[[k]] <- cur
+        }
+        st$batches[[j]]$restyle <- rs
+      }
+    },
     clearControls = st$controls <- list(),
     setView = , flyTo = st$view <- paste(m, lf_num(a[[1]]), "zoom", lf_num(a[[2]])),
     fitBounds = , flyToBounds = st$view <- paste(m, lf_num(a[1:4])),
@@ -844,9 +867,46 @@ lf_state <- function(session, map_id) {
   st
 }
 
+# JSON-parsed scalars / arrays as text (NA for null), so a style value
+# compares the same whichever call set it.
+lf_chr <- function(x) {
+  if (!lf_is_array(x)) x <- list(x)
+  vapply(x, function(el) if (length(el) == 0) NA_character_ else as.character(el), character(1))
+}
+
 lf_batch_txt <- function(b) {
   paste0(b$method, " n=", sum(b$alive), if (!all(b$alive)) paste0("/", b$n, " alive#", short_hash(b$alive)),
-         " pane=", b$pane, " ", paste(names(b$comp), b$comp, sep = "=", collapse = " "))
+         " pane=", b$pane, " ", paste(names(b$comp), b$comp, sep = "=", collapse = " "),
+         if (!is.null(b$restyle)) paste0(" restyle=", short_hash(lapply(b$restyle, function(v) v[b$alive]))))
+}
+
+# Each live shape's style now: its options when added, overridden by any
+# setShapeStyle() since (one text vector per option, over the live shapes).
+lf_style_now <- function(b) {
+  keys <- sort(union(names(b$opts), names(b$restyle)))
+  vals <- lapply(keys, function(k) {
+    v <- if (is.null(b$opts[[k]])) rep(NA_character_, b$n) else rep_len(lf_chr(b$opts[[k]]), b$n)
+    r <- b$restyle[[k]]
+    if (!is.null(r)) v[!is.na(r)] <- r[!is.na(r)]
+    v[b$alive]
+  })
+  stats::setNames(vals, keys)
+}
+
+# Visible content as lf_visible(), but with each batch's current style in
+# place of the style it was added with, so a map restyled in place and one
+# drawn afresh with the same values compare equal.
+lf_effective <- function(st) {
+  live <- vapply(st$batches, function(b) any(b$alive), logical(1))
+  vis <- vapply(st$batches, function(b) is.na(b$group) || isTRUE(st$groups[[b$group]]), logical(1))
+  keep <- which(live & vis)
+  grp <- vapply(st$batches[keep], function(b) if (is.na(b$group)) "(no group)" else b$group, character(1))
+  out <- lapply(split(keep, grp), function(js) vapply(st$batches[js], function(b) {
+    paste0(b$method, " n=", sum(b$alive), " pane=", b$pane, " geom=", b$comp[["geom"]],
+           " ids=", short_hash(b$ids[b$alive]), " popup=", b$comp[["popup"]], " label=", b$comp[["label"]],
+           " style_now=", short_hash(lf_style_now(b)))
+  }, character(1)))
+  out[order(names(out))]
 }
 
 # What is visible: per group (sorted; "(no group)" for ungrouped layers) the

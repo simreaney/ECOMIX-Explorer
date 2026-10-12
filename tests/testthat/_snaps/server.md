@@ -18,7 +18,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [16]
+          "value": [10]
         },
         {
           "type": "list",
@@ -370,281 +370,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -661,61 +386,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -1116,17 +786,17 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["955bb5b6793b7081fca3ac337db57bde"]
+                  "value": ["f445efed31b1db2cd003d317a16582d0"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [4280218]
+                  "value": [4280593]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["addTiles > addPolygons"]
+                  "value": ["addTiles > createMapPane > createMapPane > createMapPane > createMapPane > createMapPane > createMapPane > createMapPane > addPolygons"]
                 }
               ]
             },
@@ -1878,12 +1548,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["87086c7ab166f205a60e0fb1465c8944"]
+                  "value": ["3299862ec96a813a5424d5a2e5bf9e21"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [3520217]
+                  "value": [3543239]
                 },
                 {
                   "type": "character",
@@ -2457,7 +2127,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [16]
+          "value": [10]
         },
         {
           "type": "list",
@@ -2809,281 +2479,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -3100,61 +2495,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -3219,287 +2559,12 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [8]
+          "value": [3]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
             {
               "type": "list",
               "attributes": {
@@ -3602,7 +2667,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["657734b013509cd0a8f9f4306c34969d"]
+                          "value": ["4df01b771c9279d026e9b57950cb818a"]
                         }
                       ]
                     }
@@ -3642,12 +2707,12 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
+                          "value": ["showGroup"]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["eco_risk"]
+                          "value": ["opcat"]
                         },
                         {
                           "type": "integer",
@@ -3657,7 +2722,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
+                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
                         }
                       ]
                     }
@@ -3690,287 +2755,12 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [9]
+          "value": [3]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
             {
               "type": "list",
               "attributes": {
@@ -4063,61 +2853,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [50]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["657734b013509cd0a8f9f4306c34969d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["waterbodies"]
                         },
                         {
@@ -4128,7 +2863,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["afa546da19a649a87838df999ff345c3"]
+                          "value": ["b17a523066e3108a35fa42285f275c72"]
                         }
                       ]
                     }
@@ -4161,29 +2896,24 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                          "value": ["method", "first_arg_length", "args_hash"]
                         }
                       },
                       "value": [
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
+                          "value": ["showGroup"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [1]
+                          "value": [2]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
+                          "value": ["ef0ae984185e050ae148b4e1ef657f73"]
                         }
                       ]
                     }
@@ -4216,287 +2946,12 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [14]
+          "value": [9]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
             {
               "type": "list",
               "attributes": {
@@ -4584,116 +3039,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [50]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["657734b013509cd0a8f9f4306c34969d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [370]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["afa546da19a649a87838df999ff345c3"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["addCircleMarkers"]
                         },
                         {
@@ -4709,7 +3054,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["046924ab888f2b210b96d87ca8513d9f"]
+                          "value": ["10641c8f62c421e61eeca0bc1700a315"]
                         }
                       ]
                     }
@@ -4764,7 +3109,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["4d348f3f8efc2d70b4aef30df478c3b0"]
+                          "value": ["d117bc6d4584bafb65ddaec53b85f19e"]
                         }
                       ]
                     }
@@ -4819,7 +3164,57 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["a34fe82a64e3813a44b840c739c1a4f7"]
+                          "value": ["9e44adaaaafe58fe459568e5336958c7"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["basemap"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["showGroup"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [5]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["75af847820a962db75f67681e55d7524"]
                         }
                       ]
                     }
@@ -4929,7 +3324,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["67e5625c4aa2d12aa193a6a27dea1282"]
+                          "value": ["ddb55108fb4f056d9e57a40a0c467d43"]
                         }
                       ]
                     }
@@ -4962,14 +3357,14 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
-                          "value": ["method", "option_group", "first_arg_length", "args_hash"]
+                          "value": ["method", "strings", "first_arg_length", "args_hash"]
                         }
                       },
                       "value": [
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addLegend"]
+                          "value": ["showGroup"]
                         },
                         {
                           "type": "character",
@@ -4979,12 +3374,62 @@
                         {
                           "type": "integer",
                           "attributes": {},
+                          "value": [1]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["basemap"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["addLegend"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
                           "value": [12]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["7b136145855d5a8170f3329dd41cfe96"]
+                          "value": ["51697991ade97444a37523fe224fa1d3"]
                         }
                       ]
                     }
@@ -5017,287 +3462,12 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [14]
+          "value": [2]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
             {
               "type": "list",
               "attributes": {
@@ -5378,414 +3548,24 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                          "value": ["method", "first_arg_length", "args_hash"]
                         }
                       },
                       "value": [
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
+                          "value": ["showGroup"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [50]
+                          "value": [5]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["657734b013509cd0a8f9f4306c34969d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [370]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["afa546da19a649a87838df999ff345c3"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addCircleMarkers"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [19]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["046924ab888f2b210b96d87ca8513d9f"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addCircleMarkers"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [155]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4d348f3f8efc2d70b4aef30df478c3b0"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [507]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["a34fe82a64e3813a44b840c739c1a4f7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addCircleMarkers"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [537]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["67e5625c4aa2d12aa193a6a27dea1282"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "option_group", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addLegend"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [12]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7b136145855d5a8170f3329dd41cfe96"]
+                          "value": ["75af847820a962db75f67681e55d7524"]
                         }
                       ]
                     }
@@ -5818,287 +3598,12 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [7]
+          "value": [4]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
             {
               "type": "list",
               "attributes": {
@@ -6179,6 +3684,56 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
+                          "value": ["method", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["hideGroup"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [5]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["75af847820a962db75f67681e55d7524"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["basemap"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
                           "value": ["method", "strings", "first_arg_length", "args_hash"]
                         }
                       },
@@ -6186,7 +3741,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
+                          "value": ["hideGroup"]
                         },
                         {
                           "type": "character",
@@ -6202,6 +3757,61 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["basemap"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["removeControl"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["eco_risk_legend"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [1]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["11ff8b49e6b195b96dd1ac6b0e090ddb"]
                         }
                       ]
                     }
@@ -6234,287 +3844,12 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [8]
+          "value": [3]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
             {
               "type": "list",
               "attributes": {
@@ -6602,7 +3937,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addCircleMarkers"]
+                          "value": ["showGroup"]
                         },
                         {
                           "type": "character",
@@ -6612,12 +3947,12 @@
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [19]
+                          "value": [1]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["046924ab888f2b210b96d87ca8513d9f"]
+                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
                         }
                       ]
                     }
@@ -6650,29 +3985,24 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                          "value": ["method", "first_arg_length", "args_hash"]
                         }
                       },
                       "value": [
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
+                          "value": ["hideGroup"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [1]
+                          "value": [4]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
+                          "value": ["62a67880ba91abcbcc4b36bb914fcbb1"]
                         }
                       ]
                     }
@@ -6705,287 +4035,12 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [9]
+          "value": [3]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
             {
               "type": "list",
               "attributes": {
@@ -7066,29 +4121,24 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                          "value": ["method", "first_arg_length", "args_hash"]
                         }
                       },
                       "value": [
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addCircleMarkers"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
+                          "value": ["showGroup"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [155]
+                          "value": [2]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["4d348f3f8efc2d70b4aef30df478c3b0"]
+                          "value": ["cf3c1c20052f18066408b99e0ff982b3"]
                         }
                       ]
                     }
@@ -7121,84 +4171,24 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                          "value": ["method", "first_arg_length", "args_hash"]
                         }
                       },
                       "value": [
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
+                          "value": ["hideGroup"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [507]
+                          "value": [3]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["a34fe82a64e3813a44b840c739c1a4f7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
+                          "value": ["da074f642ed2b39d6658bd2d278c561a"]
                         }
                       ]
                     }
@@ -7231,287 +4221,12 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [9]
+          "value": [4]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
             {
               "type": "list",
               "attributes": {
@@ -7592,6 +4307,56 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
+                          "value": ["method", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["hideGroup"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [5]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["75af847820a962db75f67681e55d7524"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["basemap"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
                           "value": ["method", "strings", "first_arg_length", "args_hash"]
                         }
                       },
@@ -7599,7 +4364,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
+                          "value": ["showGroup"]
                         },
                         {
                           "type": "character",
@@ -7647,62 +4412,7 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addCircleMarkers"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [537]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["67e5625c4aa2d12aa193a6a27dea1282"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "option_group", "first_arg_length", "args_hash"]
+                          "value": ["method", "first_arg_length", "args_hash"]
                         }
                       },
                       "value": [
@@ -7712,11 +4422,6 @@
                           "value": ["addLegend"]
                         },
                         {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
                           "type": "integer",
                           "attributes": {},
                           "value": [12]
@@ -7724,7 +4429,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["7b136145855d5a8170f3329dd41cfe96"]
+                          "value": ["51697991ade97444a37523fe224fa1d3"]
                         }
                       ]
                     }
@@ -7753,92 +4458,6 @@
           "type": "character",
           "attributes": {},
           "value": ["eco_risk_chemical -> imidacloprid (no risk file)"]
-        },
-        {
-          "type": "integer",
-          "attributes": {},
-          "value": [1]
-        },
-        {
-          "type": "list",
-          "attributes": {},
-          "value": [
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-
----
-
-    {
-      "type": "list",
-      "attributes": {
-        "names": {
-          "type": "character",
-          "attributes": {},
-          "value": ["step", "n_messages", "messages"]
-        }
-      },
-      "value": [
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["eco_risk_chemical -> fipronil"]
         },
         {
           "type": "integer",
@@ -7936,7 +4555,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addCircleMarkers"]
+                          "value": ["showGroup"]
                         },
                         {
                           "type": "character",
@@ -7946,12 +4565,12 @@
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [537]
+                          "value": [1]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["67e5625c4aa2d12aa193a6a27dea1282"]
+                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -7984,29 +4603,29 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
-                          "value": ["method", "option_group", "first_arg_length", "args_hash"]
+                          "value": ["method", "strings", "first_arg_length", "args_hash"]
                         }
                       },
                       "value": [
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addLegend"]
+                          "value": ["removeControl"]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["eco_risk"]
+                          "value": ["eco_risk_legend"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [12]
+                          "value": [1]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["7b136145855d5a8170f3329dd41cfe96"]
+                          "value": ["11ff8b49e6b195b96dd1ac6b0e090ddb"]
                         }
                       ]
                     }
@@ -8034,12 +4653,12 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["eco_risk off, then chemical changed"]
+          "value": ["eco_risk_chemical -> fipronil"]
         },
         {
           "type": "integer",
           "attributes": {},
-          "value": [8]
+          "value": [4]
         },
         {
           "type": "list",
@@ -8082,7 +4701,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["opcat"]
+                          "value": ["eco_risk"]
                         },
                         {
                           "type": "integer",
@@ -8092,7 +4711,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
+                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -8132,22 +4751,22 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
+                          "value": ["addCircleMarkers"]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["waterbodies"]
+                          "value": ["eco_risk"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [1]
+                          "value": [537]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
+                          "value": ["ddb55108fb4f056d9e57a40a0c467d43"]
                         }
                       ]
                     }
@@ -8187,12 +4806,12 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
+                          "value": ["showGroup"]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["measured_sites"]
+                          "value": ["eco_risk"]
                         },
                         {
                           "type": "integer",
@@ -8202,7 +4821,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
+                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -8235,91 +4854,62 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                          "value": ["method", "first_arg_length", "args_hash"]
                         }
                       },
                       "value": [
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
+                          "value": ["addLegend"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [1]
+                          "value": [12]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
+                          "value": ["51697991ade97444a37523fe224fa1d3"]
                         }
                       ]
                     }
                   ]
                 }
               ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
+            }
+          ]
+        }
+      ]
+    }
+
+---
+
+    {
+      "type": "list",
+      "attributes": {
+        "names": {
+          "type": "character",
+          "attributes": {},
+          "value": ["step", "n_messages", "messages"]
+        }
+      },
+      "value": [
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["eco_risk off, then chemical changed"]
+        },
+        {
+          "type": "integer",
+          "attributes": {},
+          "value": [4]
+        },
+        {
+          "type": "list",
+          "attributes": {},
+          "value": [
             {
               "type": "list",
               "attributes": {
@@ -8400,6 +4990,56 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
+                          "value": ["method", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["hideGroup"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [5]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["75af847820a962db75f67681e55d7524"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["basemap"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
                           "value": ["method", "strings", "first_arg_length", "args_hash"]
                         }
                       },
@@ -8407,7 +5047,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
+                          "value": ["hideGroup"]
                         },
                         {
                           "type": "character",
@@ -8462,12 +5102,12 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
+                          "value": ["removeControl"]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["eco_risk"]
+                          "value": ["eco_risk_legend"]
                         },
                         {
                           "type": "integer",
@@ -8477,7 +5117,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
+                          "value": ["11ff8b49e6b195b96dd1ac6b0e090ddb"]
                         }
                       ]
                     }
@@ -9246,7 +5886,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [16]
+          "value": [10]
         },
         {
           "type": "list",
@@ -9598,281 +6238,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -9889,61 +6254,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -10008,7 +6318,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [13]
+          "value": [4]
         },
         {
           "type": "list",
@@ -10202,457 +6512,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["d721d31f3e661ec938590eb6cc2af765"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
+                          "value": ["0b6c8788f1ca1dfdc314b2940139c105"]
                         }
                       ]
                     }
@@ -11255,7 +7115,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [14]
+          "value": [5]
         },
         {
           "type": "list",
@@ -11476,457 +7336,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["e9c50e3b2ada74104a89f06f83166814"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["800d2179ac19d9ed90042984c3d5a096"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.42146 -1.46982 54.43275 -1.45637"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["730bc72f3e0fc21979808df193d5f920"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["800d2179ac19d9ed90042984c3d5a096"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.42146 -1.46982 54.43275 -1.45637"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["730bc72f3e0fc21979808df193d5f920"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["800d2179ac19d9ed90042984c3d5a096"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.42146 -1.46982 54.43275 -1.45637"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["730bc72f3e0fc21979808df193d5f920"]
+                          "value": ["948709c2ba3a3bd1bf21bc33423f4e6b"]
                         }
                       ]
                     }
@@ -12191,7 +7601,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [13]
+          "value": [4]
         },
         {
           "type": "list",
@@ -12385,457 +7795,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["1ec51d4e274072c93d8ea345335b4783"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["d0e34a30d154416ef426b5612e4f4b07"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.31296 -2.24541 54.32755 -2.22751"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4a32c70e96ae15b99fa932a276f5f823"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["d0e34a30d154416ef426b5612e4f4b07"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.31296 -2.24541 54.32755 -2.22751"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4a32c70e96ae15b99fa932a276f5f823"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["d0e34a30d154416ef426b5612e4f4b07"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.31296 -2.24541 54.32755 -2.22751"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4a32c70e96ae15b99fa932a276f5f823"]
+                          "value": ["527fd5c42f1ad71564e1f7c6276f76e9"]
                         }
                       ]
                     }
@@ -12967,116 +7927,24 @@
         "names": {
           "type": "character",
           "attributes": {},
-          "value": ["step", "n_messages", "messages", "warnings"]
+          "value": ["step", "n_messages", "messages"]
         }
       },
       "value": [
         {
           "type": "character",
           "attributes": {},
-          "value": ["BUG shape click: waterbody GB104027057290"]
+          "value": ["shape click: waterbody GB104027057290 (ignored)"]
         },
         {
           "type": "integer",
           "attributes": {},
-          "value": [2]
+          "value": [0]
         },
         {
           "type": "list",
           "attributes": {},
-          "value": [
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["dataobj", "data"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["data_table"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {
-                    "names": {
-                      "type": "character",
-                      "attributes": {},
-                      "value": ["dim", "names", "hash", "row_order", "head"]
-                    }
-                  },
-                  "value": [
-                    {
-                      "type": "character",
-                      "attributes": {},
-                      "value": ["1 x 1"]
-                    },
-                    {
-                      "type": "character",
-                      "attributes": {},
-                      "value": ["Message"]
-                    },
-                    {
-                      "type": "character",
-                      "attributes": {},
-                      "value": ["82325e25d01e01125ec0830ea4e19fb6"]
-                    },
-                    {
-                      "type": "character",
-                      "attributes": {},
-                      "value": ["canonicalised"]
-                    },
-                    {
-                      "type": "character",
-                      "attributes": {},
-                      "value": ["No downloader data available for this subbasin/variable."]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["input", "fields", "n_options", "options_hash"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["observation_variable"]
-                },
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["options"]
-                },
-                {
-                  "type": "integer",
-                  "attributes": {},
-                  "value": [1]
-                },
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["d9098c2fad2892609c356e1072ce2c98"]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["NAs introduced by coercion"]
+          "value": []
         }
       ]
     }
@@ -13096,7 +7964,7 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["BUG after waterbody shape click"]
+          "value": ["after waterbody shape click (selection kept)"]
         },
         {
           "type": "list",
@@ -13111,27 +7979,27 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["GB104027057290"]
+              "value": ["2592"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["No operational catchment"]
+              "value": ["Upper Ure"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["—"]
+              "value": ["48.39 km²"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["NA mm"]
+              "value": ["1581 mm"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["NA °C"]
+              "value": ["8 °C"]
             },
             {
               "type": "list",
@@ -13163,27 +8031,27 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["GB104027057290"]
+              "value": ["2592"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["No operational catchment"]
+              "value": ["Upper Ure"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["—"]
+              "value": ["48.39 km²"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["NA mm"]
+              "value": ["1581 mm"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["NA °C"]
+              "value": ["8 °C"]
             },
             {
               "type": "list",
@@ -13225,12 +8093,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["5b81fb108c67318b033c4fa8cb968306"]
+                  "value": ["e3a2aed810fe5a3a1635326fd2715389"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [10215]
+                  "value": [10224]
                 },
                 {
                   "type": "character",
@@ -13252,19 +8120,19 @@
         "names": {
           "type": "character",
           "attributes": {},
-          "value": ["step", "n_messages", "messages"]
+          "value": ["step", "n_messages", "messages", "warnings"]
         }
       },
       "value": [
         {
           "type": "character",
           "attributes": {},
-          "value": ["BUG shape click: selection polygon (id NULL)"]
+          "value": ["shape click: selection polygon, id NULL (ignored)"]
         },
         {
           "type": "integer",
           "attributes": {},
-          "value": [2]
+          "value": [4]
         },
         {
           "type": "list",
@@ -13298,17 +8166,17 @@
                     {
                       "type": "character",
                       "attributes": {},
-                      "value": ["1 x 1"]
+                      "value": ["108 x 6"]
                     },
                     {
                       "type": "character",
                       "attributes": {},
-                      "value": ["Message"]
+                      "value": ["subbasin | scenario | period | month | value | unit"]
                     },
                     {
                       "type": "character",
                       "attributes": {},
-                      "value": ["a89f8be5048d620b28260885609f4460"]
+                      "value": ["ec70c3568cda44d1a5b7e2c115529f9c"]
                     },
                     {
                       "type": "character",
@@ -13318,7 +8186,7 @@
                     {
                       "type": "character",
                       "attributes": {},
-                      "value": ["Select a subbasin on the Map tab to build a download."]
+                      "value": ["251.55 | 199.35 | 163.95 | 133 | 101.15"]
                     }
                   ]
                 }
@@ -13352,11 +8220,126 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["a484a801df67c3e415b524dd68f9a333"]
+                  "value": ["1030e44866a9c0b4525f6b5c9b2e0673"]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["basemap"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["clearGroup"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["selection"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [1]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["3647a0070aba803949e57ae8aba2e0fe"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["basemap"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["addPolygons"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["selection"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [1]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["0b6c8788f1ca1dfdc314b2940139c105"]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }
           ]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["Removed 3561 rows containing missing values or values outside the scale range (`geom_ribbon()`).", "Removed 3561 rows containing missing values or values outside the scale range (`geom_line()`)."]
         }
       ]
     }
@@ -13376,7 +8359,7 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["BUG after selection-polygon click"]
+          "value": ["after selection-polygon click (selection kept)"]
         },
         {
           "type": "list",
@@ -13391,27 +8374,27 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["No location"]
+              "value": ["3310"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["Pick a subbasin on the map"]
+              "value": ["Upper Ure"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["—"]
+              "value": ["11.14 km²"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["—"]
+              "value": ["1758 mm"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["—"]
+              "value": ["7.6 °C"]
             },
             {
               "type": "list",
@@ -13426,17 +8409,17 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["efba3eeb67627165d0411c8be7c11875"]
+                  "value": ["5289677d055d53ad943a97991e4e837f"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [70]
+                  "value": [38]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["<span style=\"font-size:13px; font-weight:400; color:#605d5d;\">—<\/span>"]
+                  "value": ["<span class=\"ctx-tag\">discharge<\/span>"]
                 }
               ]
             },
@@ -13453,12 +8436,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["5b81fb108c67318b033c4fa8cb968306"]
+                  "value": ["e3a2aed810fe5a3a1635326fd2715389"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [10215]
+                  "value": [10224]
                 },
                 {
                   "type": "character",
@@ -13492,7 +8475,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [29]
+          "value": [14]
         },
         {
           "type": "list",
@@ -13930,281 +8913,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -14221,61 +8929,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -14385,457 +9038,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["d721d31f3e661ec938590eb6cc2af765"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
+                          "value": ["0b6c8788f1ca1dfdc314b2940139c105"]
                         }
                       ]
                     }
@@ -15317,17 +9520,17 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["f051d9bc4747f8baaf6cf1a949aa30b1"]
+                  "value": ["acd2f5b6a5db761e6b6522dd1aed14c0"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [1994]
+                  "value": [3224]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["addTiles"]
+                  "value": ["addTiles > addPolygons"]
                 }
               ]
             }
@@ -18755,7 +12958,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [16]
+          "value": [7]
         },
         {
           "type": "list",
@@ -18991,457 +13194,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["e9c50e3b2ada74104a89f06f83166814"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["800d2179ac19d9ed90042984c3d5a096"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.42146 -1.46982 54.43275 -1.45637"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["730bc72f3e0fc21979808df193d5f920"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["800d2179ac19d9ed90042984c3d5a096"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.42146 -1.46982 54.43275 -1.45637"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["730bc72f3e0fc21979808df193d5f920"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["800d2179ac19d9ed90042984c3d5a096"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.42146 -1.46982 54.43275 -1.45637"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["730bc72f3e0fc21979808df193d5f920"]
+                          "value": ["948709c2ba3a3bd1bf21bc33423f4e6b"]
                         }
                       ]
                     }
@@ -20013,7 +13766,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [13]
+          "value": [4]
         },
         {
           "type": "list",
@@ -20207,457 +13960,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["ecf5836cfdd4c1df57315bdcea4c8ec4"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["88e2b0d1d902233b84e4e4229e0ecdec"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.39314 -2.2322 54.41181 -2.21612"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["1ff684a8faa0c253bf775298cd560831"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["88e2b0d1d902233b84e4e4229e0ecdec"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.39314 -2.2322 54.41181 -2.21612"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["1ff684a8faa0c253bf775298cd560831"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["88e2b0d1d902233b84e4e4229e0ecdec"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.39314 -2.2322 54.41181 -2.21612"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["1ff684a8faa0c253bf775298cd560831"]
+                          "value": ["d524dcb9c597d9f0e7a5f4a7fbfb1b4d"]
                         }
                       ]
                     }
@@ -21337,7 +14640,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [29]
+          "value": [14]
         },
         {
           "type": "list",
@@ -21775,281 +15078,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -22066,61 +15094,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -22230,457 +15203,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["d721d31f3e661ec938590eb6cc2af765"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
+                          "value": ["0b6c8788f1ca1dfdc314b2940139c105"]
                         }
                       ]
                     }
@@ -24506,7 +17029,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [15]
+          "value": [6]
         },
         {
           "type": "list",
@@ -24742,457 +17265,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["1ec51d4e274072c93d8ea345335b4783"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["d0e34a30d154416ef426b5612e4f4b07"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.31296 -2.24541 54.32755 -2.22751"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4a32c70e96ae15b99fa932a276f5f823"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["d0e34a30d154416ef426b5612e4f4b07"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.31296 -2.24541 54.32755 -2.22751"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4a32c70e96ae15b99fa932a276f5f823"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["d0e34a30d154416ef426b5612e4f4b07"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.31296 -2.24541 54.32755 -2.22751"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4a32c70e96ae15b99fa932a276f5f823"]
+                          "value": ["527fd5c42f1ad71564e1f7c6276f76e9"]
                         }
                       ]
                     }
@@ -26172,7 +18245,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [15]
+          "value": [6]
         },
         {
           "type": "list",
@@ -26408,457 +18481,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["9a463b0315cfa5a5743778f9efe9dbeb"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["f245b65d02a023bbcc9e6121f88ddc56"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.4785 -1.83399 54.48776 -1.80479"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["6817e41e3e9229696c9002e48546356e"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["f245b65d02a023bbcc9e6121f88ddc56"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.4785 -1.83399 54.48776 -1.80479"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["6817e41e3e9229696c9002e48546356e"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["f245b65d02a023bbcc9e6121f88ddc56"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.4785 -1.83399 54.48776 -1.80479"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["6817e41e3e9229696c9002e48546356e"]
+                          "value": ["1de93a0ffa705d80ae7b73d943a7e997"]
                         }
                       ]
                     }
@@ -26918,7 +18541,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [32]
+          "value": [17]
         },
         {
           "type": "list",
@@ -27430,281 +19053,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -27721,61 +19069,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -27885,457 +19178,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["d721d31f3e661ec938590eb6cc2af765"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
+                          "value": ["0b6c8788f1ca1dfdc314b2940139c105"]
                         }
                       ]
                     }
@@ -30516,7 +21359,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [26]
+          "value": [16]
         },
         {
           "type": "list",
@@ -31070,281 +21913,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -31361,256 +21929,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearMarkers"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["setView"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["53.874169 -1.8817937 10"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [2]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b1dcbee529a64870fc1d9bc04c06977e"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addCircleMarkers"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["ff31588655c4dae6cf99c76b0e6c7a16"]
                         }
                       ]
                     }
@@ -32544,7 +22862,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [8]
+          "value": [4]
         },
         {
           "type": "list",
@@ -32695,201 +23013,6 @@
                   "type": "character",
                   "attributes": {},
                   "value": ["26bf7947955d781fdd8a68dca512525d"]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearMarkers"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["setView"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["53.676002 -1.4912459 10"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [2]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["5b8b638512715726e76fc966d0a6e90e"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addCircleMarkers"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["11a30aaf99837d6a012ffd240b5a216c"]
-                        }
-                      ]
-                    }
-                  ]
                 }
               ]
             }
@@ -33385,7 +23508,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [26]
+          "value": [16]
         },
         {
           "type": "list",
@@ -33939,281 +24062,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -34230,256 +24078,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearMarkers"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["0ab5543a87af0089213273ebcb912c9e"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["53.14144 -1.35678 53.26237 -1.27939"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["0cb71b4d17c9c4636920300b33cf6f8c"]
                         }
                       ]
                     }
@@ -35460,7 +25058,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [8]
+          "value": [4]
         },
         {
           "type": "list",
@@ -35611,201 +25209,6 @@
                   "type": "character",
                   "attributes": {},
                   "value": ["8fbc4c464422cf577ae67ef7fd5ad887"]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearMarkers"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["28df9b44258ea8b4837aed5f9b0ad893"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.22429 -2.2196 54.3124 -2.07214"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["aaa340e0db8eaad3552158f02226a4a1"]
-                        }
-                      ]
-                    }
-                  ]
                 }
               ]
             }
@@ -36636,7 +26039,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [18]
+          "value": [12]
         },
         {
           "type": "list",
@@ -37064,281 +26467,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -37355,61 +26483,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -40308,7 +29381,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [15]
+          "value": [6]
         },
         {
           "type": "list",
@@ -40578,457 +29651,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["2cb4263ea7684a974ce7d96373eb2fbe"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["245bb3305f53920b7103b2bcf36c0e1a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.26437 -2.16369 54.2821 -2.12978"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4aec1ac197ff6a4dd4341adb046bd8da"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["245bb3305f53920b7103b2bcf36c0e1a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.26437 -2.16369 54.2821 -2.12978"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4aec1ac197ff6a4dd4341adb046bd8da"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["245bb3305f53920b7103b2bcf36c0e1a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.26437 -2.16369 54.2821 -2.12978"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4aec1ac197ff6a4dd4341adb046bd8da"]
+                          "value": ["a23fbc57a6c5040179f3d0acb051710f"]
                         }
                       ]
                     }
@@ -41066,7 +29689,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [12]
+          "value": [8]
         },
         {
           "type": "list",
@@ -41349,201 +29972,6 @@
                   "value": ["8fbc4c464422cf577ae67ef7fd5ad887"]
                 }
               ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearMarkers"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["914657bd5aa712a66cd7d09f08f71a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_site"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.2867 -2.36447 54.36771 -2.21793"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["f1af406d3b783d1068754b999b7b0a23"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -41667,7 +30095,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [17]
+          "value": [11]
         },
         {
           "type": "list",
@@ -42046,281 +30474,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -42337,61 +30490,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -42947,7 +31045,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [29]
+          "value": [14]
         },
         {
           "type": "list",
@@ -43385,281 +31483,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -43676,61 +31499,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -43840,457 +31608,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["d721d31f3e661ec938590eb6cc2af765"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
+                          "value": ["0b6c8788f1ca1dfdc314b2940139c105"]
                         }
                       ]
                     }
@@ -44509,12 +31827,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["87086c7ab166f205a60e0fb1465c8944"]
+                  "value": ["3299862ec96a813a5424d5a2e5bf9e21"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [3520217]
+                  "value": [3543239]
                 },
                 {
                   "type": "character",
@@ -44717,12 +32035,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["69f511268940f757020c6fed94929481"]
+                  "value": ["3299862ec96a813a5424d5a2e5bf9e21"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [3520235]
+                  "value": [3543239]
                 },
                 {
                   "type": "character",
@@ -44791,12 +32109,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["b99c3dfb0a203ceedc14e857fc3ed4b7"]
+                  "value": ["3299862ec96a813a5424d5a2e5bf9e21"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [3520148]
+                  "value": [3543239]
                 },
                 {
                   "type": "character",
@@ -44865,12 +32183,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["bb2347ce5bb2aa31c9a10ef7adcc6da9"]
+                  "value": ["3299862ec96a813a5424d5a2e5bf9e21"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [3520146]
+                  "value": [3543239]
                 },
                 {
                   "type": "character",
@@ -45058,12 +32376,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["b0cf13fd1759b73d98140f62dc5879ff"]
+                  "value": ["941f0e41599f47c8be15c5d51677f240"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [619838]
+                  "value": [619849]
                 },
                 {
                   "type": "character",
@@ -45132,12 +32450,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["45ba11b744c7a1a88ed02b8e7c89a9e3"]
+                  "value": ["941f0e41599f47c8be15c5d51677f240"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [619773]
+                  "value": [619849]
                 },
                 {
                   "type": "character",
@@ -45206,12 +32524,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["45ba11b744c7a1a88ed02b8e7c89a9e3"]
+                  "value": ["941f0e41599f47c8be15c5d51677f240"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [619773]
+                  "value": [619849]
                 },
                 {
                   "type": "character",
@@ -45409,12 +32727,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["3a3182c7334cf388702c67ebac00d639"]
+                  "value": ["57acadb89971bd918b7f36350f1e9018"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [1940872]
+                  "value": [1946592]
                 },
                 {
                   "type": "character",
@@ -45483,12 +32801,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["910a57c8be9d4aa62f45fd2ee1cbba08"]
+                  "value": ["57acadb89971bd918b7f36350f1e9018"]
                 },
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [1940938]
+                  "value": [1946592]
                 },
                 {
                   "type": "character",
@@ -45537,7 +32855,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [15]
+          "value": [17]
         },
         {
           "type": "list",
@@ -45731,7 +33049,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["1ec51d4e274072c93d8ea345335b4783"]
+                          "value": ["527fd5c42f1ad71564e1f7c6276f76e9"]
                         }
                       ]
                     }
@@ -45752,52 +33070,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
+                  "value": ["prediction_map"]
                 },
                 {
                   "type": "list",
@@ -45816,17 +33089,17 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addPolygons"]
+                          "value": ["setShapeStyle"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [1]
+                          "value": [3126]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["d0e34a30d154416ef426b5612e4f4b07"]
+                          "value": ["0c9f9672c584d8dad567a16cd0883d62"]
                         }
                       ]
                     }
@@ -45847,107 +33120,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.31296 -2.24541 54.32755 -2.22751"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4a32c70e96ae15b99fa932a276f5f823"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
+                  "value": ["prediction_map"]
                 },
                 {
                   "type": "list",
@@ -45966,17 +33139,17 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addPolygons"]
+                          "value": ["addLegend"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [1]
+                          "value": [12]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["d0e34a30d154416ef426b5612e4f4b07"]
+                          "value": ["5ca95497cd4b98bfd57985379b6c2abd"]
                         }
                       ]
                     }
@@ -45997,107 +33170,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.31296 -2.24541 54.32755 -2.22751"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["4a32c70e96ae15b99fa932a276f5f823"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
+                  "value": ["prediction_map"]
                 },
                 {
                   "type": "list",
@@ -46116,17 +33189,17 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["addPolygons"]
+                          "value": ["setShapeStyle"]
                         },
                         {
                           "type": "integer",
                           "attributes": {},
-                          "value": [1]
+                          "value": [3126]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["d0e34a30d154416ef426b5612e4f4b07"]
+                          "value": ["fb21c656c9637a1decbfb65c32f3880a"]
                         }
                       ]
                     }
@@ -46147,7 +33220,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["ctx_map_sp"]
+                  "value": ["prediction_map"]
                 },
                 {
                   "type": "list",
@@ -46159,19 +33232,169 @@
                         "names": {
                           "type": "character",
                           "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
+                          "value": ["method", "first_arg_length", "args_hash"]
                         }
                       },
                       "value": [
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["fitBounds"]
+                          "value": ["addLegend"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [12]
                         },
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["54.31296 -2.24541 54.32755 -2.22751"]
+                          "value": ["305b89f676aa293135842121a0056351"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["prediction_map"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["setShapeStyle"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [3126]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["7a4a3b0e6747ff26cd7540833b873db5"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["prediction_map"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["addLegend"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [12]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["966d2eb1d408f88c1b89eac9d373dff0"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["prediction_map"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["clearGroup"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["values"]
                         },
                         {
                           "type": "integer",
@@ -46181,7 +33404,212 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["4a32c70e96ae15b99fa932a276f5f823"]
+                          "value": ["cb04aa1b3c17da9a7a305053d4a3843f"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["prediction_map"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "strings", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["addPolygons"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["values"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [537]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["b3a501532393bfee8436612b80f795f1"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["prediction_map"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["addLegend"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [12]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["552963a9174f12bfee3492e5972e97dc"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["prediction_map"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["setShapeStyle"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [336]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["4cb349f64bba9e57f8d0403739227f13"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["leaflet", "calls"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["prediction_map"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["method", "first_arg_length", "args_hash"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["addLegend"]
+                        },
+                        {
+                          "type": "integer",
+                          "attributes": {},
+                          "value": [12]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["9c470688f5b66b48b7caa93c4d5f9014"]
                         }
                       ]
                     }
@@ -46408,7 +33836,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [29]
+          "value": [14]
         },
         {
           "type": "list",
@@ -46846,281 +34274,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -47137,61 +34290,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -47301,457 +34399,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["d721d31f3e661ec938590eb6cc2af765"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
+                          "value": ["0b6c8788f1ca1dfdc314b2940139c105"]
                         }
                       ]
                     }
@@ -49651,7 +36299,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [30]
+          "value": [15]
         },
         {
           "type": "list",
@@ -50126,281 +36774,6 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["opcat"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["458939a63f834f0dc524ef31bb2a9a72"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["waterbodies"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["c6d2ab8a4ac8ee734a3d75202e8d2c84"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["measured_sites"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["7ef2044d75b5951c4a42889d51c65693"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["observed_hydro"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["980b6031475435716090e6e77a51bf7a"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["chem_coverage"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fe935b30312ab6a2dafac8e9e4ed3179"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
                           "value": ["showGroup"]
                         },
                         {
@@ -50417,61 +36790,6 @@
                           "type": "character",
                           "attributes": {},
                           "value": ["273f979b79daf487e7f3511830f4bdd7"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["basemap"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "strings", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearGroup"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["eco_risk"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["71dddc3b5dd273e82ff8fab5c751ec1f"]
                         }
                       ]
                     }
@@ -50581,457 +36899,7 @@
                         {
                           "type": "character",
                           "attributes": {},
-                          "value": ["d721d31f3e661ec938590eb6cc2af765"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_de"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_dl"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["clearShapes"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["b8610210c8823cd6748cd246b51f315d"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["addPolygons"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["10cb053b6fb822e4e57c0243032511b6"]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "list",
-              "attributes": {
-                "names": {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["leaflet", "calls"]
-                }
-              },
-              "value": [
-                {
-                  "type": "character",
-                  "attributes": {},
-                  "value": ["ctx_map_sp"]
-                },
-                {
-                  "type": "list",
-                  "attributes": {},
-                  "value": [
-                    {
-                      "type": "list",
-                      "attributes": {
-                        "names": {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["method", "values", "first_arg_length", "args_hash"]
-                        }
-                      },
-                      "value": [
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["fitBounds"]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["54.28497 -2.26217 54.29062 -2.2409"]
-                        },
-                        {
-                          "type": "integer",
-                          "attributes": {},
-                          "value": [1]
-                        },
-                        {
-                          "type": "character",
-                          "attributes": {},
-                          "value": ["e32cb6b7d8a03c5a541b13aed7a298ae"]
+                          "value": ["0b6c8788f1ca1dfdc314b2940139c105"]
                         }
                       ]
                     }

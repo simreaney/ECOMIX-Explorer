@@ -76,7 +76,8 @@ get_chem_subbasin_series <- function(chem_key, stat_val, subbasin_id) {
     # on date are broken by site_id (the order the old single-file layout,
     # stored by (site_id, date), happened to return them in).
     df <- chem_dataset %>%
-      dplyr::filter(chemical == chem_key, stat == stat_val, subbasin == subbasin_id) %>%
+      dplyr::filter(chemical == chem_key, stat == stat_val) %>%
+      filter_subbasin(subbasin_id) %>%
       dplyr::select(date, site_id, value = conc_ng_L) %>%
       dplyr::collect() %>%
       dplyr::arrange(date, site_id) %>%

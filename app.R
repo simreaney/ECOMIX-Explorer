@@ -43,7 +43,30 @@ ui <- page_navbar(
   # styles.css and help.htm (Help panel) ship with the app, not the data, so
   # they are read relative to the app directory - Shiny's working directory
   # while it sources this file - rather than through data_path().
-  header = tags$head(includeCSS("styles.css")),
+  header = tags$head(
+    includeCSS("styles.css"),
+    # Restyles polygons already on a Leaflet map, found by their string
+    # layerId, instead of drawing them again - how the Spatial Datasets map
+    # takes a new slice (update_spatial_values() in R/20_map_layers.R).
+    # Registered as a leaflet.js method so leafletProxy() can call it
+    # (leaflet::invokeMethod()) in order with its other calls; `this` is the
+    # map. Each entry of `style` is a Leaflet path option, either one value
+    # for every polygon or one per id.
+    tags$script(HTML("
+      $(function() {
+        LeafletWidget.methods.setShapeStyle = function(layerIds, style) {
+          var ids = [].concat(layerIds);
+          for (var i = 0; i < ids.length; i++) {
+            var layer = this.layerManager.getLayer('shape', ids[i]);
+            if (!layer) continue;
+            var s = {};
+            for (var key in style) s[key] = Array.isArray(style[key]) ? style[key][i] : style[key];
+            layer.setStyle(s);
+          }
+        };
+      });
+    "))
+  ),
 
   # Panel 1: Map - choose a location
   nav_panel(
@@ -809,9 +832,14 @@ server <- function(input, output, session) {
     if (nrow(df_tmp) == 0 || is.na(df_tmp$opcat_name[1])) NA_character_ else df_tmp$opcat_name[1]
   })
 
-  # Track clicks
+  # A click on a hydrology subbasin selects it. Leaflet reports clicks on
+  # every polygon on the map, so the others are ignored: a water body's id is
+  # its EA code, not a subbasin, and polygons drawn without a layerId
+  # (catchment boundaries, chemical coverage) report a NULL id, which would
+  # clear the selection.
   observeEvent(input$basemap_shape_click, {
-    rv(input$basemap_shape_click$id)
+    click <- input$basemap_shape_click
+    if (identical(click$group, "Subbasins") && !is.null(click$id)) rv(click$id)
   })
 
   # Search box on the Map rail
@@ -871,10 +899,19 @@ server <- function(input, output, session) {
   # the current selection unambiguously. Only the subbasins with hydrology
   # output are drawn; the others (climate/chemical data only) stay reachable
   # through the search box and the chemical coverage layer.
+  #
+  # The widget is the same for every session and reads no reactive value, so
+  # it is built once (3126 polygons with popups: ~1.4 s of R and 4.3 MB) and
+  # then served from Shiny's app cache, shared by every session of the one R
+  # process, keyed by the version of the data it is drawn from (see
+  # R/10_data_layers.R). Everything that changes on it - overlays, selection,
+  # tiles, framing - goes through leafletProxy() below. It also creates the
+  # overlay panes (add_map_panes()).
   output$basemap <- renderLeaflet({
     leaflet(options = leafletOptions(zoomControl = TRUE)) %>%
       add_basemap_tiles("osm") %>%
       setView(lng = -1.16, lat = 53.75, zoom = 8.5) %>%
+      add_map_panes() %>%
       addPolygons(data = hype_subbasin_shp,
                   fill = TRUE,
                   fillColor = ~ifelse(is.na(opcat_name), "#e0dede", pal_opcat(opcat_name)),
@@ -891,135 +928,69 @@ server <- function(input, output, session) {
                   ),
                   layerId = ~Id,
                   group = "Subbasins")
-  })
+  }) %>%
+    bindCache(basemap_data_version, cache = "app")
 
   # Layer toggles from the rail (replacing leaflet's own layers control, so
-  # the map surface carries no floating chrome of its own).
-  # Ecological risk polygons - shared by the "Ecological risk" layer toggle
-  # and its chemical picker, since either one changing should redraw it.
-  draw_eco_risk_layer <- function() {
-    proxy <- leafletProxy("basemap") %>% clearGroup("eco_risk")
-    if ("eco_risk" %in% input$map_layers) {
-      df <- eco_risk_data[[input$eco_risk_chemical]]
-      if (!is.null(df)) {
-        chemical_label <- names(eco_risk_choices)[eco_risk_choices == input$eco_risk_chemical]
-        proxy %>% addCircleMarkers(
-          data = df,
-          lng = ~lon,
-          lat = ~lat,
-          layerId = ~site_id,
-          radius = 6,
-          color = "#ffffff",
-          weight = 1.5,
-          fillColor = ~eco_risk_pal(risk_level),
-          fillOpacity = 0.9,
-          label = ~paste0(chemical_label, " · ", risk_level, " · Site ", site_id),
-          popup = ~popup_html,
-          group = "eco_risk"
-        ) %>% addLegend(
-          "bottomleft",
-          pal = eco_risk_pal,
-          values = df$risk_level,
-          title = "Ecological risk",
-          group = "eco_risk"
-        )
-      }
-    }
-  }
+  # the map surface carries no floating chrome of its own). Each overlay is
+  # added to the map the first time it is switched on, into its own pane,
+  # and from then on only shown or hidden: clearing and redrawing every
+  # overlay that was on cost ~1.3 s and up to 4 MB per click. Which overlays
+  # this session's map already holds:
+  map_overlays_added <- reactiveVal(character())
 
   observeEvent(input$map_layers, {
+    layers <- input$map_layers
     proxy <- leafletProxy("basemap")
-    proxy %>% clearGroup("opcat") %>% clearGroup("waterbodies") %>%
-      clearGroup("measured_sites") %>% clearGroup("observed_hydro") %>% clearGroup("chem_coverage")
-
-    if ("subbasins" %in% input$map_layers) {
+    if ("subbasins" %in% layers) {
       proxy %>% showGroup("Subbasins")
     } else {
       proxy %>% hideGroup("Subbasins")
     }
-
-    if ("opcat" %in% input$map_layers) {
-      proxy %>% addPolygons(
-        data = opcat_shp, fill = FALSE, color = ec$ink,
-        weight = 2.5, opacity = 0.9, label = ~opcat_name, group = "opcat"
-      )
+    for (layer in setdiff(intersect(names(map_overlays), layers), map_overlays_added())) {
+      map_overlays[[layer]](proxy)
+      map_overlays_added(c(map_overlays_added(), layer))
     }
-    if ("waterbodies" %in% input$map_layers) {
-      proxy %>% addPolygons(
-        data = waterbody_map_shp,
-        fill = TRUE,
-        fillColor = ~ifelse(!has_model_data, ec$rule_light,
-                            ifelse(is.na(opcat_name), "#e0dede", pal_opcat(opcat_name))),
-        fillOpacity = ~ifelse(has_model_data, 0.45, 0.2),
-        color = ec$ink,
-        weight = 0.75,
-        opacity = 0.5,
-        layerId = ~water_body,
-        label = ~paste0(water_bod0, ifelse(is.na(opcat_name), "", paste0(" · ", opcat_name)),
-                        ifelse(has_model_data, "", " (no modelled data)")),
-        popup = ~ifelse(
-          has_model_data,
-          paste0(
-            "<strong>", water_bod0, "</strong>",
-            ifelse(is.na(opcat_name), "", paste0("<br>", opcat_name)),
-            "<br><a href='#' onclick=\"Shiny.setInputValue('open_waterbody_details', '",
-            water_body,
-            "', {priority: 'event'}); return false;\">Open in Site Details \u2192</a>"
-          ),
-          paste0("<strong>", water_bod0, "</strong><br><em>No modelled chemical data available</em>")
-        ),
-        group = "waterbodies"
-      )
-    }
-    if ("measured_sites" %in% input$map_layers) {
-      proxy %>% addCircleMarkers(
-        data = df_measured_sites, lng = ~Longitude, lat = ~Latitude,
-        layerId = ~Site_id,
-        radius = 5, color = "#ffffff", weight = 1.5, fillColor = ec$ink,
-        fillOpacity = 0.95, label = ~Site_full_name,
-        popup = ~paste0(
-          "<strong>", Site_full_name, "</strong>",
-          "<br><a href='#' onclick=\"Shiny.setInputValue('open_site_details', '",
-          Site_id,
-          "', {priority: 'event'}); return false;\">Open in Site Details \u2192</a>"
-        ),
-        group = "measured_sites"
-      )
-    }
-    if ("observed_hydro" %in% input$map_layers) {
-      proxy %>% addCircleMarkers(
-        data = observed_hydro_points, lng = ~lon, lat = ~lat,
-        layerId = ~Id,
-        radius = 5, color = ec$ink, weight = 1.5, fillColor = "#0f6659",
-        fillOpacity = 0.9,
-        popup = ~paste0(
-          "<strong>Subbasin id: </strong>", Id,
-          "<br><strong>Observed variables: </strong>", variables,
-          "<br><a href='#' onclick=\"Shiny.setInputValue('open_data_explorer', '",
-          Id,
-          "', {priority: 'event'}); return false;\">Open in Hydro Explorer \u2192</a>"
-        ),
-        group = "observed_hydro"
-      )
-    }
-    if ("chem_coverage" %in% input$map_layers) {
-      proxy %>% addPolygons(
-        data = chem_coverage_shp, fill = TRUE, fillColor = "#2f6690", fillOpacity = 0.22,
-        color = "#2f6690", weight = 1.5, opacity = 0.85,
-        label = ~paste0("Subbasin ", Id, " · chemical data available"),
-        # Most of these aren't hydrology subbasins, so aren't on the base
-        # layer - this link is how they get selected from the map.
-        popup = ~paste0(
-          "<strong>Subbasin id: </strong>", Id,
-          "<br><a href='#' onclick=\"Shiny.setInputValue('open_data_explorer', '",
-          Id,
-          "', {priority: 'event'}); return false;\">Open in Hydro Explorer →</a>"
-        ),
-        group = "chem_coverage"
-      )
-    }
+    shown <- intersect(map_overlays_added(), layers)
+    hidden <- setdiff(map_overlays_added(), layers)
+    if (length(shown) > 0) proxy %>% showGroup(shown)
+    if (length(hidden) > 0) proxy %>% hideGroup(hidden)
     draw_eco_risk_layer()
   }, ignoreNULL = FALSE)
+
+  # Ecological risk layer - shared by its layer toggle and its chemical
+  # picker, since either one changing can change it. Its markers are drawn
+  # again only when the chemical differs from the one last drawn on this
+  # session's map, and its legend is on the map exactly while the layer is
+  # (some chemicals have no risk file: no markers, no legend).
+  eco_risk_drawn <- reactiveVal(list(on = FALSE, chemical = NULL))
+
+  draw_eco_risk_layer <- function() {
+    on <- "eco_risk" %in% input$map_layers
+    chemical <- input$eco_risk_chemical
+    drawn <- eco_risk_drawn()
+    if (!on && !drawn$on) return()
+    if (on && drawn$on && identical(chemical, drawn$chemical)) return()
+    proxy <- leafletProxy("basemap")
+    if (!on) {
+      proxy %>% hideGroup("eco_risk") %>% removeControl("eco_risk_legend")
+    } else {
+      df <- eco_risk_data[[chemical]]
+      if (!identical(chemical, drawn$chemical)) {
+        proxy %>% clearGroup("eco_risk")
+        if (!is.null(df)) proxy %>% add_eco_risk_layer(df, chemical)
+        drawn$chemical <- chemical
+      }
+      proxy %>% showGroup("eco_risk")
+      if (is.null(df)) {
+        proxy %>% removeControl("eco_risk_legend")
+      } else {
+        proxy %>% add_eco_risk_legend(df)
+      }
+    }
+    drawn$on <- on
+    eco_risk_drawn(drawn)
+  }
 
   # Redraw when the ecological risk chemical picker changes (the layer
   # toggle above only fires on map_layers changes, not this).
@@ -1121,14 +1092,19 @@ server <- function(input, output, session) {
     )
   })
 
-  # Highlight the selected subbasin in the accent.
+  # Highlight the selected subbasin in the accent, above every overlay. It
+  # takes no clicks, so a click on the selected subbasin reaches the subbasin
+  # beneath (a click on the highlight itself used to clear the selection).
+  # An id with no subbasin polygon leaves nothing highlighted, as on the
+  # context-strip maps.
   observeEvent(rv(), {
     shp <- subbasin_opcat_shp %>% filter(Id == rv())
+    proxy <- leafletProxy("basemap") %>% clearGroup("selection")
     if (nrow(shp) == 0) return()
-    leafletProxy("basemap") %>%
-      clearGroup("selection") %>%
+    proxy %>%
       addPolygons(data = shp, fill = TRUE, fillColor = ec$accent, fillOpacity = 0.35,
-                  color = ec$accent, weight = 3, opacity = 1, group = "selection")
+                  color = ec$accent, weight = 3, opacity = 1, group = "selection",
+                  options = pathOptions(interactive = FALSE, pane = "selection"))
   })
 
   # Operational catchment rail: click a row to frame that catchment.
@@ -1199,25 +1175,14 @@ server <- function(input, output, session) {
       tagList(lapply(vars, function(v) span(class = "ctx-tag", v)))
     })
 
+    # The locator map is rendered from the selection rather than updated
+    # through leafletProxy(): the selection is made on the Map page while
+    # these maps sit on hidden tabs, and leaflet.js drops proxy calls for a
+    # map that has not been rendered yet, so a first visit showed no
+    # highlight. Cached by the selection, in the app cache like the base map.
     if (isTRUE(mini_map)) {
-      output[[paste0("ctx_map_", suffix)]] <- renderLeaflet({
-        leaflet(options = leafletOptions(zoomControl = FALSE, attributionControl = FALSE,
-                                         dragging = FALSE, scrollWheelZoom = FALSE,
-                                         doubleClickZoom = FALSE)) %>%
-          addTiles() %>%
-          setView(lng = -1.16, lat = 53.75, zoom = 7)
-      })
-
-      observeEvent(rv(), {
-        shp <- subbasin_opcat_shp %>% filter(Id == rv())
-        if (nrow(shp) == 0) return()
-        bb <- as.numeric(sf::st_bbox(shp))
-        leafletProxy(paste0("ctx_map_", suffix)) %>%
-          clearShapes() %>%
-          addPolygons(data = shp, fillColor = ec$accent, fillOpacity = 0.9,
-                      color = ec$accent, weight = 2) %>%
-          fitBounds(bb[1], bb[2], bb[3], bb[4])
-      })
+      output[[paste0("ctx_map_", suffix)]] <- renderLeaflet(ctx_subbasin_map(rv())) %>%
+        bindCache(rv())
     }
   }
 
@@ -1330,37 +1295,19 @@ server <- function(input, output, session) {
     )
   })
 
-  # Small locator map in the Site Details context strip
-  output$ctx_map_site <- renderLeaflet({
-    leaflet(options = leafletOptions(zoomControl = FALSE, attributionControl = FALSE,
-                                     dragging = FALSE, scrollWheelZoom = FALSE)) %>%
-      addTiles() %>%
-      setView(lng = -1.16, lat = 53.75, zoom = 7)
-  })
-
-  observeEvent(list(input$site_entity_type, rv_measured_site(), rv_waterbody()), {
+  # Small locator map in the Site Details context strip: the selection on
+  # the side (Measured/Modelled) being browsed. Rendered from it and cached
+  # by it, like the subbasin locator maps (see register_ctx_subbasin()).
+  site_locator <- reactive({
     if (identical(input$site_entity_type, "modelled")) {
-      req(rv_waterbody())
-      shp <- waterbody_opcat_shp %>% filter(water_body == rv_waterbody())
-      req(nrow(shp) == 1)
-      bb <- as.numeric(sf::st_bbox(shp))
-      leafletProxy("ctx_map_site") %>%
-        clearMarkers() %>% clearShapes() %>%
-        addPolygons(data = shp, fillColor = ec$accent, fillOpacity = 0.5,
-                    color = ec$accent, weight = 2) %>%
-        fitBounds(bb[1], bb[2], bb[3], bb[4])
+      list(type = "modelled", id = rv_waterbody())
     } else {
-      req(rv_measured_site())
-      row <- df_measured_sites %>% dplyr::filter(Site_id == rv_measured_site())
-      req(nrow(row) == 1)
-      leafletProxy("ctx_map_site") %>%
-        clearMarkers() %>% clearShapes() %>%
-        setView(lng = row$Longitude, lat = row$Latitude, zoom = 10) %>%
-        addCircleMarkers(lng = row$Longitude, lat = row$Latitude,
-                         radius = 6, color = ec$accent, weight = 2,
-                         fillColor = ec$accent, fillOpacity = 1)
+      list(type = "measured", id = rv_measured_site())
     }
   })
+
+  output$ctx_map_site <- renderLeaflet(do.call(ctx_site_map, site_locator())) %>%
+    bindCache(site_locator())
 
   # Measured sites rail (replaces the full-width selectInput)
   output$measured_rail <- renderUI({
@@ -2192,36 +2139,45 @@ server <- function(input, output, session) {
     }
   })
 
+  # The map is drawn once per basis (spatial_basis_of(): HYPE subbasins,
+  # chemical subbasins or water bodies) and then only recoloured when the
+  # variable, period, conditions or statistic change within it (the
+  # observer below), instead of being rebuilt every time (~1.3-1.8 s and
+  # 3.5 MB), which also put the tiles back to OSM and reset the view. So it
+  # reads the slice, the tile choice and the view in isolate(): they are
+  # only where it starts from, also when a new basis redraws it.
+  sp_basis <- reactiveVal()
+
   output$prediction_map <- renderLeaflet({
-    sub_variable <- input$prediction_variable_spatial[1]
-    df_sub <- spatial_layer_data()
-    shp_map <- if (is_wbchem_variable(sub_variable)) {
-      left_join(waterbody_map_shp, df_sub, by = c("water_body" = "waterbody_id")) %>% filter(!is.na(hype_variable))
+    basis <- sp_basis()
+    req(basis)
+    df <- isolate(spatial_layer_data())
+    center <- isolate(input$prediction_map_center)
+    zoom <- isolate(input$prediction_map_zoom)
+    map <- leaflet() %>% add_basemap_tiles(isolate(input$sp_basemap) %||% "osm")
+    map <- if (is.null(center) || is.null(zoom)) {
+      setView(map, lng = -1.16, lat = 53.75, zoom = 8.5)
     } else {
-      left_join(subbasin_shp, df_sub, by = c("Id" = "subbasin")) %>% filter(!is.na(hype_variable))
+      setView(map, lng = center$lng, lat = center$lat, zoom = zoom)
     }
+    add_spatial_values(map, basis, df)
+  })
 
-    pal <- colorNumeric(palette = "viridis", domain = shp_map$value)
-    legend_title <- if (nrow(df_sub) == 0) {
-      "No data"
-    } else if (is_chem_variable(sub_variable) || is_wbchem_variable(sub_variable)) {
-      paste0(chem_stat_labels[df_sub$prediction_percentile[1]], " conc. (ng/L)")
-    } else {
-      paste0("P", df_sub$prediction_percentile[1], " (", pretty_unit(df_sub$unit[1]), ")")
+  # A new slice: when its basis is the one on the map, recolour the map in
+  # place (update_spatial_values()); when the basis changes, record it,
+  # which redraws the map above with this slice already, so there is
+  # nothing to update in that flush. sp_basis is a reactiveVal so that it
+  # only invalidates the map when the basis really changes. A slice that
+  # fails to load leaves the map as it is (an error in an observer would end
+  # the session); the context strip below shows the error.
+  observeEvent(tryCatch(spatial_layer_data(), error = function(e) NULL), {
+    df <- spatial_layer_data()
+    basis <- spatial_basis_of(input$prediction_variable_spatial[1])
+    if (!identical(basis, sp_basis())) {
+      sp_basis(basis)
+      return()
     }
-
-    leaflet() %>%
-      add_basemap_tiles("osm") %>%
-      setView(lng = -1.16, lat = 53.75, zoom = 8.5) %>%
-      addPolygons(
-        data = shp_map,
-        fillColor = ~pal(value),
-        fillOpacity = 0.75,
-        color = ec$ink,
-        weight = 0.6
-      ) %>%
-      addLegend("bottomleft", pal = pal, values = shp_map$value,
-                title = legend_title, opacity = 1)
+    leafletProxy("prediction_map") %>% update_spatial_values(basis, df)
   })
 
   observeEvent(input$sp_basemap, {

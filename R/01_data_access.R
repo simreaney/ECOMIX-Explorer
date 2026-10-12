@@ -27,12 +27,13 @@ collect_quiet <- function(x) {
 
 # An Arrow query narrowed to one selected subbasin (unchanged when
 # `subbasin_id` is NULL), so only that subbasin's row groups are read. The
-# selection is normally numeric, but a click on any map polygon sets it, so a
-# water body click leaves an EA code there (see test-server.R). Arrow refuses
-# to compare the integer subbasin column with a string, whereas R's `==`,
-# which the downloads used to filter with after reading every subbasin,
-# compares as text and finds no row - so text is matched the way R would
-# match it: "353" finds subbasin 353, anything else finds nothing.
+# selection is numeric, but it used to take the id of any map polygon
+# clicked, a water body's EA code included, so text is still handled here
+# rather than trusted never to arrive. Arrow refuses to compare the integer
+# subbasin column with a string, whereas R's `==`, which the downloads used
+# to filter with after reading every subbasin, compares as text and finds no
+# row - so text is matched the way R would match it: "353" finds subbasin
+# 353, anything else finds nothing.
 filter_subbasin <- function(q, subbasin_id) {
   if (is.null(subbasin_id)) return(q)
   if (is.character(subbasin_id)) {

@@ -6,9 +6,6 @@
 # selection reactiveVal (rv(), rv_measured_site(), rv_waterbody(),
 # rv_de_waterbody(), ...) and the inputs the observers update; the messages
 # that did it and the context strips are snapshotted alongside.
-#
-# Tests marked "BUG (fixed in Phase 3): expected to change" record current,
-# known-wrong behaviour on purpose.
 
 testthat::local_edition(3)
 
@@ -69,12 +66,12 @@ test_that("navigation: Map popups, context-strip links, shape clicks, Ecological
     snap_state(session, "shape click Subbasins 2592")
     snap_outputs(session, "context strips at 2592 (shape click)", ctx_all_ids)
 
-    # BUG (fixed in Phase 3): expected to change. Clicking a water body
-    # without modelled data still sets rv() to its EA code.
+    # Clicking a water body (here one without modelled data) leaves the
+    # selection on 2592.
     send(session, .events = list(basemap_shape_click = list(id = "GB112071065640", group = "waterbodies",
                                                             lat = 54.0, lng = -1.5, .nonce = 2)))
-    snap_state(session, "BUG shape click on a water body without modelled data")
-    snap_outputs(session, "BUG context strips after the water body click", ctx_all_ids)
+    snap_state(session, "shape click on a water body without modelled data (ignored)")
+    snap_outputs(session, "context strips after the water body click (selection kept)", ctx_all_ids)
 
     # Ecological Risk popup links.
     send(session, main_nav = "Map")

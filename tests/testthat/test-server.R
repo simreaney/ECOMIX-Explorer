@@ -118,23 +118,26 @@ test_that("Map: subbasin selection via search, popup link and shape clicks", {
     expect_identical(rx(session, "rv"), 2592L)
     snap_outputs(session, "after shape click 2592", c(ctx_subbasin_ids("map"), "opcat_rail"))
 
-    # BUG (fixed in Phase 3): expected to change. Any shape click sets rv(),
-    # so clicking a water body polygon makes its EA code the "subbasin".
+    # Only a click on the Subbasins layer selects: a water body's id is its
+    # EA code, not a subbasin, so the selection stays on 2592.
     send(session, .events = list(basemap_shape_click = list(id = "GB104027057290", group = "waterbodies",
                                                             lat = 54.0, lng = -1.5, .nonce = 2)))
-    snap_messages(session, "BUG shape click: waterbody GB104027057290")
-    expect_identical(rx(session, "rv"), "GB104027057290")
-    snap_outputs(session, "BUG after waterbody shape click",
+    snap_messages(session, "shape click: waterbody GB104027057290 (ignored)")
+    expect_identical(rx(session, "rv"), 2592L)
+    snap_outputs(session, "after waterbody shape click (selection kept)",
                  c(ctx_subbasin_ids("map"), ctx_subbasin_ids("sp"), "opcat_rail"))
 
-    # BUG (fixed in Phase 3): expected to change. Clicking the selection
-    # highlight polygon (no layerId) sends id NULL and clears the selection.
+    # A click with no id (a polygon drawn without a layerId) is ignored too.
+    # The selection highlight no longer takes clicks at all (it used to, and
+    # cleared the selection). The search box still holds 3310 from the start,
+    # so it is cleared first for the search to select 3310 again.
+    send(session, subbasin_search = "")
     send(session, subbasin_search = "3310")
     send(session, .events = list(basemap_shape_click = list(id = NULL, group = "selection",
                                                             lat = 54.0, lng = -1.5, .nonce = 3)))
-    snap_messages(session, "BUG shape click: selection polygon (id NULL)")
-    expect_null(rx(session, "rv"))
-    snap_outputs(session, "BUG after selection-polygon click", c(ctx_subbasin_ids("map"), "opcat_rail"))
+    snap_messages(session, "shape click: selection polygon, id NULL (ignored)")
+    expect_identical(rx(session, "rv"), 3310)
+    snap_outputs(session, "after selection-polygon click (selection kept)", c(ctx_subbasin_ids("map"), "opcat_rail"))
   })
 })
 

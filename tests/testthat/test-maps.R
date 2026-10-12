@@ -1,21 +1,16 @@
 # Characterisation tests for the leaflet maps *as the user sees them*.
 #
-# test-server.R pins the raw leafletProxy() traffic; the planned map work
-# (add-once layers in panes, bindCache() on the basemap, a restyled Spatial
-# Datasets map) changes that traffic on purpose. These tests replay the
-# traffic through the leaflet.js model in helper-server.R (lf_state()) and
-# snapshot what ends up on screen - visible layers per group with their
-# content hashes, paint order, legends, view - so a refactor can show that
-# the same things are drawn however they get there. Expected, intended
-# differences after those phases: `pane=` / `panes`, `paint_order` (z-order
-# now set by panes) and, for the restyle, `style` / `vstyle` / legend hashes;
-# `geom`, `ids`, `popup` and `label` should not move.
+# test-server.R pins the raw leafletProxy() traffic, which follows how the
+# maps are updated: the Map page's overlays are added once, into their own
+# panes, and then shown/hidden; its base layer is cached across sessions;
+# the Spatial Datasets map is drawn once per basis and then recoloured in
+# place. These tests replay the traffic through the leaflet.js model in
+# helper-server.R (lf_state()) and snapshot what ends up on screen - visible
+# layers per group with their content hashes, paint order, legends, view -
+# so they show that the same things are drawn however they get there.
 #
 # The raw messages are snapshotted too (snap_messages()) for the toggle
 # orders exercised here.
-#
-# Tests marked "BUG (fixed in Phase 3): expected to change" record current,
-# known-wrong behaviour on purpose.
 
 testthat::local_edition(3)
 
@@ -54,15 +49,14 @@ test_that("Map: visible layers after toggling them in different orders", {
     snap_lf(session, "basemap", "B: same five at once")
     expect_identical(lf_content(session, "basemap"), res$five_a)
 
-    # BUG (fixed in Phase 3): expected to change. Turning the ecological
-    # risk layer off clears its markers but not its legend; every redraw
-    # while it is on adds another legend (addLegend() without a layerId).
+    # Turning the ecological risk layer off takes its legend off too (it
+    # used to stay, and every redraw added another one).
     send_lf(session, map_layers = c("opcat", "waterbodies", "measured_sites", "subbasins"))
     snap_messages(session, "B: - eco_risk")
-    snap_lf(session, "basemap", "BUG B: - eco_risk (legends left behind)")
+    snap_lf(session, "basemap", "B: - eco_risk (legend removed)")
 
     # Subbasins off and on again: hideGroup/showGroup (the group is
-    # repainted on top of the layers added while it was hidden).
+    # repainted, but in its own pane, under every overlay).
     send_lf(session, map_layers = c("opcat", "waterbodies", "measured_sites"))
     snap_messages(session, "B: - subbasins")
     snap_lf(session, "basemap", "B: - subbasins")
@@ -70,8 +64,8 @@ test_that("Map: visible layers after toggling them in different orders", {
     snap_messages(session, "B: + subbasins again")
     snap_lf(session, "basemap", "B: + subbasins again")
 
-    # A selected subbasin's highlight, then a toggle (the layers redrawn by
-    # the toggle are painted over the highlight today).
+    # A selected subbasin's highlight, then a toggle (the highlight's pane
+    # keeps it above the layer switched on).
     send_lf(session, subbasin_search = "3310")
     snap_lf(session, "basemap", "subbasin 3310 selected")
     send_lf(session, map_layers = c("opcat", "waterbodies", "measured_sites", "subbasins", "chem_coverage"))
@@ -90,7 +84,7 @@ test_that("Map: visible layers after toggling them in different orders", {
     send_lf(session, map_layers = c("subbasins", "observed_hydro", "eco_risk"))
     send_lf(session, eco_risk_chemical = "imidacloprid")
     snap_messages(session, "eco_risk on, chemical -> imidacloprid")
-    snap_lf(session, "basemap", "BUG eco_risk on with imidacloprid (no risk file; old legends stay)")
+    snap_lf(session, "basemap", "eco_risk on with imidacloprid (no risk file: no markers, no legend)")
     send_lf(session, eco_risk_chemical = "fipronil")
     snap_lf(session, "basemap", "eco_risk back to fipronil")
 
@@ -147,13 +141,12 @@ test_that("Selection highlight, catchment rail framing and context-strip mini-ma
     send_lf(session, .events = list(open_data_explorer = "765"))
     snap_lf(session, "basemap", "subbasin 765 (chemical-only) highlighted")
     snap_lf(session, "ctx_map_de", "subbasin 765 (chemical-only) via popup link")
-    # BUG (fixed in Phase 3): expected to change. A water body click sets
-    # rv() to its EA code; no subbasin matches, so the highlight and the
-    # mini-maps stay on the previous subbasin while the strips read NA.
+    # A water body click does not change the selection: 765 stays
+    # highlighted everywhere.
     send_lf(session, .events = list(basemap_shape_click = list(id = "GB104027057290", group = "waterbodies",
                                                                lat = 54.0, lng = -1.5, .nonce = 1)))
-    snap_lf(session, "basemap", "BUG after water body click")
-    snap_lf(session, "ctx_map_sp", "BUG after water body click")
+    snap_lf(session, "basemap", "after water body click (selection kept)")
+    snap_lf(session, "ctx_map_sp", "after water body click (selection kept)")
     expect_identical(lf_summary(lf_state(session, "ctx_map_dl")), lf_summary(lf_state(session, "ctx_map_sp")))
 
     # Site Details locator: measured marker, modelled polygon, and back.
@@ -195,11 +188,42 @@ test_that("Spatial Datasets map: decoded layers per variable type and the tile s
     send_lf(session, sp_basemap = "esri_satellite")
     snap_messages(session, "sp_basemap esri_satellite")
     snap_lf(session, "prediction_map", "wbchem_Zn 90th, satellite tiles")
-    # Current behaviour: any input change re-renders the whole widget, which
-    # brings back the OSM tiles although the tile selector still says
-    # satellite (expected to change if the map becomes add-once).
+    # A new statistic recolours the map in place: the satellite tiles stay
+    # (the whole map used to be rebuilt, with OSM tiles).
     send_lf(session, prediction_stat_spatial_chem = "mean")
-    snap_lf(session, "prediction_map", "wbchem_Zn mean after re-render (tiles back to OSM)")
+    snap_lf(session, "prediction_map", "wbchem_Zn mean, recoloured in place (satellite tiles kept)")
     expect_identical(input$sp_basemap, "esri_satellite")
+    # A new basis redraws the map, still on the chosen tiles.
+    send_lf(session, prediction_variable_spatial = "discharge")
+    snap_lf(session, "prediction_map", "discharge after wbchem_Zn (redrawn, satellite tiles kept)")
+  })
+})
+
+test_that("Spatial Datasets map: a slice recoloured in place looks as if drawn afresh", {
+  # Each slice is reached twice: by a change within the basis on the map
+  # (recoloured, or for chemical subbasins drawn again, through the proxy),
+  # then by switching to another basis and back (the map drawn afresh with
+  # that slice). What is on screen must be the same.
+  on_screen <- function(session) {
+    st <- lf_state(session, "prediction_map")
+    list(content = lf_effective(st), legends = lf_summary(st)$legends_and_controls, view = st$view)
+  }
+  run_server({
+    start_session_lf(session)
+    away <- c(hype_subbasin = "wbchem_Zn", chem_subbasin = "discharge", waterbody = "discharge")
+    check <- function(variable, ...) {
+      send_lf(session, ...)
+      in_place <- on_screen(session)
+      send_lf(session, prediction_variable_spatial = away[[spatial_basis_of(variable)]])
+      send_lf(session, prediction_variable_spatial = variable)
+      expect_identical(on_screen(session), in_place)
+    }
+    check("discharge", prediction_percentile_spatial = "1", prediction_period_spatial = "SSP245|2050-2059")
+    check("water_temperature", prediction_variable_spatial = "water_temperature")
+    send_lf(session, prediction_variable_spatial = "wbchem_Zn")
+    check("wbchem_Zn", prediction_stat_spatial_chem = "90th")
+    send_lf(session, prediction_variable_spatial = "chem_Zn")
+    check("chem_Zn", prediction_stat_spatial_chem = "mean")
+    check("chem_fipronil", prediction_variable_spatial = "chem_fipronil")
   })
 })
