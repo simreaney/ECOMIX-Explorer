@@ -1066,6 +1066,18 @@ wb_chem_waterbody_ids <- wb_chem_dataset %>%
 waterbody_opcat_shp <- waterbody_opcat_shp %>%
   dplyr::mutate(has_model_data = water_body %in% wb_chem_waterbody_ids)
 
+# Display copy of the water bodies for the two maps that draw all 370 at once
+# (Map page layer, Spatial Datasets water body chemicals): the same rows,
+# order and attributes as waterbody_opcat_shp, but with the 20 m simplified
+# geometry from scripts/build_map_layers.R, which roughly halves that payload.
+# Everything that works with a single water body's shape keeps the 10 m one.
+waterbody_map_shp <- local({
+  map_geom <- read_sf(here("gis-data", "app", "waterbodies_map.gpkg"))
+  out <- waterbody_opcat_shp
+  sf::st_geometry(out) <- sf::st_geometry(map_geom)[match(out$water_body, map_geom$water_body)]
+  out
+})
+
 # Per-waterbody, per-chemical monthly series - Site Details time series panel
 # and Hydro Explorer's water-body mode.
 wb_chem_series_cache <- new.env(parent = emptyenv())
@@ -2361,7 +2373,7 @@ server <- function(input, output, session) {
     }
     if ("waterbodies" %in% input$map_layers) {
       proxy %>% addPolygons(
-        data = waterbody_opcat_shp,
+        data = waterbody_map_shp,
         fill = TRUE,
         fillColor = ~ifelse(!has_model_data, ec$rule_light,
                             ifelse(is.na(opcat_name), "#e0dede", pal_opcat(opcat_name))),
@@ -3632,7 +3644,7 @@ server <- function(input, output, session) {
     sub_variable <- input$prediction_variable_spatial[1]
     df_sub <- spatial_layer_data()
     shp_map <- if (is_wbchem_variable(sub_variable)) {
-      left_join(waterbody_opcat_shp, df_sub, by = c("water_body" = "waterbody_id")) %>% filter(!is.na(hype_variable))
+      left_join(waterbody_map_shp, df_sub, by = c("water_body" = "waterbody_id")) %>% filter(!is.na(hype_variable))
     } else {
       left_join(subbasin_shp, df_sub, by = c("Id" = "subbasin")) %>% filter(!is.na(hype_variable))
     }

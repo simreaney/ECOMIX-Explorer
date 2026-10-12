@@ -27,18 +27,32 @@ dir.create(out_dir, showWarnings = FALSE)
 # 14 one screen pixel is ~5.6 m at this latitude. Subbasins are left exact:
 # their vertices sit 10-15 m off a straight line, so nothing is removed below
 # 15 m and anything above visibly shifts these ~0.5 km2 polygons.
+#
+# The water bodies are written twice. waterbodies.gpkg (10 m) is the copy
+# app.R does geometry with - the SITE_ID -> water body spatial join and the
+# single-polygon Site Details mini-map - while waterbodies_map.gpkg (20 m,
+# max ~30 m shift, ~40% smaller payload) is only drawn as a whole layer on
+# the Map and Spatial Datasets pages, where all 370 polygons are sent to the
+# browser at once. The operational catchments are only ever drawn as
+# outlines at catchment scale, so 25 m costs nothing visible and cuts their
+# payload by ~60%.
+waterbodies_source <- function() read_sf(here("gis-data", "EA_Waterbodies_AOI.geojson"))
 layers <- list(
   subbasins = list(
     read = function() read_sf(here("gis-data"), layer = "subbasins_wgs"),
     tolerance = 0
   ),
   waterbodies = list(
-    read = function() read_sf(here("gis-data", "EA_Waterbodies_AOI.geojson")),
+    read = waterbodies_source,
     tolerance = 10
+  ),
+  waterbodies_map = list(
+    read = waterbodies_source,
+    tolerance = 20
   ),
   operational_catchments = list(
     read = function() read_sf(here("gis-data"), layer = "operational_catchments_wgs"),
-    tolerance = 10
+    tolerance = 25
   )
 )
 
