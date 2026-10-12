@@ -8,9 +8,8 @@
 # site-specific HC5 standards). Files are picked up by folder listing so
 # adding a chemical is just adding a CSV, no code change. Sites are keyed by
 # the same SITE_ID used in the daily chemical modelling above, so a single
-# lookup against Subbasin_Siteids_Key.csv resolves every file to a subbasin.
-eco_risk_dir <- here("data-chem/5_EcologicalRisk")
-eco_risk_site_key <- read.csv(file.path(chem_dir, "Subbasin_Siteids_Key.csv"))
+# lookup against chem_site_key resolves every file to a subbasin.
+eco_risk_dir <- data_path("data-chem/5_EcologicalRisk")
 
 eco_risk_files <- list.files(eco_risk_dir, pattern = "_risk\\.csv$", full.names = TRUE)
 names(eco_risk_files) <- sub("_risk\\.csv$", "", basename(eco_risk_files))
@@ -104,7 +103,7 @@ build_eco_risk_popup <- function(df, chemical_key, chemical_label) {
 
 eco_risk_data <- lapply(names(eco_risk_files), function(nm) {
   df <- read.csv(eco_risk_files[[nm]], check.names = FALSE)
-  df <- df %>% dplyr::inner_join(eco_risk_site_key, by = c("site_id" = "SITE_ID"))
+  df <- df %>% dplyr::inner_join(chem_site_key, by = c("site_id" = "SITE_ID"))
 
   # EASTING/NORTHING are British National Grid (EPSG:27700, confirmed via
   # gis-data/subbasins_bng.prj) - transform to WGS84 for the leaflet map,

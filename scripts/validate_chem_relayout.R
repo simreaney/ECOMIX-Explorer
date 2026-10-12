@@ -7,7 +7,7 @@
 #     group per chemical x stat) against the new Hive-partitioned dataset
 #     (1_DAILY_BY_SITE_conc_ng_L/daily/chemical=*/stat=*/part-0.parquet), for
 #     every chemical x stat - plus the app's chem helpers (taken verbatim from
-#     app.R) on the new dataset against today's queries on the old file;
+#     R/13_data_chem.R) on the new dataset against today's queries on the old file;
 #   * monthly-by-water-body: a backup of the parquet as it was before the
 #     rebuild (chemical/stat dictionary-encoded) against the rebuilt file
 #     (plain strings), plus the wb_chem helpers whose code changed.
@@ -55,27 +55,32 @@ canon_df <- function(df, keys) {
   df
 }
 
-# ---- app.R helper definitions -------------------------------------------------
+# ---- app helper definitions ----------------------------------------------------
 
-# The helpers under test are evaluated from app.R's own top-level
-# assignments (not copies), in a small environment holding only what they
-# need - loading the whole app would take far longer than this script.
-app_exprs <- parse(here("app.R"), keep.source = FALSE)
+# The helpers under test are evaluated from the app's own top-level
+# assignments in R/ (not copies), in a small environment holding only what
+# they need - loading the whole app would take far longer than this script.
+app_exprs <- unlist(lapply(
+  here("R", c("01_config.R", "01_data_access.R", "03_cache.R", "04_lookup_cache.R",
+               "13_data_chem.R", "16_data_wb_chem.R")),
+  function(f) as.list(parse(f, keep.source = FALSE))
+))
 app_env <- new.env(parent = globalenv())
 eval_app_defs <- function(names) {
   for (nm in names) {
     hit <- Filter(function(e) is.call(e) && identical(e[[1]], as.name("<-")) &&
-                    identical(e[[2]], as.name(nm)), as.list(app_exprs))
-    if (length(hit) != 1) stop("expected exactly one top-level assignment to ", nm, " in app.R")
+                    identical(e[[2]], as.name(nm)), app_exprs)
+    if (length(hit) != 1) stop("expected exactly one top-level assignment to ", nm, " in R/")
     eval(hit[[1]], app_env)
   }
 }
-eval_app_defs(c(
+withr::with_dir(here(), eval_app_defs(c(
+  "env_setting", "ecomix_data_root", "data_path", "filter_subbasin",
+  "app_cache", "cache_fetch",
   "chem_dir", "chem_dataset", "chem_display_lookup", "chem_keys",
-  "chem_series_cache", "get_chem_subbasin_series",
-  "chem_full_cache", "get_chem_all_subbasins_daily",
-  "chem_spatial_cache", "get_chem_spatial_summary"
-))
+  "get_chem_subbasin_series", "read_chem_daily",
+  "get_chem_all_subbasins_daily", "get_chem_spatial_summary"
+)))
 
 # Today's (pre-re-layout) query code, run against the old single file.
 old_daily <- open_dataset(old_daily_path)
@@ -229,9 +234,11 @@ cat("== monthly-by-water-body ==\n")
 if (is.na(old_monthly_path)) {
   record("monthly: backup vs new file", logical(), "no backup path given", skip = TRUE)
 } else {
-  eval_app_defs(c("wb_chem_dir", "wb_chem_dataset", "wb_chem_raw_labels", "wb_chem_key_map",
-                  "wb_chem_grid_cache", "get_wb_chem_grid",
-                  "wb_chem_raw_label", "wb_chem_spatial_cache", "get_wb_chem_spatial_summary"))
+  withr::with_dir(here(), eval_app_defs(c(
+    "LOOKUP_CACHE_VERSION", "lookup_cache_dir", "lookup_cache_log", "lookup_fingerprint", "cached_lookup",
+    "wb_chem_dir", "wb_chem_file", "wb_chem_dataset", "wb_chem_raw_labels", "wb_chem_key_map",
+    "get_wb_chem_grid", "wb_chem_raw_label", "get_wb_chem_spatial_summary"
+  )))
   old_monthly <- open_dataset(old_monthly_path)
   new_reader <- ParquetFileReader$create(file.path(app_env$wb_chem_dir,
     "2_Modelling_results_by_waterbody_monthly_conc_ng_per_L.parquet"))

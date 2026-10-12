@@ -11002,7 +11002,7 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["ac609c46d3859b25092a46d7dce953af"]
+          "value": ["7e37568706de305fbe515f64db91b75b"]
         },
         {
           "type": "character",
@@ -11012,7 +11012,7 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [11, 5]
+          "value": [1, 5]
         },
         {
           "type": "character",
@@ -11037,22 +11037,22 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["character; NA 0; distinct 2"]
+              "value": ["character; NA 0; distinct 1"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["character; NA 1; distinct 11"]
+              "value": ["character; NA 1; distinct 1"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["numeric; NA 0; min 0; max 11144575; mean 1013152.3"]
+              "value": ["numeric; NA 0; min 11144575; max 11144575; mean 11144575"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["character; NA 0; distinct 2"]
+              "value": ["character; NA 0; distinct 1"]
             }
           ]
         },
@@ -11069,27 +11069,27 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["3310 | 3310 | 3310"]
+              "value": ["3310"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["Upstream area | Land use | Land use"]
+              "value": ["Upstream area"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["<NA> | Forest (BL) | Water"]
+              "value": ["<NA>"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["11144575 | 1.63 | 0"]
+              "value": ["11144575"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["m2 | % | %"]
+              "value": ["m2"]
             }
           ]
         }
@@ -31948,12 +31948,12 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["selected_measured_site_summary()"]
+          "value": ["selected_measured_site_long()"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["d4256606b881c7abba886d0da30dbc55"]
+          "value": ["77daf9e5db74fe3697da214ba87d6afe"]
         },
         {
           "type": "character",
@@ -31963,12 +31963,12 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [1, 7]
+          "value": [3186, 10]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["Site_id", "Site_full_name", "n_screened", "n_detected", "detection_rate", "max_value", "n_weeks"]
+          "value": ["Site_id", "Site_full_name", "Latitude", "Longitude", "Date", "parameter", "parameter_label", "parameter_group", "status", "value_num"]
         },
         {
           "type": "list",
@@ -31976,7 +31976,7 @@
             "names": {
               "type": "character",
               "attributes": {},
-              "value": ["Site_id", "Site_full_name", "n_screened", "n_detected", "detection_rate", "max_value", "n_weeks"]
+              "value": ["Site_id", "Site_full_name", "Latitude", "Longitude", "Date", "parameter", "parameter_label", "parameter_group", "status", "value_num"]
             }
           },
           "value": [
@@ -31993,27 +31993,42 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["integer; NA 0; min 2496; max 2496; mean 2496"]
+              "value": ["numeric; NA 0; min 53.874169; max 53.874169; mean 53.874169"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["integer; NA 0; min 585; max 585; mean 585"]
+              "value": ["numeric; NA 0; min -1.8817937; max -1.8817937; mean -1.8817937"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["numeric; NA 0; min 23; max 23; mean 23"]
+              "value": ["Date; NA 0; min 2024-03-13; max 2025-03-19"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["numeric; NA 0; min 959.4; max 959.4; mean 959.4"]
+              "value": ["character; NA 0; distinct 59"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["integer; NA 0; min 54; max 54; mean 54"]
+              "value": ["character; NA 0; distinct 59"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["character; NA 0; distinct 2"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["character; NA 0; distinct 3"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["numeric; NA 359; min 0; max 959.37; mean 15.415398"]
             }
           ]
         },
@@ -32023,44 +32038,59 @@
             "names": {
               "type": "character",
               "attributes": {},
-              "value": ["Site_id", "Site_full_name", "n_screened", "n_detected", "detection_rate", "max_value", "n_weeks"]
+              "value": ["Site_id", "Site_full_name", "Latitude", "Longitude", "Date", "parameter", "parameter_label", "parameter_group", "status", "value_num"]
             }
           },
           "value": [
             {
               "type": "character",
               "attributes": {},
-              "value": ["Ai1"]
+              "value": ["Ai1 | Ai1 | Ai1"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["Aire 1"]
+              "value": ["Aire 1 | Aire 1 | Aire 1"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["2496"]
+              "value": ["53.874169 | 53.874169 | 53.874169"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["585"]
+              "value": ["-1.8817937 | -1.8817937 | -1.8817937"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["23"]
+              "value": ["2024-03-13 | 2024-03-13 | 2024-03-13"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["959.4"]
+              "value": ["6PPD-Q_ng L⁻¹ | Anthracene | Azithromycin"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["54"]
+              "value": ["6PPD-Q | Anthracene | Azithromycin"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["Organic micropollutant | Organic micropollutant | Organic micropollutant"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["Detected | Non-detect | Non-detect"]
+            },
+            {
+              "type": "character",
+              "attributes": {},
+              "value": ["4.07 | 0 | 0"]
             }
           ]
         }

@@ -4,7 +4,7 @@
 # (non-detect) values sit alongside numeric concentrations without read.csv
 # silently coercing an entire analyte column to NA.
 df_measured_raw <- read.csv(
-  here("data/measured/comix_monitoring_data_Dashboard.csv"),
+  data_path("data/measured/comix_monitoring_data_Dashboard.csv"),
   colClasses = "character",
   check.names = FALSE
 )
@@ -58,23 +58,6 @@ df_measured_long <- df_measured_raw %>%
   dplyr::select(Site_id, Site_full_name, Latitude, Longitude, Date,
                 parameter, parameter_label, parameter_group, status, value_num)
 
-# Per-site summary powering the Site Details page's site table and its
-# context strip: how often anything was detected, and the largest
-# concentration seen.
-df_measured_site_summary <- df_measured_long %>%
-  dplyr::filter(parameter_group == "Organic micropollutant") %>%
-  dplyr::group_by(Site_id, Site_full_name) %>%
-  dplyr::summarise(
-    n_screened = sum(status %in% c("Detected", "Non-detect")),
-    n_detected = sum(status == "Detected"),
-    detection_rate = ifelse(n_screened > 0, round(100 * n_detected / n_screened), NA_real_),
-    max_value = suppressWarnings(max(value_num[status == "Detected"], na.rm = TRUE)),
-    n_weeks = dplyr::n_distinct(Date),
-    .groups = "drop"
-  ) %>%
-  dplyr::mutate(max_value = ifelse(is.finite(max_value), round(max_value, 1), NA_real_)) %>%
-  dplyr::arrange(dplyr::desc(detection_rate))
-
 # Grouped choices for the Site Details time series chemical/parameter
 # selectors below (measured mode).
 measured_parameter_choices <- list(
@@ -126,9 +109,9 @@ parse_entity_info <- function(path) {
   entity_info
 }
 
-measured_site_info <- parse_entity_info(here("data/measured/sitesInfo.txt"))
+measured_site_info <- parse_entity_info(data_path("data/measured/sitesInfo.txt"))
 modelled_site_info <- tryCatch(
-  parse_entity_info(here("data/modelled/waterbodyInfo.txt")),
+  parse_entity_info(data_path("data/modelled/waterbodyInfo.txt")),
   error = function(e) {
     warning("data/modelled/waterbodyInfo.txt not found - run scripts/build_waterbody_info.R first. ",
             "Modelled water body summaries will be unavailable.")

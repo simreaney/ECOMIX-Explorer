@@ -3,11 +3,13 @@
 # Historical simulations at observation sites - ~3.9M daily rows, so read per
 # subbasin on demand (selected_historical() in the server; one sorted file
 # per variable, so that's a row-group lookup) rather than held in memory.
-ds_historical_observations <- safe_open_dataset(here("data/DB_Historical_Sim_Obs"))
-df_observed_subbasins <- ds_historical_observations %>%
-  dplyr::distinct(subbasin, variable) %>%
-  collect() %>%
-  dplyr::arrange(subbasin, variable)
+ds_historical_observations <- safe_open_dataset(data_path("data/DB_Historical_Sim_Obs"))
+df_observed_subbasins <- cached_lookup("df_observed_subbasins", data_path("data/DB_Historical_Sim_Obs"), function() {
+  ds_historical_observations %>%
+    dplyr::distinct(subbasin, variable) %>%
+    collect() %>%
+    dplyr::arrange(subbasin, variable)
+})
 
 # One point per subbasin that has observed hydrology data, for the Map page's
 # "Observed hydrology sites" layer - placed at the subbasin centroid since the
@@ -34,9 +36,9 @@ observed_hydro_points <- observed_hydro_centroids %>%
 #                        the years of the period)
 #   DB_Proj_Forcing    - UKCP18 RCP8.5 climate, p10/p50/p90 across the 12
 #                        regional members (annual and monthly)
-ds_proj_forcing <- safe_open_dataset(here("data/DB_Proj_Forcing"))
-ds_proj_year <- safe_open_dataset(here("data/DB_Proj_Year"))
-ds_proj_month <- safe_open_dataset(here("data/DB_Proj_Month"))
+ds_proj_forcing <- safe_open_dataset(data_path("data/DB_Proj_Forcing"))
+ds_proj_year <- safe_open_dataset(data_path("data/DB_Proj_Year"))
+ds_proj_month <- safe_open_dataset(data_path("data/DB_Proj_Month"))
 
 # The climate projections are a single emissions scenario, so they carry no
 # ssp column - this labels them wherever a scenario is shown.
@@ -66,29 +68,51 @@ pretty_unit <- function(u) {
 # Scenario / period widget choices, read off the monthly projections (two
 # dictionary columns, so this is cheap). Each future scenario shares one set
 # of decade periods ("2070-2079"); Baseline has its own single period.
-proj_periods <- ds_proj_month %>% dplyr::distinct(ssp, period) %>% collect()
+proj_periods <- cached_lookup("proj_periods", data_path("data/DB_Proj_Month"), function() {
+  ds_proj_month %>% dplyr::distinct(ssp, period) %>% collect()
+})
 available_scenarios <- c("Baseline", sort(setdiff(unique(proj_periods$ssp), "Baseline")))
 prediction_period_choices <- sort(unique(proj_periods$period[proj_periods$ssp != "Baseline"]))
 baseline_period <- unique(proj_periods$period[proj_periods$ssp == "Baseline"])[1]
 
-# Read map input for the Spatial Datasets choropleth: P1/P50/P99 of daily
-# values per subbasin x variable x scenario x period, precomputed by
+# Map input for the Spatial Datasets choropleth: P1/P50/P99 of daily values
+# per subbasin x variable x scenario x period, precomputed by
 # scripts/import_database_update.py from the monthly projections (the same
 # pooled distribution the Hydro Explorer's cumulative frequency plot draws).
-# Renamed to the column names the map's chemical branches share.
-df_map_input <- read_parquet(here("data/Subbasin_Extremes.gz.parquet")) %>%
+# Renamed to the column names the map's chemical branches share. A lazy Arrow
+# query rather than a table in memory: the map shows one variable x period x
+# percentile slice (3126 rows) of the 1.25M, and reading that slice takes
+# about as long (~0.05 s) as filtering the table in memory did, which held
+# ~80 MB for the life of the process.
+map_input_file <- data_path("data/Subbasin_Extremes.gz.parquet")
+ds_map_input <- arrow::open_dataset(map_input_file) %>%
   dplyr::transmute(hype_variable = variable, ssp, period, subbasin, unit,
                    prediction_percentile = percentile, value)
+
+# One variable x scenario x period x percentile slice of ds_map_input, one
+# row per subbasin. The file stores each slice in subbasin order, which the
+# in-memory table kept, but a scan returns row batches in no fixed order, so
+# the order is restored explicitly.
+get_map_input_slice <- function(variable_val, ssp_val, period_val, percentile_val) {
+  ds_map_input %>%
+    dplyr::filter(hype_variable == variable_val, ssp == ssp_val, period == period_val,
+                  prediction_percentile == percentile_val) %>%
+    dplyr::collect() %>%
+    dplyr::arrange(subbasin)
+}
 
 # Scenario x period combinations actually present in the extremes data,
 # labelled the same way the Hydro Explorer labels them ("SSP585 (2070-2079)"),
 # used to drive the Spatial Datasets "Period" dropdown.
-spatial_period_choices <- df_map_input %>%
-  dplyr::distinct(ssp, period) %>%
-  dplyr::arrange(period, ssp) %>%
-  dplyr::mutate(label = paste0(ssp, " (", period, ")"),
-                value = paste(ssp, period, sep = "|")) %>%
-  { setNames(.$value, .$label) }
+spatial_period_choices <- cached_lookup("spatial_period_choices", map_input_file, function() {
+  ds_map_input %>%
+    dplyr::distinct(ssp, period) %>%
+    dplyr::collect() %>%
+    dplyr::arrange(period, ssp) %>%
+    dplyr::mutate(label = paste0(ssp, " (", period, ")"),
+                  value = paste(ssp, period, sep = "|")) %>%
+    { setNames(.$value, .$label) }
+})
 
 spatial_percentile_choices <- c("Low extreme (P1)" = "1", "Median (P50)" = "50", "High extreme (P99)" = "99")
 

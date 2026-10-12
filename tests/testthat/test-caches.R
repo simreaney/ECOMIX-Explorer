@@ -51,11 +51,12 @@ test_that("cached helpers: cold, warm and re-filled results are identical", {
     wb_grid = function() get_wb_chem_grid("GB104027069400", "90th"),
     wb_all = function() get_wb_chem_all_waterbodies_monthly("Zn", "mean"),
     wb_spatial = function() get_wb_chem_spatial_summary("Zn", "mean"),
-    tabular = function() get_tabular_download("SS"),
+    tabular = function() get_subbasin_tabular_download("SS", 3310),
     full_res = function() sf::st_drop_geometry(full_res_layer("catchments"))
   )
   reset <- ecomix_reset_caches()
-  expect_true(length(reset) >= 5, info = paste("caches reset:", paste(reset, collapse = ", ")))
+  expect_true(all(c("app_cache", "full_res_cache") %in% reset),
+              info = paste("caches reset:", paste(reset, collapse = ", ")))
 
   cold <- lapply(calls, function(f) hash_of(f()))
   warm <- lapply(calls, function(f) hash_of(f()))

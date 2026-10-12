@@ -19,3 +19,6 @@ scripts/build_parquet.py.zip
 
 # Raw source for scripts/import_database_update.py (~41 GB) - never commit.
 /data/database_update/
+
+# Startup lookup cache written by R/04_lookup_cache.R (rebuilt automatically).
+/data/app_cache/

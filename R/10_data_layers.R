@@ -8,19 +8,20 @@
 # full_res_layer() below.
 
 # HYPE Subbasins (modelling units)
-subbasin_shp <- read_sf(here("gis-data", "app", "subbasins.gpkg"))
+subbasin_shp <- read_sf(data_path("gis-data", "app", "subbasins.gpkg"))
 
 # Full-resolution source layers for spatial downloads, read once on demand
-# (the water body GeoJSON alone takes ~1 s to parse) and cached. Each carries
-# the same attributes as its display copy.
+# (the water body GeoJSON alone takes ~1 s to parse) and cached outside the
+# bounded app_cache (see R/03_cache.R). Each carries the same attributes as
+# its display copy.
 full_res_cache <- new.env(parent = emptyenv())
 full_res_layer <- function(name) {
   if (is.null(full_res_cache[[name]])) {
     full_res_cache[[name]] <- switch(
       name,
-      subbasins = read_sf(dsn = here("gis-data"), layer = "subbasins_wgs"),
-      catchments = read_sf(dsn = here("gis-data"), layer = "catchments_wgs"),
-      waterbodies = read_sf(here("gis-data", "EA_Waterbodies_AOI.geojson")) %>%
+      subbasins = read_sf(dsn = data_path("gis-data"), layer = "subbasins_wgs"),
+      catchments = read_sf(dsn = data_path("gis-data"), layer = "catchments_wgs"),
+      waterbodies = read_sf(data_path("gis-data", "EA_Waterbodies_AOI.geojson")) %>%
         st_transform(4326) %>%
         dplyr::select(water_body) %>%
         left_join(sf::st_drop_geometry(waterbody_opcat_shp), by = "water_body")
@@ -35,9 +36,9 @@ full_res_layer <- function(name) {
 # both produced by scripts/fetch_operational_catchments.R rather than
 # fetched live, so the map doesn't depend on the WFS being reachable at app
 # start.
-opcat_shp <- read_sf(here("gis-data", "app", "operational_catchments.gpkg"))
+opcat_shp <- read_sf(data_path("gis-data", "app", "operational_catchments.gpkg"))
 
-df_subbasin_opcat <- read.csv(here("data/subbasin_operational_catchment.csv"))
+df_subbasin_opcat <- read.csv(data_path("data/subbasin_operational_catchment.csv"))
 
 # Subbasin polygons joined to their associated operational catchment, used to
 # colour the Map page.
@@ -48,11 +49,14 @@ subbasin_opcat_shp <- subbasin_shp %>%
 # gis-data/riversegments_wgs) of each modelled river segment, 3126 of the
 # 16,515 - which is what the Map page's Subbasins layer draws. Every HYPE
 # subbasin appears under each variable/scenario, so one partition suffices.
-hype_subbasin_ids <- safe_open_dataset(here("data/DB_Proj_Month")) %>%
-  filter(variable == "discharge", ssp == "Baseline") %>%
-  distinct(subbasin) %>%
-  collect() %>%
-  pull(subbasin)
+hype_subbasin_ids <- cached_lookup("hype_subbasin_ids", data_path("data/DB_Proj_Month"), function() {
+  safe_open_dataset(data_path("data/DB_Proj_Month")) %>%
+    filter(variable == "discharge", ssp == "Baseline") %>%
+    distinct(subbasin) %>%
+    collect() %>%
+    pull(subbasin) %>%
+    sort()
+})
 
 hype_subbasin_shp <- subbasin_opcat_shp %>% filter(Id %in% hype_subbasin_ids)
 
@@ -130,15 +134,18 @@ names(opcat_bounds) <- opcat_shp$opcat_name
 # overlaps most - see scripts/join_waterbody_opcat.R. Coloured with the same
 # pal_opcat() lookup as subbasins so a waterbody and the catchment it sits in
 # always read as the same hue.
-waterbody_shp <- read_sf(here("gis-data", "app", "waterbodies.gpkg"))
-df_waterbody_opcat <- read.csv(here("data/waterbody_operational_catchment.csv"))
+waterbody_shp <- read_sf(data_path("gis-data", "app", "waterbodies.gpkg"))
+df_waterbody_opcat <- read.csv(data_path("data/waterbody_operational_catchment.csv"))
 waterbody_opcat_shp <- waterbody_shp %>%
   left_join(df_waterbody_opcat, by = "water_body")
 
 # Table with climate information
-df_stats_climate <- read.csv(here("data/subbasin_climate.csv"))
+df_stats_climate <- read.csv(data_path("data/subbasin_climate.csv"))
 df_stats_climate$subbasin <- as.numeric(gsub("X", "", df_stats_climate$subbasin))
 
-# Table with subbasin statistics
-df_stats_lc <- read.csv(here("data/subbasin_lc.csv"))
+# Upstream area per subbasin (context strip). The file also holds ten land
+# use shares per subbasin (90% of its rows), which nothing reads, so only the
+# "Upstream area" rows are kept.
+df_stats_lc <- read.csv(data_path("data/subbasin_lc.csv"))
+df_stats_lc <- df_stats_lc[df_stats_lc$variable == "Upstream area", ]
 df_stats_lc$subbasin <- as.numeric(gsub("X", "", df_stats_lc$subbasin))

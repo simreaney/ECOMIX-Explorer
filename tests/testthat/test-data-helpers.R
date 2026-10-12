@@ -61,12 +61,15 @@ test_that("HYPE / climate startup lookups", {
   snap_obj(observed_hydro_vars, "observed_hydro_vars")
   snap_obj(observed_hydro_points, "observed_hydro_points")
   snap_obj(df_stats_climate, "df_stats_climate")
-  # The plan filters df_stats_lc down to its "Upstream area" rows - pin both
-  # the full table and the subset the app actually reads.
-  snap_obj(df_stats_lc, "df_stats_lc")
-  snap_obj(df_stats_lc[df_stats_lc$variable == "Upstream area", ], "df_stats_lc_upstream_area")
-  # Read eagerly at startup today (planned to become lazy).
-  snap_obj(df_map_input, "df_map_input")
+  # df_stats_lc is filtered to its "Upstream area" rows (the only ones the
+  # app reads) at load - the same subset this snapshot pinned before.
+  snap_obj(df_stats_lc, "df_stats_lc_upstream_area")
+  # The extremes are now a lazy query (ds_map_input). Collected and put back
+  # in the file's stored order (variable, percentile, subbasin, ssp, period),
+  # they are the table the app used to read eagerly as df_map_input.
+  snap_obj(ds_map_input %>% dplyr::collect() %>%
+             dplyr::arrange(hype_variable, prediction_percentile, subbasin, ssp, period),
+           "df_map_input")
 })
 
 test_that("map layer startup lookups (sf)", {
@@ -93,7 +96,6 @@ test_that("measured / modelled site startup lookups", {
   snap_obj(measured_physchem_cols, "measured_physchem_cols")
   snap_obj(df_measured_sites, "df_measured_sites")
   snap_obj(df_measured_long, "df_measured_long")
-  snap_obj(df_measured_site_summary, "df_measured_site_summary")
   snap_obj(measured_parameter_choices, "measured_parameter_choices")
   snap_obj(measured_site_info, "measured_site_info")
   snap_obj(modelled_site_info, "modelled_site_info")
@@ -245,9 +247,10 @@ test_that("build_tabular_download() / get_tabular_download()", {
   for (v in c("discharge", "SS", "precip", "temp")) {
     snap_obj(build_tabular_download(v), sprintf("build_tabular_download(%s)", v), ordered = FALSE)
   }
-  # get_tabular_download() is the cached wrapper: same content.
-  expect_identical(canon_hash(canon_rows(get_tabular_download("discharge"))),
-                   canon_hash(canon_rows(build_tabular_download("discharge"))))
+  # get_subbasin_tabular_download() is the cached per-subbasin read: the same
+  # rows, in the same order, as the all-subbasin extract filtered in R.
+  expect_identical(get_subbasin_tabular_download("discharge", 3310),
+                   dplyr::filter(build_tabular_download("discharge"), subbasin == 3310))
   # Chemical variables are not routed through build_tabular_download() (the
   # Download page uses get_chem_all_subbasins_daily() instead); passing one
   # falls through to the HYPE branch and yields an empty table today.

@@ -13,7 +13,7 @@
 # Declared here, before the Ecological risk section below, so
 # build_eco_risk_popup() can reference chem_d3d_datasets when deciding
 # whether to show a "View chemical time series" link.
-chem_d3d_dir <- here("data-chem/7_chemicals")
+chem_d3d_dir <- data_path("data-chem/7_chemicals")
 chem_d3d_datasets <- local({
   files <- list.files(chem_d3d_dir, pattern = "\\.parquet$", full.names = TRUE)
   parts <- strsplit(basename(files), "_")
@@ -44,18 +44,30 @@ chem_d3d_choices <- setNames(names(chem_d3d_datasets), sapply(chem_d3d_datasets,
 # Site ids available per chemical, for the Chemical Explorer page's site
 # selector - queried once at startup rather than re-scanning the parquet
 # every time the chemical selector changes.
-chem_d3d_site_ids <- lapply(chem_d3d_datasets, function(ds) {
-  ids <- ds$conc %>% dplyr::distinct(SITE_ID) %>% dplyr::collect() %>% dplyr::pull(SITE_ID)
-  ids[order(suppressWarnings(as.numeric(ids)))]
+chem_d3d_site_ids <- cached_lookup("chem_d3d_site_ids", chem_d3d_dir, function() {
+  lapply(chem_d3d_datasets, function(ds) {
+    ids <- ds$conc %>% dplyr::distinct(SITE_ID) %>% dplyr::collect() %>% dplyr::pull(SITE_ID)
+    ids[order(suppressWarnings(as.numeric(ids)))]
+  })
 })
 
-# SITE_ID -> subbasin (Subbasin_Siteids_Key.csv) -> EA water body (the
-# water body polygon containing the subbasin's representative point), so the
-# site selector can show water body names and a Map/Site Details selection
-# can be carried over. A few subbasins hold several SITE_IDs, and a few
-# sites fall outside every water body polygon (no name, labelled "Site <id>").
-chem_site_wb <- local({
-  key <- read.csv(file.path(chem_dir, "Subbasin_Siteids_Key.csv"), fileEncoding = "UTF-8-BOM")
+# The chemical modelling's SITE_ID -> subbasin key, also used by the
+# Ecological risk section below. The file starts with a byte-order mark,
+# which read.csv() strips by itself only in a UTF-8 locale (in the C locale
+# the first column would come back as "X...subbasin").
+chem_site_key <- read.csv(file.path(chem_dir, "Subbasin_Siteids_Key.csv"), fileEncoding = "UTF-8-BOM")
+
+# SITE_ID -> subbasin (chem_site_key) -> EA water body (the water body
+# polygon containing the subbasin's representative point), so the site
+# selector can show water body names and a Map/Site Details selection can be
+# carried over. A few subbasins hold several SITE_IDs, and a few sites fall
+# outside every water body polygon (no name, labelled "Site <id>").
+chem_site_wb <- cached_lookup("chem_site_wb", c(
+  file.path(chem_dir, "Subbasin_Siteids_Key.csv"),
+  data_path("gis-data", "app", "subbasins.gpkg"),
+  data_path("gis-data", "app", "waterbodies.gpkg")
+), function() {
+  key <- chem_site_key
   key$SITE_ID <- as.character(key$SITE_ID)
   pts <- subbasin_shp %>% dplyr::filter(Id %in% key$subbasin)
   s2_was <- sf::sf_use_s2(FALSE)
@@ -92,7 +104,7 @@ chem_d3d_site_choices <- lapply(chem_d3d_site_ids, function(ids) {
 # treemaps if it has all three files. Sites take the split of the water body
 # they sit in (chem_site_wb). Only 2018-01-01 onwards (the plotted period) is
 # kept, and files are read on first use then cached per chemical.
-chem_src_dir <- here("data-chem/6_Source_apportionment")
+chem_src_dir <- data_path("data-chem/6_Source_apportionment")
 chem_src_last_date <- as.Date("2022-12-31")
 chem_src_first_date <- as.Date("2018-01-01")
 chem_src_labels <- c(dog_swim = "Dog swimming", pet_CSO = "Pet CSOs", pet_WWTP = "Pet WWTP")
@@ -111,22 +123,20 @@ chem_src_files <- local({
   out
 })
 
-chem_wb_id_key <- read.csv(here("data-chem/2_Modelling_results_by_waterbody_monthly_conc_ng_per_L/marthaWBid2EAWBid.csv"),
+chem_wb_id_key <- read.csv(data_path("data-chem/2_Modelling_results_by_waterbody_monthly_conc_ng_per_L/marthaWBid2EAWBid.csv"),
                            fileEncoding = "UTF-8-BOM")
 chem_site_wb$wb_id <- as.character(chem_wb_id_key$id_waterbody[match(chem_site_wb$wb_code, chem_wb_id_key$water_body)])
 
-chem_src_cache <- new.env(parent = emptyenv())
 get_chem_src <- function(chem_key) {
-  if (!exists(chem_key, envir = chem_src_cache, inherits = FALSE)) {
+  cache_fetch("chem_src", chem_key, compute = function() {
     mats <- lapply(chem_src_files[[chem_key]], function(f) {
       m <- as.matrix(arrow::read_csv_arrow(f))
       dates <- chem_src_last_date - rev(seq_len(nrow(m)) - 1L)
       keep <- dates >= chem_src_first_date
       structure(m[keep, , drop = FALSE], dates = dates[keep])
     })
-    chem_src_cache[[chem_key]] <- list(mats = mats, dates = attr(mats[[1]], "dates"))
-  }
-  chem_src_cache[[chem_key]]
+    list(mats = mats, dates = attr(mats[[1]], "dates"))
+  })
 }
 
 # Source shares (named dog_swim/pet_CSO/pet_WWTP, summing to 1) for one site:
@@ -180,10 +190,8 @@ treemap_layout <- function(vals) {
 # Per-(chemical, site) daily series (Date, conc_p10/p50/p90, sspaf_p10/p50/p90),
 # cached per selection actually visited. Concentrations are already in ug/L,
 # the same unit as the HC5 thresholds in eco_risk_data.
-chem_d3d_series_cache <- new.env(parent = emptyenv())
 get_chem_d3d_series <- function(chem_key, site_id_val) {
-  key <- paste(chem_key, site_id_val, sep = "||")
-  if (!exists(key, envir = chem_d3d_series_cache, inherits = FALSE)) {
+  cache_fetch("chem_d3d_series", chem_key, site_id_val, compute = function() {
     ds <- chem_d3d_datasets[[chem_key]]
     conc <- ds$conc %>%
       dplyr::filter(SITE_ID == site_id_val) %>%
@@ -195,9 +203,8 @@ get_chem_d3d_series <- function(chem_key, site_id_val) {
       dplyr::collect() %>%
       dplyr::transmute(Date = as.Date(Date),
                        sspaf_p10 = ssPAF_p10, sspaf_p50 = ssPAF_p50, sspaf_p90 = ssPAF_p90)
-    chem_d3d_series_cache[[key]] <- dplyr::full_join(conc, sspaf, by = "Date") %>% dplyr::arrange(Date)
-  }
-  chem_d3d_series_cache[[key]]
+    dplyr::full_join(conc, sspaf, by = "Date") %>% dplyr::arrange(Date)
+  })
 }
 
 # Acute/chronic "levels of concern" for one chemical/site, preferring the

@@ -40,7 +40,10 @@ ui <- page_navbar(
     "card-box-shadow" = "none",
     "font-size-base" = "0.8125rem"
   ),
-  header = tags$head(includeCSS(here("styles.css"))),
+  # styles.css and help.htm (Help panel) ship with the app, not the data, so
+  # they are read relative to the app directory - Shiny's working directory
+  # while it sources this file - rather than through data_path().
+  header = tags$head(includeCSS("styles.css")),
 
   # Panel 1: Map - choose a location
   nav_panel(
@@ -465,7 +468,7 @@ ui <- page_navbar(
   ## PANEL 8: Help
   nav_panel(
     title = "Help",
-    div(style = "padding: 24px; max-width: 760px;", includeHTML(here("help.htm")))
+    div(style = "padding: 24px; max-width: 760px;", includeHTML("help.htm"))
   ),
 
   nav_spacer(),
@@ -503,14 +506,6 @@ server <- function(input, output, session) {
   # compound value, matching the rv_measured_site/rv_waterbody idiom above.
   rv_eco_risk_chemical <- reactiveVal()
   rv_eco_risk_site <- reactiveVal()
-
-  projection_sources <- reactive({
-    list(
-      forcing = ds_proj_forcing,
-      year = ds_proj_year,
-      month = ds_proj_month
-    )
-  })
 
   selected_climate <- reactive({
     req(rv())
@@ -1055,9 +1050,7 @@ server <- function(input, output, session) {
   })
 
   # Open the Ecological Risk detail tab from an eco-risk marker's popup
-  # link, which passes "<chemical key>||<site_id>" (the "||" delimiter
-  # mirrors the compound cache keys used elsewhere in this file, e.g.
-  # get_chem_subbasin_series() above).
+  # link, which passes "<chemical key>||<site_id>".
   observeEvent(input$open_eco_risk_detail, {
     parts <- strsplit(input$open_eco_risk_detail, "\\|\\|")[[1]]
     rv_eco_risk_chemical(parts[1])
@@ -1265,11 +1258,6 @@ server <- function(input, output, session) {
   selected_measured_site_long <- reactive({
     req(rv_measured_site())
     df_measured_long %>% dplyr::filter(Site_id == rv_measured_site())
-  })
-
-  selected_measured_site_summary <- reactive({
-    req(rv_measured_site())
-    df_measured_site_summary %>% dplyr::filter(Site_id == rv_measured_site())
   })
 
   # Site Details context strips (site/water-body-scoped, so registered
@@ -1718,8 +1706,6 @@ server <- function(input, output, session) {
     }
     if (is.null(rv())) return(NULL)
 
-    projection_data <- projection_sources()
-
     sub_subbasin <- rv()
     sub_climate_variable <- if (is.null(input$climate_variable) || !nzchar(input$climate_variable)) "Precipitation" else input$climate_variable
     sub_climate_resolution <- if (is.null(input$climate_resolution) || !nzchar(input$climate_resolution)) "monthly" else input$climate_resolution
@@ -1732,7 +1718,7 @@ server <- function(input, output, session) {
       sub_periods <- c(baseline_period, sub_periods)
     }
 
-    df_plot <- projection_data$forcing %>%
+    df_plot <- ds_proj_forcing %>%
       filter(
         variable == sub_climate_variable,
         subbasin %in% sub_subbasin,
@@ -1832,8 +1818,6 @@ server <- function(input, output, session) {
   output$projections_yearly_plot <- renderPlot({
     if (is.null(rv())) return(NULL)
 
-    projection_data <- projection_sources()
-
     sub_subbasin <- rv()
     sub_variable <- input$prediction_variable[1]
 
@@ -1868,7 +1852,7 @@ server <- function(input, output, session) {
     sub_plot_type <- unique(input$plot_type)
     lbl <- prediction_variable_labels[[sub_variable]] %||% sub_variable
 
-    df_projections_year <- projection_data$year %>%
+    df_projections_year <- ds_proj_year %>%
       filter(subbasin %in% sub_subbasin,
              variable == sub_variable,
              ssp %in% c("Baseline", sub_scenarios)) %>%
@@ -1944,8 +1928,6 @@ server <- function(input, output, session) {
   output$projections_monthly_plot <- renderPlot({
     if (is.null(rv())) return(NULL)
 
-    projection_data <- projection_sources()
-
     sub_subbasin <- rv()
     sub_variable <- input$prediction_variable[1]
 
@@ -1989,7 +1971,7 @@ server <- function(input, output, session) {
 
     # Baseline is always fetched (whatever the period selection) as the
     # reference for the Relative view.
-    df_projections_month <- projection_data$month %>%
+    df_projections_month <- ds_proj_month %>%
       filter(subbasin %in% sub_subbasin,
              variable == sub_variable,
              ssp %in% c("Baseline", sub_scenarios),
@@ -2056,8 +2038,6 @@ server <- function(input, output, session) {
   output$projections_cfc_plot <- renderPlot({
     if (is.null(rv())) return(NULL)
 
-    projection_data <- projection_sources()
-
     sub_subbasin <- rv()
     sub_variable <- input$prediction_variable[1]
 
@@ -2093,7 +2073,7 @@ server <- function(input, output, session) {
       sub_periods <- c(baseline_period, sub_periods)
     }
 
-    df_month <- projection_data$month %>%
+    df_month <- ds_proj_month %>%
       filter(subbasin %in% sub_subbasin,
              variable == sub_variable,
              ssp %in% sub_scenarios,
@@ -2170,8 +2150,7 @@ server <- function(input, output, session) {
           dplyr::select(subbasin, chemical, statistic = stat, date, value, unit)
         write.csv(df, file, row.names = FALSE)
       } else {
-        df <- get_tabular_download(var) %>%
-          filter(subbasin == rv())
+        df <- get_subbasin_tabular_download(var, rv())
         write.csv(df, file, row.names = FALSE)
       }
     }
@@ -2186,7 +2165,7 @@ server <- function(input, output, session) {
     # Chemicals have no scenario/period - the map shows one time-averaged
     # (whole 2018-2022 record) value per subbasin (or, for modelled water
     # body chemicals, per water body) for the chosen statistic. The result is
-    # shaped to match df_map_input's columns (hype_variable, subbasin,
+    # shaped to match ds_map_input's columns (hype_variable, subbasin,
     # value, unit, prediction_percentile) so the rendering and
     # context-strip code below needs no branching of its own. The water body
     # branch has no "subbasin" concept, so it carries a placeholder NA
@@ -2209,12 +2188,7 @@ server <- function(input, output, session) {
       sub_period <- strsplit(input$prediction_period_spatial %||% "SSP585|2070-2079", "\\|")[[1]]
       sub_percentile <- as.numeric(input$prediction_percentile_spatial %||% "99")
 
-      df_map_input %>% filter(
-        hype_variable == sub_variable,
-        ssp == sub_period[1],
-        period == sub_period[2],
-        prediction_percentile == sub_percentile
-      )
+      get_map_input_slice(sub_variable, sub_period[1], sub_period[2], sub_percentile)
     }
   })
 
@@ -2307,30 +2281,43 @@ server <- function(input, output, session) {
     }
   }, ignoreInit = TRUE)
 
-  downloader_tabular_all_data <- reactive({
+  # All 336 modelled water bodies' rows for a wbchem variable - its tabular
+  # download and the water bodies layer.
+  downloader_wbchem_data <- reactive({
+    chem_key <- wbchem_key_from_variable(input$dl_variable)
+    stat <- input$dl_chem_stat %||% "median"
+    get_wb_chem_all_waterbodies_monthly(chem_key, stat)
+  })
+
+  # Per-subbasin and catchment summaries of every subbasin's rows for a
+  # subbasin variable - the subbasins and catchment layers.
+  downloader_summary <- reactive({
     req(input$dl_variable)
-    if (is_wbchem_variable(input$dl_variable)) {
-      chem_key <- wbchem_key_from_variable(input$dl_variable)
-      stat <- input$dl_chem_stat %||% "median"
-      get_wb_chem_all_waterbodies_monthly(chem_key, stat)
-    } else if (is_chem_variable(input$dl_variable)) {
+    if (is_chem_variable(input$dl_variable)) {
       chem_key <- chem_key_from_variable(input$dl_variable)
       stat <- input$dl_chem_stat %||% "median"
-      get_chem_all_subbasins_daily(chem_key, stat)
+      get_chem_download_summary(chem_key, stat)
     } else {
-      get_tabular_download(input$dl_variable)
+      get_tabular_download_summary(input$dl_variable)
     }
   })
 
   downloader_tabular_data <- reactive({
     # This page has no water-body picker, so a wbchem tabular download is
     # always all 336 modelled water bodies - unlike subbasin variables, which
-    # filter to the currently rv()-selected subbasin.
+    # are read for the currently rv()-selected subbasin only.
     if (is_wbchem_variable(input$dl_variable)) {
-      return(downloader_tabular_all_data())
+      return(downloader_wbchem_data())
     }
     req(rv())
-    downloader_tabular_all_data() %>% filter(subbasin == rv())
+    req(input$dl_variable)
+    if (is_chem_variable(input$dl_variable)) {
+      chem_key <- chem_key_from_variable(input$dl_variable)
+      stat <- input$dl_chem_stat %||% "median"
+      get_chem_subbasin_daily(chem_key, stat, rv())
+    } else {
+      get_subbasin_tabular_download(input$dl_variable, rv())
+    }
   })
 
   downloader_spatial_data <- reactive({
@@ -2343,7 +2330,7 @@ server <- function(input, output, session) {
     }
 
     if (identical(input$dl_spatial_layer, "waterbodies")) {
-      tab_data <- downloader_tabular_all_data()
+      tab_data <- downloader_wbchem_data()
       tab_summary_by_wb <- tab_data %>%
         group_by(waterbody_id) %>%
         summarise(
@@ -2361,10 +2348,11 @@ server <- function(input, output, session) {
       )
     }
 
-    tab_data <- downloader_tabular_all_data()
+    tab_summaries <- downloader_summary()
 
     if (input$dl_spatial_layer == "catchment") {
-      if (nrow(tab_data) == 0) {
+      tab_summary <- tab_summaries$catchment
+      if (is.null(tab_summary)) {
         return(full_res_layer("catchments") %>%
                  mutate(spatial_layer = input$dl_spatial_layer,
                         variable = input$dl_variable,
@@ -2374,15 +2362,6 @@ server <- function(input, output, session) {
                         value_max = NA_real_,
                         unit = NA_character_))
       }
-
-      tab_summary <- tab_data %>%
-        summarise(
-          n_records = n(),
-          value_mean = mean(value, na.rm = TRUE),
-          value_min = min(value, na.rm = TRUE),
-          value_max = max(value, na.rm = TRUE),
-          unit = dplyr::first(unit)
-        )
 
       return(full_res_layer("catchments") %>%
                mutate(spatial_layer = input$dl_spatial_layer,
@@ -2394,21 +2373,9 @@ server <- function(input, output, session) {
                       unit = tab_summary$unit))
     }
 
-    tab_summary_by_sub <- tab_data %>%
-      mutate(subbasin = as.integer(subbasin)) %>%
-      group_by(subbasin) %>%
-      summarise(
-        n_records = n(),
-        value_mean = round(mean(value, na.rm = TRUE), 3),
-        value_min = round(min(value, na.rm = TRUE), 3),
-        value_max = round(max(value, na.rm = TRUE), 3),
-        unit = dplyr::first(unit),
-        .groups = "drop"
-      )
-
     full_res_layer("subbasins") %>%
       mutate(Id = as.integer(Id)) %>%
-      left_join(tab_summary_by_sub, by = c("Id" = "subbasin")) %>%
+      left_join(tab_summaries$by_subbasin, by = c("Id" = "subbasin")) %>%
       mutate(spatial_layer = input$dl_spatial_layer,
              variable = input$dl_variable)
   })

@@ -293,7 +293,7 @@ test_that("Site Details: measured sites", {
     expect_identical(input$main_nav, "Site Details")
     snap_rx(session, "selected_measured_site_top_chemicals")
     snap_rx(session, "measured_chem_grid_data")
-    snap_rx(session, "selected_measured_site_summary")
+    snap_rx(session, "selected_measured_site_long")
     snap_outputs(session, "Ai1", c(site_ids, "measured_rail"))
 
     grid <- rx(session, "measured_chem_grid_data")
