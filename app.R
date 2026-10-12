@@ -65,6 +65,62 @@ ui <- page_navbar(
           }
         };
       });
+    ")),
+    # Chemical Explorer: marks the selected day (server message
+    # "chem_d3d_marker", days since 1970-01-01 or null) on both time series
+    # as a 1px line over the plot image, so hovering doesn't re-render the
+    # plots. Each plot's coordmap (sent with every render) maps the day to a
+    # pixel position; the line spans the plot panel, like the geom_vline it
+    # replaces, and ignores the pointer so hovering still reaches the image.
+    tags$script(HTML("
+      $(function() {
+        var ids = ['chem_d3d_conc_plot', 'chem_d3d_sspaf_plot'];
+        var coordmaps = {}, day = null;
+        function draw(id) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          var img = el.querySelector('img');
+          var line = el.querySelector('.chem-d3d-marker');
+          var cm = coordmaps[id];
+          var panel = cm && cm.panels && cm.panels[0];
+          var lo = panel && Math.min(panel.domain.left, panel.domain.right);
+          var hi = panel && Math.max(panel.domain.left, panel.domain.right);
+          if (day === null || !panel || !img || !img.clientWidth || day < lo || day > hi) {
+            if (line) line.style.display = 'none';
+            return;
+          }
+          if (!line) {
+            line = document.createElement('div');
+            line.className = 'chem-d3d-marker';
+            line.style.cssText = 'position:absolute; width:1px; pointer-events:none; background:#ae1800;';
+            if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
+            el.appendChild(line);
+          }
+          var sx = img.clientWidth / cm.dims.width, sy = img.clientHeight / cm.dims.height;
+          var d = panel.domain, r = panel.range;
+          var x = r.left + (day - d.left) / (d.right - d.left) * (r.right - r.left);
+          line.style.left = (img.offsetLeft + x * sx) + 'px';
+          line.style.top = (img.offsetTop + r.top * sy) + 'px';
+          line.style.height = ((r.bottom - r.top) * sy) + 'px';
+          line.style.display = 'block';
+        }
+        // shiny:value fires before the new image is in the page, so redraw
+        // once it has been swapped in (and again once it has loaded).
+        $(document).on('shiny:value', function(e) {
+          if (ids.indexOf(e.name) < 0) return;
+          coordmaps[e.name] = e.value && e.value.coordmap;
+          setTimeout(function() {
+            draw(e.name);
+            var img = document.querySelector('#' + e.name + ' img');
+            if (img && !img.complete) img.addEventListener('load', function() { draw(e.name); }, { once: true });
+          }, 0);
+        });
+        Shiny.addCustomMessageHandler('chem_d3d_marker', function(msg) {
+          day = (msg.day === null || msg.day === undefined || msg.day === 'NA') ? null : Number(msg.day);
+          ids.forEach(draw);
+        });
+        $(window).on('resize', function() { ids.forEach(draw); });
+      });
     "))
   ),
 
@@ -731,9 +787,10 @@ server <- function(input, output, session) {
       scale_y_log10() +
       labs(x = NULL, y = paste0(ds$label, " concentration [", ds$unit, ", log scale]"),
            caption = "Gaps mark exact-zero days (undefined on a log scale).") +
-      theme_ecomix() -> p
-    chem_d3d_day_marker(p)
-  })
+      theme_ecomix()
+  }) %>%
+    bindCache(input$chem_d3d_key, input$chem_d3d_site, input$chem_d3d_grouping, input$chem_d3d_group_stat,
+            sizePolicy = function(dims) dims)
 
   output$chem_d3d_sspaf_plot <- renderPlot({
     df <- chem_d3d_series_grouped()
@@ -743,9 +800,10 @@ server <- function(input, output, session) {
       scale_x_date(expand = expansion(mult = c(0.01, 0.03))) +
       scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
       labs(x = NULL, y = paste0(ds$label, " ssPAF")) +
-      theme_ecomix() -> p
-    chem_d3d_day_marker(p)
-  })
+      theme_ecomix()
+  }) %>%
+    bindCache(input$chem_d3d_key, input$chem_d3d_site, input$chem_d3d_grouping, input$chem_d3d_group_stat,
+            sizePolicy = function(dims) dims)
 
   # ---- Source apportionment treemaps ----
   # Hovering either time series picks a day (the last hovered day sticks once
@@ -806,7 +864,8 @@ server <- function(input, output, session) {
     req(chem_d3d_has_src(), input$chem_d3d_site)
     chem_d3d_treemap(get_chem_src_split(input$chem_d3d_key, input$chem_d3d_site),
                      "No source apportionment for this site")
-  })
+  }) %>%
+    bindCache(input$chem_d3d_key, input$chem_d3d_site, sizePolicy = function(dims) dims)
 
   output$chem_d3d_treemap_day_title <- renderText({
     d <- chem_d3d_hover_date()
@@ -818,13 +877,17 @@ server <- function(input, output, session) {
     d <- chem_d3d_hover_date()
     chem_d3d_treemap(get_chem_src_split(input$chem_d3d_key, input$chem_d3d_site, d),
                      "No source apportionment for this day")
-  })
+  }) %>%
+    bindCache(input$chem_d3d_key, input$chem_d3d_site, chem_d3d_hover_date(), sizePolicy = function(dims) dims)
 
-  # Vertical marker at the selected day on a time series plot.
-  chem_d3d_day_marker <- function(p) {
+  # The selected day is marked on both time series in the browser (the
+  # chem_d3d_marker script in the page head) rather than drawn into them: a
+  # hover used to re-render both full plots on the server (~0.3 s an event).
+  # NA (JSON null) hides the marker.
+  observe({
     d <- chem_d3d_hover_date()
-    if (is.null(d)) p else p + geom_vline(xintercept = as.numeric(d), colour = ec$accent_text, linewidth = 0.4)
-  }
+    session$sendCustomMessage("chem_d3d_marker", list(day = if (is.null(d)) NA else as.numeric(d)))
+  })
 
   selected_opcat <- reactive({
     if (is.null(rv())) return(NA_character_)
@@ -1582,6 +1645,32 @@ server <- function(input, output, session) {
   # needs it.
   rv_de_waterbody <- reactiveVal()
 
+  # Whether the Hydro Explorer has a location to show: the picked water body
+  # in Water body mode, the Map's subbasin otherwise. The projection plots
+  # wait on this rather than on rv(), which in Water body mode left them
+  # blank until a Map subbasin was also picked (and redrew them whenever it
+  # changed).
+  hydro_location_ready <- reactive({
+    if (identical(input$de_entity_type, "waterbody")) !is.null(rv_de_waterbody()) else !is.null(rv())
+  })
+
+  # bindCache() keys for the Hydro Explorer plots. A cached renderer runs only
+  # when its key changes, so each key lists everything the renderer (and the
+  # reactives it calls, such as chem_selected_series()) reads - leaving one
+  # out would freeze the plot on that input. The cache is the app-wide one,
+  # so a plot drawn for one user is reused for any other with the same
+  # selection.
+  projection_plot_key <- reactive(list(
+    input$de_entity_type, rv(), rv_de_waterbody(), input$prediction_variable,
+    input$scenario, input$prediction_period, input$prediction_percentile, input$plot_type
+  ))
+  # The climate plot's annual view ignores the Scenarios and Periods
+  # selectors, and the monthly view only uses whether Baseline is selected.
+  climate_plot_periods_key <- reactive({
+    if (identical(input$climate_resolution, "annual")) NULL
+    else list("Baseline" %in% input$scenario, unique(input$prediction_period))
+  })
+
   updateSelectizeInput(session, "de_waterbody_search",
                        choices = waterbody_opcat_shp %>% sf::st_drop_geometry() %>%
                          dplyr::filter(has_model_data) %>% dplyr::arrange(water_bod0) %>%
@@ -1705,7 +1794,9 @@ server <- function(input, output, session) {
       scale_y_continuous(expand = c(0, 0)) +
       labs(x = xlab, y = ylab, caption = caption) +
       theme_ecomix()
-  })
+  }) %>%
+    bindCache(input$de_entity_type, rv(), input$climate_variable, input$climate_resolution,
+            climate_plot_periods_key(), sizePolicy = function(dims) dims)
 
   ## Plot 2 - Observations
   output$observation_plot <- renderPlot({
@@ -1759,13 +1850,17 @@ server <- function(input, output, session) {
              caption = paste0(unique(df_plot$station_label), " (Station ", unique(df_plot$id_station), ")")) +
         theme_ecomix()
     }
-  })
+  }) %>%
+    bindCache(input$de_entity_type, rv(), input$observation_variable, observation_choices()[1],
+            sizePolicy = function(dims) dims)
 
   ## Plot 3: Yearly Projections
   output$projections_yearly_plot <- renderPlot({
-    if (is.null(rv())) return(NULL)
+    if (!hydro_location_ready()) return(NULL)
 
     sub_subbasin <- rv()
+    # Only chemicals have water body series; HYPE variables need the subbasin.
+    if (is.null(sub_subbasin) && !is_chem_variable(input$prediction_variable[1])) return(NULL)
     sub_variable <- input$prediction_variable[1]
 
     # Chemicals: a single 2018-2022 daily record with no scenario/period, so
@@ -1869,13 +1964,16 @@ server <- function(input, output, session) {
              caption = paste0("Change against the ", baseline_years[1], "-", baseline_years[2], " baseline mean.")) +
         theme_ecomix()
     }
-  })
+  }) %>%
+    bindCache(projection_plot_key(), sizePolicy = function(dims) dims)
 
   ## Plot 4: Monthly Projections
   output$projections_monthly_plot <- renderPlot({
-    if (is.null(rv())) return(NULL)
+    if (!hydro_location_ready()) return(NULL)
 
     sub_subbasin <- rv()
+    # Only chemicals have water body series; HYPE variables need the subbasin.
+    if (is.null(sub_subbasin) && !is_chem_variable(input$prediction_variable[1])) return(NULL)
     sub_variable <- input$prediction_variable[1]
 
     # Chemicals: monthly climatology across the whole 2018-2022 record
@@ -1979,13 +2077,16 @@ server <- function(input, output, session) {
              caption = paste0("Change against the ", baseline_period, " baseline.")) +
         theme_ecomix()
     }
-  })
+  }) %>%
+    bindCache(projection_plot_key(), sizePolicy = function(dims) dims)
 
   ## Plot 5: Cumulative Frequency Curves
   output$projections_cfc_plot <- renderPlot({
-    if (is.null(rv())) return(NULL)
+    if (!hydro_location_ready()) return(NULL)
 
     sub_subbasin <- rv()
+    # Only chemicals have water body series; HYPE variables need the subbasin.
+    if (is.null(sub_subbasin) && !is_chem_variable(input$prediction_variable[1])) return(NULL)
     sub_variable <- input$prediction_variable[1]
 
     # Chemicals: empirical cumulative frequency curve of the daily
@@ -2050,14 +2151,15 @@ server <- function(input, output, session) {
       labs(x = "Cumulative frequency [%]", y = ylab,
            caption = "Daily values pooled over all months of the period and the model ensemble.") +
       theme_ecomix()
-  })
+  }) %>%
+    bindCache(projection_plot_key(), sizePolicy = function(dims) dims)
 
   ## Plot 6: Daily chemical concentration series (chemicals only - the HYPE
   ## datasets in this app have no daily granularity, only monthly/yearly/
   ## percentile summaries, so this tab is hidden via nav_hide/nav_show
   ## whenever a HYPE variable is selected).
   output$projections_daily_plot <- renderPlot({
-    if (is.null(rv())) return(NULL)
+    if (!hydro_location_ready()) return(NULL)
 
     sub_variable <- input$prediction_variable[1]
     if (!is_chem_variable(sub_variable)) {
@@ -2077,26 +2179,41 @@ server <- function(input, output, session) {
       labs(x = NULL, y = paste0(lbl, " [ng/L]"),
            caption = "Daily reconstructed concentration, 2018-2022.") +
       theme_ecomix()
-  })
+  }) %>%
+    bindCache(projection_plot_key(), sizePolicy = function(dims) dims)
 
   # "Download this selection" in the Hydro Explorer rail - the current
   # subbasin/variable extract, same shape as the Download page's output.
+  # In Water body mode the rows are the picked water body's series, so the
+  # file and its id column name the water body (they used to carry the Map's
+  # subbasin, which those rows have nothing to do with).
   output$download_selection <- downloadHandler(
     filename = function() {
       var <- input$prediction_variable
       label <- if (is_chem_variable(var)) chem_key_from_variable(var) else var
-      paste0("ecomix_subbasin_", rv(), "_", label, ".csv")
+      if (identical(input$de_entity_type, "waterbody")) {
+        paste0("ecomix_waterbody_", rv_de_waterbody(), "_", label, ".csv")
+      } else {
+        paste0("ecomix_subbasin_", rv(), "_", label, ".csv")
+      }
     },
     content = function(file) {
-      req(rv())
+      req(hydro_location_ready())
       var <- input$prediction_variable
       if (is_chem_variable(var)) {
         df <- chem_selected_series() %>%
           dplyr::mutate(chemical = prediction_variable_labels[[var]] %||% chem_key_from_variable(var),
-                        subbasin = rv(), unit = "ng/L") %>%
-          dplyr::select(subbasin, chemical, statistic = stat, date, value, unit)
+                        unit = "ng/L")
+        df <- if (identical(input$de_entity_type, "waterbody")) {
+          df %>% dplyr::mutate(waterbody_id = rv_de_waterbody()) %>%
+            dplyr::select(waterbody_id, chemical, statistic = stat, date, value, unit)
+        } else {
+          df %>% dplyr::mutate(subbasin = rv()) %>%
+            dplyr::select(subbasin, chemical, statistic = stat, date, value, unit)
+        }
         write.csv(df, file, row.names = FALSE)
       } else {
+        req(rv())
         df <- get_subbasin_tabular_download(var, rv())
         write.csv(df, file, row.names = FALSE)
       }
@@ -2231,7 +2348,7 @@ server <- function(input, output, session) {
       updateSelectInput(
         session,
         inputId = "dl_format",
-        choices = c("Shapefile (.zip)" = "shp", "GeoParquet" = "geoparquet", "GPKG" = "gpkg"),
+        choices = spatial_download_formats,
         selected = "gpkg"
       )
     }
@@ -2342,7 +2459,7 @@ server <- function(input, output, session) {
       if (!is_wbchem_variable(input$dl_variable) && is.null(rv())) return(0)
       nrow(downloader_tabular_data())
     } else {
-      nrow(downloader_spatial_data())
+      nrow(spatial_rows_with_values(downloader_spatial_data()))
     }
   })
 
@@ -2390,11 +2507,7 @@ server <- function(input, output, session) {
                            rownames = FALSE, options = list(dom = "t")))
     }
 
-    df_spatial_tbl <- sf::st_drop_geometry(df_spatial)
-    if (all(c("value_mean", "value_min", "value_max") %in% names(df_spatial_tbl))) {
-      df_spatial_tbl <- df_spatial_tbl %>%
-        filter(!(is.na(value_mean) & is.na(value_min) & is.na(value_max)))
-    }
+    df_spatial_tbl <- sf::st_drop_geometry(spatial_rows_with_values(df_spatial))
 
     if (nrow(df_spatial_tbl) == 0) {
       return(DT::datatable(data.frame(Message = "No spatial rows with values are available for this selection."),
@@ -2446,9 +2559,9 @@ server <- function(input, output, session) {
           arrow::write_parquet(df_download, sink = file)
         }
       } else {
-        df_spatial <- downloader_spatial_data()
+        df_spatial <- spatial_rows_with_values(downloader_spatial_data())
         if (nrow(df_spatial) == 0) {
-          stop("No spatial data available for the selected subbasin.")
+          stop("No spatial data with values available for the selected subbasin.")
         }
 
         # Export all spatial outputs in British National Grid.
@@ -2457,11 +2570,16 @@ server <- function(input, output, session) {
         if (input$dl_format == "shp") {
           tmp_dir <- tempfile("ecomix_shp_")
           dir.create(tmp_dir)
+          zip_tmp <- tempfile(fileext = ".zip")
+          # Shiny only removes `file`; in a long-running process every
+          # shapefile download would otherwise leave these behind in tempdir().
+          on.exit(unlink(c(tmp_dir, zip_tmp), recursive = TRUE, force = TRUE), add = TRUE)
           shp_path <- file.path(tmp_dir, "ecomix_spatial.shp")
           sf::st_write(df_spatial_export, dsn = shp_path, driver = "ESRI Shapefile", quiet = TRUE, delete_layer = TRUE)
           shp_files <- list.files(tmp_dir, full.names = TRUE)
-          zip_tmp <- tempfile(fileext = ".zip")
-          utils::zip(zipfile = zip_tmp, files = shp_files)
+          # -j stores bare file names (not the temp directory path), -X drops
+          # extra file attributes, -q keeps zip quiet in the server log.
+          utils::zip(zipfile = zip_tmp, files = shp_files, flags = "-j9Xq")
           file.copy(zip_tmp, file, overwrite = TRUE)
         } else if (input$dl_format == "gpkg") {
           sf::st_write(df_spatial_export, dsn = file, driver = "GPKG", quiet = TRUE, delete_dsn = TRUE)

@@ -92,3 +92,20 @@ get_chem_download_summary <- function(chem_key, stat_val) {
   cache_fetch("chem_download_summary", chem_key, stat_val,
               compute = function() summarise_download(get_chem_all_subbasins_daily(chem_key, stat_val)))
 }
+
+# Spatial download formats. GeoParquet is written through GDAL's Parquet
+# driver, which many GDAL builds (including common macOS and Debian ones)
+# don't include - offering it there only produced a "Driver not available"
+# error on download, so it is listed only when the driver is present.
+spatial_download_formats <- c("Shapefile (.zip)" = "shp", "GeoParquet" = "geoparquet", "GPKG" = "gpkg")
+if (!"Parquet" %in% sf::st_drivers(what = "vector")$name) {
+  spatial_download_formats <- spatial_download_formats[spatial_download_formats != "geoparquet"]
+}
+
+# Keep only polygons with a summary value (mean, min or max) for the selected
+# variable. Polygons without any records are dropped from the preview, the
+# row count and the download.
+spatial_rows_with_values <- function(df) {
+  if (!all(c("value_mean", "value_min", "value_max") %in% names(df))) return(df)
+  dplyr::filter(df, !(is.na(value_mean) & is.na(value_min) & is.na(value_max)))
+}

@@ -96,17 +96,19 @@ chem_d3d_site_choices <- lapply(chem_d3d_site_ids, function(ids) {
 #
 # data-chem/6_Source_apportionment/ holds, per chemical, one wide CSV per
 # source named "<Chemical>_<source>_source_apportion_waterbodies.csv", with
-# source one of dog_swim / pet_CSO / pet_WWTP. Rows are consecutive days (no
-# date column - the last row is 2022-12-31, the end of the concentration
-# record) and columns are water body ids (id_waterbody, see
-# marthaWBid2EAWBid.csv); each cell is that source's fraction of the total,
-# so the three sources sum to 1. A chemical only gets the Chemical Explorer
-# treemaps if it has all three files. Sites take the split of the water body
-# they sit in (chem_site_wb). Only 2018-01-01 onwards (the plotted period) is
-# kept, and files are read on first use then cached per chemical.
+# source one of dog_swim / pet_CSO / pet_WWTP. Rows are consecutive days from
+# 2002-01-01 to 2025-06-30 (no date column, 8582 rows) and columns are water
+# body ids (id_waterbody, see marthaWBid2EAWBid.csv); each cell is that
+# source's fraction of the total, so the three sources sum to 1. A chemical
+# only gets the Chemical Explorer treemaps if it has all three files. Sites
+# take the split of the water body they sit in (chem_site_wb). Only
+# 2018-01-01 to 2022-12-31 (the dashboard period) is kept, and files are read
+# on first use then cached per chemical.
 chem_src_dir <- data_path("data-chem/6_Source_apportionment")
-chem_src_last_date <- as.Date("2022-12-31")
+chem_src_start_date <- as.Date("2002-01-01")
+chem_src_n_rows <- 8582L
 chem_src_first_date <- as.Date("2018-01-01")
+chem_src_last_date <- as.Date("2022-12-31")
 chem_src_labels <- c(dog_swim = "Dog swimming", pet_CSO = "Pet CSOs", pet_WWTP = "Pet WWTP")
 chem_src_fill <- c(dog_swim = ec$accent, pet_CSO = ec$ink, pet_WWTP = "#9b9797")
 chem_src_text <- c(dog_swim = "#ffffff", pet_CSO = "#ffffff", pet_WWTP = ec$ink)
@@ -131,8 +133,9 @@ get_chem_src <- function(chem_key) {
   cache_fetch("chem_src", chem_key, compute = function() {
     mats <- lapply(chem_src_files[[chem_key]], function(f) {
       m <- as.matrix(arrow::read_csv_arrow(f))
-      dates <- chem_src_last_date - rev(seq_len(nrow(m)) - 1L)
-      keep <- dates >= chem_src_first_date
+      stopifnot(nrow(m) == chem_src_n_rows)
+      dates <- chem_src_start_date + seq_len(nrow(m)) - 1L
+      keep <- dates >= chem_src_first_date & dates <= chem_src_last_date
       structure(m[keep, , drop = FALSE], dates = dates[keep])
     })
     list(mats = mats, dates = attr(mats[[1]], "dates"))

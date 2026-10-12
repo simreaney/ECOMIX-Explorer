@@ -2724,7 +2724,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["ecomix_subbasin_3793_fipronil.csv"]
+              "value": ["ecomix_waterbody_GB104027069400_fipronil.csv"]
             },
             {
               "type": "character",
@@ -2739,17 +2739,17 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["subbasin | chemical | statistic | date | value | unit"]
+              "value": ["waterbody_id | chemical | statistic | date | value | unit"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["integer | character | character | character | numeric | character"]
+              "value": ["character | character | character | character | numeric | character"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["c71f3f29ecd66bba034a0585d5de9453"]
+              "value": ["1a20eb3a0b03ce6bf7be8424794731d4"]
             },
             {
               "type": "list",
@@ -2757,14 +2757,14 @@
                 "names": {
                   "type": "character",
                   "attributes": {},
-                  "value": ["subbasin", "chemical", "statistic", "date", "value", "unit"]
+                  "value": ["waterbody_id", "chemical", "statistic", "date", "value", "unit"]
                 }
               },
               "value": [
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["3793 | 3793 | 3793"]
+                  "value": ["GB104027069400 | GB104027069400 | GB104027069400"]
                 },
                 {
                   "type": "character",

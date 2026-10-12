@@ -18,12 +18,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [10]
+          "value": [11]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -1037,7 +1059,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -1092,7 +1114,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -1147,7 +1169,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -1202,7 +1224,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -1257,7 +1279,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -1312,7 +1334,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -1372,7 +1394,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -1427,7 +1449,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -2127,12 +2149,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [10]
+          "value": [11]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -5886,12 +5930,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [10]
+          "value": [11]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -8120,7 +8186,7 @@
         "names": {
           "type": "character",
           "attributes": {},
-          "value": ["step", "n_messages", "messages", "warnings"]
+          "value": ["step", "n_messages", "messages"]
         }
       },
       "value": [
@@ -8335,11 +8401,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["Removed 3561 rows containing missing values or values outside the scale range (`geom_ribbon()`).", "Removed 3561 rows containing missing values or values outside the scale range (`geom_line()`)."]
         }
       ]
     }
@@ -8475,12 +8536,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [14]
+          "value": [15]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -9143,7 +9226,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -9198,7 +9281,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -9253,7 +9336,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -9308,7 +9391,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -9363,7 +9446,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -9418,7 +9501,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -9813,7 +9896,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -9868,7 +9951,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -9923,7 +10006,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -9978,7 +10061,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10033,7 +10116,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10088,7 +10171,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10205,7 +10288,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10260,7 +10343,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10315,7 +10398,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10370,7 +10453,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10413,19 +10496,52 @@
                 "names": {
                   "type": "character",
                   "attributes": {},
-                  "value": ["error", "message"]
+                  "value": ["png_hash", "size", "alt", "panels"]
                 }
               },
               "value": [
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["rlang_error/error/condition"]
+                  "value": ["8b865f08494c3421e654de3a779d1620"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["Insufficient values in manual scale. 7 needed but only 6 provided."]
+                  "value": [" x "]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["Plot object"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["domain", "mapping"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["left=1 right=99 bottom=-1.7480419 top=0.76389894"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["x=percentile y=value colour=scenario"]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -10447,7 +10563,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10534,7 +10650,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10589,7 +10705,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10644,7 +10760,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10687,19 +10803,52 @@
                 "names": {
                   "type": "character",
                   "attributes": {},
-                  "value": ["error", "message"]
+                  "value": ["png_hash", "size", "alt", "panels"]
                 }
               },
               "value": [
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["rlang_error/error/condition"]
+                  "value": ["776eafaa577e551e1fd831ed9d71a9c8"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["Insufficient values in manual scale. 7 needed but only 6 provided."]
+                  "value": [" x "]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["Plot object"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["domain", "mapping"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["left=1 right=12 bottom=-0.291902 top=6.459942"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["ymin=band_low ymax=band_high x=month colour=scenario fill=scenario"]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -10709,19 +10858,52 @@
                 "names": {
                   "type": "character",
                   "attributes": {},
-                  "value": ["error", "message"]
+                  "value": ["png_hash", "size", "alt", "panels"]
                 }
               },
               "value": [
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["rlang_error/error/condition"]
+                  "value": ["8b865f08494c3421e654de3a779d1620"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["Insufficient values in manual scale. 7 needed but only 6 provided."]
+                  "value": [" x "]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["Plot object"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["domain", "mapping"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["left=1 right=99 bottom=-1.7480419 top=0.76389894"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["x=percentile y=value colour=scenario"]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -10743,7 +10925,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10830,7 +11012,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10885,7 +11067,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10940,7 +11122,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -10995,7 +11177,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11050,7 +11232,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11105,7 +11287,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11192,7 +11374,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11247,7 +11429,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11302,7 +11484,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11357,7 +11539,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11412,7 +11594,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11467,7 +11649,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11554,7 +11736,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11609,7 +11791,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11708,7 +11890,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11763,7 +11945,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11885,7 +12067,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -11977,7 +12159,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12152,7 +12334,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12207,7 +12389,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12262,7 +12444,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12317,7 +12499,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12372,7 +12554,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12427,7 +12609,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12529,7 +12711,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12584,7 +12766,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12639,7 +12821,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12694,7 +12876,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12749,7 +12931,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12804,7 +12986,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -12896,7 +13078,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -13560,7 +13742,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -13704,7 +13886,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -14023,7 +14205,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -14078,7 +14260,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -14133,7 +14315,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -14188,7 +14370,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -14243,7 +14425,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -14298,7 +14480,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -14640,12 +14822,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [14]
+          "value": [15]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -15522,7 +15726,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -15577,7 +15781,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -15632,7 +15836,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -15687,7 +15891,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -15742,7 +15946,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -15797,7 +16001,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -15998,7 +16202,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16053,7 +16257,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16108,7 +16312,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16163,7 +16367,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16218,7 +16422,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16273,7 +16477,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16583,7 +16787,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16638,7 +16842,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16693,7 +16897,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16748,7 +16952,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16803,7 +17007,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -16858,7 +17062,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -17484,7 +17688,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -17539,7 +17743,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -17594,7 +17798,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -17649,7 +17853,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -17704,7 +17908,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -17759,7 +17963,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -17908,7 +18112,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -17963,7 +18167,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -18018,7 +18222,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -18073,7 +18277,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -18128,7 +18332,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -18183,7 +18387,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -18541,12 +18745,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [17]
+          "value": [18]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -19310,7 +19536,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -19365,7 +19591,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -19408,19 +19634,52 @@
                 "names": {
                   "type": "character",
                   "attributes": {},
-                  "value": ["error", "message"]
+                  "value": ["png_hash", "size", "alt", "panels"]
                 }
               },
               "value": [
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["shiny.silent.error/validation/error/condition"]
+                  "value": ["193df7d250ac615f9f0230424019e5f8"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": [""]
+                  "value": [" x "]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["Plot object"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["domain", "mapping"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["left=-0.04 right=1.04 bottom=-0.04 top=1.04"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": [""]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -19430,19 +19689,52 @@
                 "names": {
                   "type": "character",
                   "attributes": {},
-                  "value": ["error", "message"]
+                  "value": ["png_hash", "size", "alt", "panels"]
                 }
               },
               "value": [
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["shiny.silent.error/validation/error/condition"]
+                  "value": ["193df7d250ac615f9f0230424019e5f8"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": [""]
+                  "value": [" x "]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["Plot object"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["domain", "mapping"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["left=-0.04 right=1.04 bottom=-0.04 top=1.04"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": [""]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -19452,19 +19744,52 @@
                 "names": {
                   "type": "character",
                   "attributes": {},
-                  "value": ["error", "message"]
+                  "value": ["png_hash", "size", "alt", "panels"]
                 }
               },
               "value": [
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["shiny.silent.error/validation/error/condition"]
+                  "value": ["193df7d250ac615f9f0230424019e5f8"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": [""]
+                  "value": [" x "]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["Plot object"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["domain", "mapping"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["left=-0.04 right=1.04 bottom=-0.04 top=1.04"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": [""]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -19474,19 +19799,52 @@
                 "names": {
                   "type": "character",
                   "attributes": {},
-                  "value": ["error", "message"]
+                  "value": ["png_hash", "size", "alt", "panels"]
                 }
               },
               "value": [
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["shiny.silent.error/validation/error/condition"]
+                  "value": ["193df7d250ac615f9f0230424019e5f8"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": [""]
+                  "value": [" x "]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["Plot object"]
+                },
+                {
+                  "type": "list",
+                  "attributes": {},
+                  "value": [
+                    {
+                      "type": "list",
+                      "attributes": {
+                        "names": {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["domain", "mapping"]
+                        }
+                      },
+                      "value": [
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": ["left=-0.04 right=1.04 bottom=-0.04 top=1.04"]
+                        },
+                        {
+                          "type": "character",
+                          "attributes": {},
+                          "value": [""]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }
@@ -19699,7 +20057,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -19754,7 +20112,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -19809,7 +20167,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -19864,7 +20222,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -19919,7 +20277,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -19974,7 +20332,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -20175,7 +20533,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -20230,7 +20588,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -20285,7 +20643,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -20340,7 +20698,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -20395,7 +20753,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -20450,7 +20808,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -20527,7 +20885,7 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["ecomix_subbasin_3310_cypermethrin.csv"]
+              "value": ["ecomix_waterbody_GB104027057290_cypermethrin.csv"]
             },
             {
               "type": "character",
@@ -20542,17 +20900,17 @@
             {
               "type": "character",
               "attributes": {},
-              "value": ["subbasin | chemical | statistic | date | value | unit"]
+              "value": ["waterbody_id | chemical | statistic | date | value | unit"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["integer | character | character | character | numeric | character"]
+              "value": ["character | character | character | character | numeric | character"]
             },
             {
               "type": "character",
               "attributes": {},
-              "value": ["36b309c075e6abc94e8ad9bd40c039bb"]
+              "value": ["6ae183e45ee6f0b6d4737ddb1c4d1eed"]
             },
             {
               "type": "list",
@@ -20560,14 +20918,14 @@
                 "names": {
                   "type": "character",
                   "attributes": {},
-                  "value": ["subbasin", "chemical", "statistic", "date", "value", "unit"]
+                  "value": ["waterbody_id", "chemical", "statistic", "date", "value", "unit"]
                 }
               },
               "value": [
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["3310 | 3310 | 3310"]
+                  "value": ["GB104027057290 | GB104027057290 | GB104027057290"]
                 },
                 {
                   "type": "character",
@@ -20802,7 +21160,7 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["Removed 3561 rows containing missing values or values outside the scale range (`geom_ribbon()`).", "Removed 3561 rows containing missing values or values outside the scale range (`geom_line()`).", "log-10 transformation introduced infinite values."]
+          "value": ["log-10 transformation introduced infinite values."]
         }
       ]
     }
@@ -20867,7 +21225,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -20922,7 +21280,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -20977,7 +21335,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -21032,7 +21390,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -21087,7 +21445,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -21142,7 +21500,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -21359,12 +21717,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [16]
+          "value": [17]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -23508,12 +23888,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [16]
+          "value": [17]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -25717,7 +26119,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -25772,7 +26174,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -26039,12 +26441,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [12]
+          "value": [13]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -26644,7 +27068,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -26699,7 +27123,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -26929,7 +27353,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -26984,7 +27408,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -27276,7 +27700,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -27331,7 +27755,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -27552,7 +27976,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -27607,7 +28031,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -27811,7 +28235,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -27866,7 +28290,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -27948,12 +28372,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["f9c219763ab6be66db56c6e3e8f728f0"]
+                  "value": ["991876ec0c7b2b99f65b5a52c9aeae65"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -28008,12 +28432,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["f9c219763ab6be66db56c6e3e8f728f0"]
+                  "value": ["991876ec0c7b2b99f65b5a52c9aeae65"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -28063,7 +28487,7 @@
         "names": {
           "type": "character",
           "attributes": {},
-          "value": ["step", "n_messages", "messages", "warnings"]
+          "value": ["step", "n_messages", "messages"]
         }
       },
       "value": [
@@ -28075,17 +28499,35 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [0]
+          "value": [1]
         },
         {
           "type": "list",
           "attributes": {},
-          "value": []
-        },
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["A <numeric> value was passed to a Date scale.\ni The value was converted to a <Date> object.", "Removed 671 rows containing missing values or values outside the scale range (`geom_ribbon()`).", "Removed 5 rows containing missing values or values outside the scale range (`geom_line()`)."]
+          "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3d0fdeb2791d52366ba9a803afa0f4ac"]
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -28135,12 +28577,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["e59c5a359beee696a08009d5a151eced"]
+                  "value": ["73be134848937edbec3d098c92c66c52"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -28190,12 +28632,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["a3dccef4f7fea1ac192f447e52dd0f5f"]
+                  "value": ["f5aef13eb29f1af8c157137baa181415"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -28277,12 +28719,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["f9c219763ab6be66db56c6e3e8f728f0"]
+                  "value": ["991876ec0c7b2b99f65b5a52c9aeae65"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -28342,7 +28784,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -28429,12 +28871,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["0f4ee318037f7f171330142b94ee9e4d"]
+                  "value": ["c7329a5120e23c906fc043123e2cb005"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -28484,12 +28926,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["6259f388e042c3b746f1c787b1edc2cc"]
+                  "value": ["73be134848937edbec3d098c92c66c52"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -28581,7 +29023,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -28636,7 +29078,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -28757,7 +29199,7 @@
         "names": {
           "type": "character",
           "attributes": {},
-          "value": ["step", "n_messages", "messages", "warnings"]
+          "value": ["step", "n_messages", "messages"]
         }
       },
       "value": [
@@ -28769,12 +29211,56 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [8]
+          "value": [10]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["4d2d185e042e257f10b712042b40da02"]
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -29058,11 +29544,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "character",
-          "attributes": {},
-          "value": ["A <numeric> value was passed to a Date scale.\ni The value was converted to a <Date> object.", "Removed 671 rows containing missing values or values outside the scale range (`geom_ribbon()`).", "Removed 5 rows containing missing values or values outside the scale range (`geom_line()`).", "Removed 1014 rows containing missing values or values outside the scale range (`geom_ribbon()`).", "Removed 52 rows containing missing values or values outside the scale range (`geom_line()`)."]
         }
       ]
     }
@@ -29117,7 +29598,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -29172,7 +29653,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -29254,12 +29735,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["96c3801323adae2329afbbd3bedd9a19"]
+                  "value": ["bed8ecafcd3d7f8e2e6477896ee88ab7"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -29314,12 +29795,12 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["96c3801323adae2329afbbd3bedd9a19"]
+                  "value": ["bed8ecafcd3d7f8e2e6477896ee88ab7"]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -30033,7 +30514,7 @@
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["600 x 400"]
+                  "value": [" x "]
                 },
                 {
                   "type": "character",
@@ -30095,12 +30576,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [11]
+          "value": [12]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -31045,12 +31548,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [14]
+          "value": [15]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -33836,12 +34361,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [14]
+          "value": [15]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -36299,12 +36846,34 @@
         {
           "type": "integer",
           "attributes": {},
-          "value": [15]
+          "value": [16]
         },
         {
           "type": "list",
           "attributes": {},
           "value": [
+            {
+              "type": "list",
+              "attributes": {
+                "names": {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["custom", "hash"]
+                }
+              },
+              "value": [
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["chem_d3d_marker"]
+                },
+                {
+                  "type": "character",
+                  "attributes": {},
+                  "value": ["3efd2e161c85e0cecc2591501b1999e7"]
+                }
+              ]
+            },
             {
               "type": "list",
               "attributes": {
@@ -36642,12 +37211,12 @@
                 {
                   "type": "integer",
                   "attributes": {},
-                  "value": [3]
+                  "value": [2]
                 },
                 {
                   "type": "character",
                   "attributes": {},
-                  "value": ["9d833f0ba5c9b1e34f32e2ac11f1a81a"]
+                  "value": ["46a162912a8a9b1a0af6446ecae74f8d"]
                 }
               ]
             },

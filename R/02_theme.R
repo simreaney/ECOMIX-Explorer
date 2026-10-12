@@ -20,7 +20,16 @@ ec <- list(
 # Discrete series palette. The system is mono - accent first for the series
 # that carries the message, then ink and its neutral steps. Never more than
 # one saturated line at a time.
-ec_series <- c(ec$accent, ec$ink, ec$ink_dim, ec$accent_text, "#9b9797", "#b9b5b5")
+#
+# The six system colours only cover six series, but the Hydro Explorer can
+# draw up to 19 (Baseline plus 3 SSPs x 6 future periods on the Monthly and
+# Distributions plots; Baseline plus 6 periods on Climate), which used to fail
+# with "Insufficient values in manual scale". Further series take colours
+# from a qualitative HCL palette, ordered so neighbouring series are far
+# apart in hue. The system six always come first, so any plot with six or
+# fewer series is unchanged.
+ec_series <- c(ec$accent, ec$ink, ec$ink_dim, ec$accent_text, "#9b9797", "#b9b5b5",
+               grDevices::hcl.colors(18, "Dark 3")[c(1, 7, 13, 4, 10, 16, 2, 8, 14, 5, 11, 17, 3, 9, 15, 6, 12, 18)])
 
 scale_color_ecomix <- function(...) ggplot2::scale_color_manual(values = ec_series, ...)
 scale_fill_ecomix  <- function(...) ggplot2::scale_fill_manual(values = ec_series, ...)
