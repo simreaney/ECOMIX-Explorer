@@ -1,0 +1,39 @@
+# Publishes the static ECOMIX Explorer (the docs/ folder) to GitHub Pages.
+# One-off setup: Settings -> Pages -> Build and deployment -> Source: GitHub Actions.
+# The site data in docs/data/ is built locally with scripts/build_site.py and
+# committed; this workflow only uploads what is in docs/.
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # Only docs/ is needed, so skip the large source datasets.
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: docs
+          filter: blob:none
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deployment
+        uses: actions/deploy-pages@v4

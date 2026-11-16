@@ -1,2 +1,7 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Static site (docs/): pre-built data and vendored binaries are never text.
+*.bin.gz binary
+*.woff2 binary
+*.wasm binary

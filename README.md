@@ -3,9 +3,37 @@ Interactive dashboard for ECOMIX data.
 
 This is the web dashboard code for the [ECOMIX](https://water.leeds.ac.uk/fwq-programme/assessing-and-managing-the-impacts-of-mixtures-of-chemicals-on-uk-freshwater-biodiversity/) project, that is part of the [NERC Freshwater Quality Programme](https://water.leeds.ac.uk/event_category/freshwater-quality-programme/).
 
-## Dashboard
+## Web version (GitHub Pages)
 
-The dashboard ([app.R](app.R)) is an R Shiny app that lets users explore hydrological and chemical exposure data for the study catchments, both as they were observed/simulated historically and as they are projected to change under future climate scenarios. It is organised into the following tabs:
+[docs/](docs/) holds a static version of the dashboard that runs entirely in the browser, so it can be hosted on GitHub Pages with no server. It has the same eight tabs as the Shiny app below. Charts are drawn with [Observable Plot](https://observablehq.com/plot) and d3, maps with [Leaflet](https://leafletjs.com), and downloads (CSV, XLSX, Parquet, GeoPackage, Shapefile, GeoParquet, GeoJSON) are written in the browser. Every library is vendored in [docs/vendor/](docs/vendor/) (see [LICENSES.md](docs/vendor/LICENSES.md)), so the site needs nothing from a CDN.
+
+**Publishing.** In the repository's *Settings → Pages*, set *Source* to *GitHub Actions*. [.github/workflows/pages.yml](.github/workflows/pages.yml) then deploys `docs/` on every push to `main` that changes it. The site is served at `https://<owner>.github.io/ECOMIX-Explorer/`.
+
+**Updating the data.** The site reads compact pre-built files from [docs/data/](docs/data/), produced from the source datasets by [scripts/build_site.py](scripts/build_site.py):
+
+```sh
+pip install numpy pandas pyarrow geopandas pyogrio shapely pyproj rdata
+python3 scripts/build_site.py          # all steps; a few minutes
+python3 scripts/build_site.py --only chem wbchem   # just some steps
+```
+
+Commit `docs/data/` afterwards. The build is deterministic, so unchanged inputs produce byte-identical files and no git diff.
+
+Several source datasets are gitignored and only exist where they were built: the HYPE projections (`data/DB_Proj_Year`, `data/DB_Proj_Month`), the UKCP18 climate summary (`data/DB_Proj_Forcing`), simulated vs observed hydrology (`data/DB_Historical_Sim_Obs`), the D3D percentile series (`data-chem/7_chemicals`) and source apportionment (`data-chem/6_Source_apportionment`). Run the build on a machine that has them. Any that are missing are listed at the end of the build, and the site shows a "not published" note in place of the views that need them.
+
+**Precision and size.** Values are stored as float32 rounded to 14 mantissa bits (4–5 significant figures, relative error below 0.004 %), which is also the precision of the site's downloads; integers and identifiers are exact. GitHub Pages sites are limited to 1 GB. The build warns past 900 MB; `--keepbits 12` makes the files smaller, `--keepbits 23` keeps full float32 precision.
+
+**Local preview.** The site loads its data with `fetch`, so it has to be served over HTTP rather than opened from disk:
+
+```sh
+python3 -m http.server --directory docs 8000   # then open http://localhost:8000
+```
+
+The selected tab, location and main settings are kept in the URL, so any view can be bookmarked or shared.
+
+## Dashboard (R Shiny)
+
+The original dashboard ([app.R](app.R)) is an R Shiny app that lets users explore hydrological and chemical exposure data for the study catchments, both as they were observed/simulated historically and as they are projected to change under future climate scenarios. It is organised into the following tabs:
 
 * **Map** — search for or browse subbasins on an interactive map, with toggleable layers for subbasin/operational catchment boundaries, waterbodies (modelled), measured sites, observed hydrology sites and chemical data coverage.
 * **Site Details** — for a selected measured site or modelled water body (switchable via a toggle in the sidebar), view a chemical occurrence/concentration grid and configurable time-series panels for up to four determinands.

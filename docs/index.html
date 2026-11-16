@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ECOMIX Explorer</title>
+  <meta name="description" content="Interactive explorer for ECOMIX hydrological and chemical exposure data: measured sites, modelled water bodies and climate projections.">
+  <link rel="preload" href="vendor/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#tab=map">ECOMIX Explorer</a>
+    <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+    <span class="spacer"></span>
+    <nav class="links" aria-label="Partner universities">
+      <a href="https://www.york.ac.uk" target="_blank" rel="noopener">York</a>
+      <a href="https://durham.ac.uk" target="_blank" rel="noopener">Durham</a>
+      <a href="https://sheffield.ac.uk" target="_blank" rel="noopener">Sheffield</a>
+    </nav>
+  </header>
+
+  <main id="pages">
+    <div class="boot" id="boot">Loading ECOMIX Explorer…</div>
+  </main>
+
+  <div class="tooltip" id="tooltip" hidden></div>
+
+  <noscript><p style="padding:24px">ECOMIX Explorer needs JavaScript to load and draw its data.</p></noscript>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/d3.min.js"></script>
+  <script src="vendor/plot.umd.min.js"></script>
+  <script src="vendor/fflate.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
