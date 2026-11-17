@@ -2068,13 +2068,11 @@ server <- function(input, output, session) {
   })
 
   # Shared ribbon + median line for one measure ("conc" or "sspaf").
-  chem_d3d_band_plot <- function(df, measure, log_y = FALSE) {
+  chem_d3d_band_plot <- function(df, measure) {
     d <- data.frame(x = df$Date,
                     lo = df[[paste0(measure, "_p10")]],
                     mid = df[[paste0(measure, "_p50")]],
                     hi = df[[paste0(measure, "_p90")]])
-    # Exact zeros are undefined on a log scale, so they become gaps.
-    if (log_y) d[c("lo", "mid", "hi")] <- lapply(d[c("lo", "mid", "hi")], function(v) ifelse(v > 0, v, NA_real_))
     ggplot(d, aes(x = x, y = mid)) +
       geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.18, colour = NA, fill = ec$accent) +
       geom_line(colour = ec$accent, linewidth = 0.8)
@@ -2086,9 +2084,7 @@ server <- function(input, output, session) {
     ds <- chem_d3d_datasets[[input$chem_d3d_key]]
     thr <- chem_d3d_thresholds()
 
-    # Concentrations sit orders of magnitude below any threshold line, so a
-    # log10 axis is used (zero days show as gaps).
-    p <- chem_d3d_band_plot(df, "conc", log_y = TRUE)
+    p <- chem_d3d_band_plot(df, "conc")
     if (!is.null(thr)) {
       df_thr <- data.frame(
         label = factor(c("Acute HC5", "Chronic HC5/10"), levels = c("Acute HC5", "Chronic HC5/10")),
@@ -2100,9 +2096,8 @@ server <- function(input, output, session) {
     }
     p +
       scale_x_date(expand = expansion(mult = c(0.01, 0.03))) +
-      scale_y_log10() +
-      labs(x = NULL, y = paste0(ds$label, " concentration [", ds$unit, ", log scale]"),
-           caption = "Gaps mark exact-zero days (undefined on a log scale).") +
+      scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
+      labs(x = NULL, y = paste0(ds$label, " concentration [", ds$unit, "]")) +
       theme_ecomix() -> p
     chem_d3d_day_marker(p)
   })
